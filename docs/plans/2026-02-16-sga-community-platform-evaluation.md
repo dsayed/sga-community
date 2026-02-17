@@ -288,7 +288,7 @@ Courses feature is an add-on at $108/mo extra. Additional members and storage al
 | Google Play Developer | $25 one-time |
 | Domain name | ~$12/yr (~$1/mo) |
 | Video hosting (Bunny CDN) | ~$1–5/mo |
-| Claude subscription (for building) | $20/mo (existing) |
+| Claude subscription (for maintenance) | $20/mo (Pro plan sufficient for ongoing work; Max plan at $100/mo was used for the initial build but isn't needed long-term) |
 | **Total ongoing** | **~$35–60/mo** |
 
 **Build timeline:** Originally estimated 2–4 weeks. Actual build took ~6 hours over two sessions with Claude Code.
