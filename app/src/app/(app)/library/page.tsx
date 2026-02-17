@@ -68,9 +68,10 @@ export default async function LibraryPage({
         </div>
       ) : (
         sortedCategories.map((cat) => (
-          <section key={cat} className="mb-4">
-            <div className="flex items-center justify-between px-4 pt-3 pb-1.5">
-              <h2 className="font-serif text-base font-bold text-sga-blue-dark">
+          <section key={cat} className="mb-5">
+            <div className="flex items-center gap-2.5 px-4 pt-4 pb-2">
+              <div className="w-1 h-5 rounded-full bg-sga-orange" />
+              <h2 className="font-serif text-base font-bold text-sga-blue-dark flex-1">
                 {cat}
               </h2>
               <span className="text-xs text-sga-text-secondary">
