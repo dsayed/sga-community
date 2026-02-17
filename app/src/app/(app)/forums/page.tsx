@@ -55,8 +55,10 @@ export default async function ForumsPage({
         <PostCard key={post.id} post={post} />
       ))}
       {(!posts || posts.length === 0) && (
-        <div className="text-center py-12 text-sga-text-secondary text-sm">
-          No posts yet. Be the first to share!
+        <div className="flex flex-col items-center py-12 px-4 animate-fade-in">
+          <img src="/images/available-dogs.jpg" alt="" className="w-48 h-32 object-cover rounded-2xl mb-4 opacity-80" />
+          <p className="text-sm font-medium text-sga-text mb-1">No posts yet</p>
+          <p className="text-xs text-sga-text-secondary">Be the first to share what&apos;s happening with your foster!</p>
         </div>
       )}
     </>

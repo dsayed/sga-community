@@ -63,9 +63,11 @@ export default async function HomePage() {
         <PostCard key={post.id} post={post} />
       ))}
       {(!recentPosts || recentPosts.length === 0) && (
-        <p className="text-sm text-sga-text-secondary text-center py-8 px-4">
-          No posts yet. Check back soon!
-        </p>
+        <div className="flex flex-col items-center py-12 px-4 animate-fade-in">
+          <img src="/images/adoption.jpg" alt="" className="w-48 h-32 object-cover rounded-2xl mb-4 opacity-80" />
+          <p className="text-sm font-medium text-sga-text mb-1">No activity yet</p>
+          <p className="text-xs text-sga-text-secondary">Check back soon for updates from the community!</p>
+        </div>
       )}
     </>
   );
