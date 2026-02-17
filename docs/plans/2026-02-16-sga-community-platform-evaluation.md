@@ -9,11 +9,11 @@
 
 ## The Bottom Line
 
-**The SGA community site isn't working.** Forums are dead (almost all posts are from staff, with zero member engagement). Training links out to Google Forms. The mobile experience is a shrunken website. Content is scattered across external tools. Members don't come back because there's nothing pulling them in.
+SGA's community site was built on Wix and has solid bones — a well-organized resource library, training content, and a clear structure. But the platform has limitations that make it hard for the site to reach its potential. The mobile experience isn't app-like, content is spread across external tools (Google Forms, SignUpGenius), and **Wix is shutting down its Forum feature on March 1, 2026** — meaning SGA needs to find a replacement for community discussion regardless.
 
-On top of that, **Wix is shutting down its Forum feature on March 1, 2026** — two weeks from now. All forum data will be deleted. SGA has already partially migrated to Wix Groups (a Facebook-style feed), but this doesn't fix the fundamental problems.
+Note: Wix disabled forum posting in October 2025, which explains why the forums appear inactive. SGA has already started migrating to Wix Groups.
 
-SGA needs a community platform that members actually want to open. We evaluated five approaches:
+We looked at five approaches for what comes next:
 
 | Approach | Monthly Cost | Branded App? | Needs a Developer? |
 |---|---|---|---|
@@ -37,7 +37,7 @@ SGA currently runs a **Wix-powered private community website** for volunteers, f
 ### Current features:
 - **Training courses** — structured learning for fosters/volunteers (currently links to Google Forms)
 - **Resource library** — articles, videos, documents (well-organized, worth preserving)
-- **Forums** — peer discussion (dead — being deleted by Wix)
+- **Forums** — peer discussion (Wix is discontinuing this feature March 2026)
 - **Blog** — from the public website
 - **Calendar** — from the public website
 - **Member directory** — profiles of people associated with SGA
@@ -45,7 +45,7 @@ SGA currently runs a **Wix-powered private community website** for volunteers, f
 ### Pain points:
 - **Low engagement** — people don't come back or participate
 - **Poor mobile experience** — clunky on phones, and people need it on the go (at events, fostering, etc.)
-- **Content is hard to find** — training, articles, videos are buried and hard to navigate
+- **Content discoverability** — training, articles, and videos could be easier to find and navigate
 - The site feels "very website-like" rather than app-like
 
 ### Site review (Feb 2026 — full walkthrough of logged-in experience)
@@ -54,17 +54,17 @@ SGA currently runs a **Wix-powered private community website** for volunteers, f
 - The **Library is well-organized** — Dog Training broken into 12 specific subcategories (Barking, Crate Training, Fear and Anxiety, Separation Anxiety, etc.), plus Dog Health, Foster & Volunteer Resources, and Other Resources. This structure is valuable and should be preserved in any migration.
 - The **home page "Events, Connections, & Resources" section** has the right idea — icon tiles for Training, Library, Blog, Forums, Calendar, Directory with short descriptions. Closest thing to app-like navigation on the site.
 
-**What's broken:**
+**Opportunities for improvement:**
 
-1. **Forums are dead** (and being deleted). Most recent post was Sep 2025. Almost every post is from staff, not community members. Posts get 0 reactions, 0 comments. This is a broadcast channel, not a community.
+1. **Forums.** Wix disabled forum posting in October 2025 and is deleting the Forum feature March 1, 2026, so the forum appears inactive. SGA has started migrating to Wix Groups. A new platform would need its own discussion/community feature.
 
-2. **Training links out to Google Forms.** The "Access Foster Training Basics" button opens a Google Form, not a course. Training content isn't in the platform.
+2. **Training.** Currently links out to Google Forms for course access. Hosting training content directly in the platform (with video, text, and progress tracking) would be a better experience.
 
-3. **Mobile experience is a shrunken website.** No bottom tab bar, no app-like navigation. It's a responsive website, not a mobile experience.
+3. **Mobile experience.** The site is responsive but not mobile-first — no bottom tab bar or app-like navigation. Members using phones at events or while fostering would benefit from a more app-like experience.
 
-4. **Directory is bare-bones.** Grid of avatars with Follow/Following counts. No roles (foster, volunteer, adopter), no filters, no bios. Can't tell who does what.
+4. **Directory.** Currently a grid of avatars with Follow/Following counts. Adding roles (foster, volunteer, adopter), location, and filtering would make it more useful for connecting people.
 
-5. **Content is fragmented across external tools.** Training → Google Forms. Volunteer signups → SignUpGenius. Behavioral support → another Google Form. Doug's Place volunteering → SignUpGenius. The site links you *out* rather than keeping you *in*.
+5. **External tools.** Some functionality lives outside the site — training via Google Forms, volunteer signups via SignUpGenius, behavioral support via another form. Bringing more of this into one place would reduce friction for members.
 
 ---
 
@@ -382,7 +382,7 @@ This does not include the cost of the person building and maintaining it (volunt
 There is no perfect option. Each involves a trade-off. Here's how to think about it:
 
 ### If SGA wants the least disruption:
-**Wix Branded App (~$130–360/mo total).** SGA is already on Wix. This gets a branded app in the stores with minimal effort. But Wix just killed Forums (the replacement is Groups, which is more like Facebook), there's no code ownership (cancel and the app disappears in days), and the app mostly mirrors the current site — which is the site SGA already finds inadequate. Worth a quick look, but be clear-eyed about what it is: more money for the same experience in app form.
+**Wix Branded App (~$130–360/mo total).** SGA is already on Wix, so this is the least disruptive path. But Forums are being replaced by Groups, there's no code ownership (cancel and the app disappears in days), and the app mirrors the existing site rather than reimagining the experience. Worth exploring to see if it meets SGA's needs.
 
 ### If SGA wants a polished community platform without a developer:
 **Disciple ($300–600/mo)** delivers a fully branded, purpose-built community app. It's the most expensive option but removes all technical complexity. Worth it if SGA can fund it through a grant or donor.
