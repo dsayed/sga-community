@@ -33,18 +33,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="w-full max-w-sm">
+    <div className="w-full max-w-sm bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
       {/* Logo & Branding */}
       <div className="flex flex-col items-center mb-8">
-        <div className="w-16 h-16 bg-sga-blue rounded-xl flex items-center justify-center mb-4">
-          <span className="text-3xl" role="img" aria-label="Paw print">
-            🐾
-          </span>
-        </div>
-        <h1 className="font-serif text-2xl font-bold text-sga-blue-dark">
-          Saving <span className="text-sga-orange">Great</span> Animals
-        </h1>
-        <p className="text-gray-500 mt-1">Sign in to the community</p>
+        <img
+          src="/images/sga-logo.png"
+          alt="Saving Great Animals"
+          className="h-20 w-auto mb-3"
+        />
+        <p className="text-sga-text-secondary mt-1">Sign in to the community</p>
       </div>
 
       {/* Error Message */}
