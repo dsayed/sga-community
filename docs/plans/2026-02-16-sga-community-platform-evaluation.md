@@ -20,8 +20,8 @@ We looked at five approaches for what comes next:
 | **Wix Branded App** | ~$130–360 | Already on Wix, least effort | Mirrors existing site, Wix owns everything, forums gone |
 | **Mighty Networks** | $99–425 | Ready-made community platform | Generic feel, branded app costs $33K/yr |
 | **Disciple** | $300–600 | Branded app, no developer needed | Most expensive option |
-| **FlutterFlow** | ~$80 | Custom app, visual builder | Needs a technical person to build and maintain |
-| **AI-Assisted Build** | ~$35–60 | Cheapest, most customizable, no vendor lock-in | Needs a technical person to build and maintain |
+| **FlutterFlow** | ~$80 | Custom app, visual drag-and-drop builder | Someone comfortable with tech needs to build it (a few hrs/month to maintain) |
+| **AI-Assisted Build** | ~$35–60 | Cheapest, most customizable, no vendor lock-in | Someone comfortable with tech needs to build it (a few hrs/month to maintain) |
 | **Hire a Developer** | $15K–50K up front | Professional result, someone accountable | The cost |
 
 Each is explained in detail below, along with considerations for [security](#security), [training content & video hosting](#training-content--video-hosting), and [costs that apply regardless of approach](#costs-that-apply-to-any-custom-build).
@@ -233,7 +233,7 @@ Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise p
 - **FlutterFlow itself is a platform** — if they raise prices or shut down, you have to migrate
 - **Content management is a database interface** — not as friendly as a purpose-built admin panel
 
-**Who needs to build it:** Someone comfortable with visual tools and logical thinking, willing to learn Firebase/database concepts, available 10–20 hrs/week during the build and a few hours/month ongoing.
+**Who needs to build it:** Not a software engineer — more like someone who's good with spreadsheets and comfortable learning new tools. FlutterFlow is visual (drag-and-drop), but you do need to understand how data is organized and how screens connect. Available 10–20 hrs/week during the build, then a few hours/month for updates.
 
 **If hiring a freelancer:** ~$3,000–8,000 for initial build + ~$500/year for ongoing maintenance.
 
@@ -282,8 +282,8 @@ Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise p
 - **Future-proof maintenance** — as AI tools improve, anyone can say "fix X" and get help
 
 **Weaknesses:**
-- **Requires a technical person** — someone has to build it and review the AI's output
-- **If the builder disappears, the app stops getting updated** — same risk as FlutterFlow
+- **Needs someone comfortable with technology** — not necessarily a software engineer, but someone who can describe what they want clearly, review the AI's output, and run basic commands to deploy. Think "confident with computers" rather than "writes code for a living."
+- **If that person steps away, the app stops getting updated** — same risk as FlutterFlow
 - **AI-generated code can have bugs and security issues** — needs human review
 - **Custom code means custom bugs** — no pre-tested components handling edge cases
 - **Testing is manual** — no built-in QA like platform solutions provide
