@@ -15,14 +15,14 @@ Note: Wix disabled forum posting in October 2025, which explains why the forums 
 
 We looked at five approaches for what comes next:
 
-| Approach | Monthly Cost | Branded App? | Needs a Developer? |
+| Approach | Monthly Cost | The Good | The Catch |
 |---|---|---|---|
-| **Wix Branded App** | ~$130–360 total (app + site plan) | Yes (iOS + Android) | No |
-| **Mighty Networks** | $99–425 (branded = $33K/yr) | Only at $33K/yr | No |
-| **Disciple** | $300–600 | Yes | No |
-| **FlutterFlow** | ~$80 | Yes | Yes |
-| **AI-Assisted Build** | ~$30–60 | Yes | Yes |
-| **Hire a Developer** | $15K–50K up front + $3K–10K/yr | Yes | They are the developer |
+| **Wix Branded App** | ~$130–360 | Already on Wix, least effort | Mirrors existing site, Wix owns everything, forums gone |
+| **Mighty Networks** | $99–425 | Ready-made community platform | Generic feel, branded app costs $33K/yr |
+| **Disciple** | $300–600 | Branded app, no developer needed | Most expensive option |
+| **FlutterFlow** | ~$80 | Custom app, visual builder | Needs a technical person to build and maintain |
+| **AI-Assisted Build** | ~$35–60 | Cheapest, most customizable, no vendor lock-in | Needs a technical person to build and maintain |
+| **Hire a Developer** | $15K–50K up front | Professional result, someone accountable | The cost |
 
 Each is explained in detail below, along with considerations for [security](#security), [training content & video hosting](#training-content--video-hosting), and [costs that apply regardless of approach](#costs-that-apply-to-any-custom-build).
 
