@@ -306,11 +306,10 @@ const actions: QuickAction[] = [
   { icon: "🎓", label: "Training", href: "/training", gradient: "from-amber-50 to-orange-50" },
   { icon: "📚", label: "Library", href: "/library", gradient: "from-blue-50 to-indigo-50" },
   { icon: "💬", label: "Forums", href: "/forums", badge: forumBadgeCount, gradient: "from-orange-50 to-red-50" },
-  { icon: "📋", label: "Vol. Shifts", href: "https://www.signupgenius.com", external: true, gradient: "from-green-50 to-emerald-50" },
 ];
 ```
 
-Card class: `"card bg-gradient-to-br ${action.gradient} p-4 text-center cursor-pointer"`
+3-column grid. Card class: `"card bg-gradient-to-br ${action.gradient} p-4 text-center cursor-pointer"`
 
 **Step 2: Verify** — Quick actions have warm gradient tints.
 
