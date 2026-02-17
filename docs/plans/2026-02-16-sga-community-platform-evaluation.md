@@ -18,8 +18,8 @@ We looked at five approaches for what comes next:
 | Approach | Monthly Cost | The Good | The Catch |
 |---|---|---|---|
 | **Wix Branded App** | ~$130–360 | Already on Wix, least effort | Mirrors existing site, Wix owns everything, forums gone |
-| **Mighty Networks** | $99–425 | Ready-made community platform | Generic feel, branded app costs $33K/yr |
-| **Disciple** | $300–600 | Branded app, no developer needed | Most expensive option |
+| **Mighty Networks** | $49–430 | Ready-made community platform | Generic feel, branded app requires custom (expensive) tier |
+| **Disciple** | $729+ | Branded app, no developer needed | Very expensive for a non-profit |
 | **FlutterFlow** | ~$80 | Custom app, visual drag-and-drop builder | Someone comfortable with tech needs to build it (a few hrs/month to maintain) |
 | **AI-Assisted Build** | ~$35–60 | Cheapest, most customizable, no vendor lock-in | Someone comfortable with tech needs to build it (a few hrs/month to maintain) |
 | **Hire a Developer** | $15K–50K up front | Professional result, someone accountable | The cost |
@@ -105,7 +105,7 @@ The platform exists so that **vetted SGA people can help each other and find ans
 
 **SGA can realistically have two of these three, not all three.**
 
-- Custom vision + no developer = expensive platform (Disciple at $300+/mo, or Mighty Pro at $33K/yr)
+- Custom vision + no developer = expensive platform (Disciple at $729+/mo, or Mighty Pro at custom enterprise pricing)
 - Custom vision + low budget = needs a committed volunteer developer
 - No developer + low budget = off-the-shelf platform (Wix Branded App or Mighty Networks) with limitations
 
@@ -154,15 +154,15 @@ The platform exists so that **vetted SGA people can help each other and find ans
 
 **Pricing (verified Feb 2026):**
 
-| Plan | Monthly (annual) | Branded App? |
-|------|-----------------|-------------|
-| Community | $41/mo | No |
-| Courses | $99/mo | No |
-| Business | $179/mo | No |
-| Growth | $425/mo | No |
-| Mighty Pro | $33,000/year (~$2,750/mo) | Yes |
+| Plan | Monthly | Annual (per month) | Branded App? |
+|------|---------|-------------------|-------------|
+| Community | — | $49/mo | No |
+| Courses | $129/mo | $109/mo | No |
+| Business | $229/mo | $189/mo | No |
+| Growth | $430/mo | $360/mo | No |
+| Mighty Pro | Custom pricing | Custom pricing | Yes |
 
-Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise pricing. All other plans put members inside the generic Mighty Networks app.
+All plans except Mighty Pro put members inside the generic Mighty Networks app. Only Mighty Pro includes a branded app in the app stores — pricing is not published and requires a sales conversation.
 
 **Vendor lock-in risk:** Mighty Networks has restructured and increased pricing multiple times. No data portability, no way to export community content.
 
@@ -177,13 +177,13 @@ Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise p
 - **Limited customization** — all Mighty Networks communities look similar
 - **Weak search** — directly conflicts with SGA's discoverability problem
 - **Doesn't feel like a custom app** — features are "Spaces" in a generic feed
-- **Branded app costs $33K/year** — without it, members open the generic Mighty Networks app
+- **Branded app requires Mighty Pro** — custom enterprise pricing (not published), without it members open the generic Mighty Networks app
 - **Group chats can't add members after creation** — bad for rotating volunteers
 
 **Examples to try:**
 - [Mighty Networks app](https://apps.apple.com/us/app/mighty-networks/id1081683081) — browse free communities to see what members experience
 
-**Verdict:** The $99–179/mo plans are the fastest path to "something real" but members open a generic Mighty Networks app, not an SGA app. The platform doesn't solve the discoverability problem. Significant vendor lock-in.
+**Verdict:** The $49–189/mo plans are the fastest path to "something real" but members open a generic Mighty Networks app, not an SGA-branded one. Vendor lock-in is high — no data export.
 
 ---
 
@@ -191,7 +191,15 @@ Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise p
 
 **What:** Fully branded native app (SGA's name in the app store) with community, content, courses, and events. Disciple handles all the tech.
 
-**Pricing:** Starting ~$300+/mo. Adding a mobile app pushes to ~$458/mo.
+**Pricing:**
+
+| Plan | Monthly (annual billing) | Members |
+|------|-------------------------|---------|
+| Grow | $729/mo | Up to 500 |
+| Pro | $1,167/mo | Up to 5,000 |
+| Enterprise | Custom | Custom |
+
+Courses feature is an add-on at $108/mo extra. Additional members and storage also cost extra.
 
 **Strengths:**
 - Fully branded — own app icon, SGA's name in the app store
@@ -202,11 +210,12 @@ Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise p
 - No developer needed
 
 **Weaknesses:**
-- **Expensive** at $300–600/mo ($3,600–7,200/year)
+- **Very expensive** — $729/mo minimum ($8,748/year) for up to 500 members
+- Key features (courses, analytics) cost extra on top of base price
 - Fewer integrations than competitors
 - Less mature feature set than Mighty Networks
 
-**Verdict:** Closest to what SGA envisions out of the box, but the price is significant. Could work if SGA secures a grant or dedicated donor sponsorship.
+**Verdict:** Closest to what SGA envisions out of the box, but the price is likely out of reach for a non-profit at $729+/mo.
 
 ---
 
@@ -360,7 +369,7 @@ This does not include the cost of the person building and maintaining it (volunt
 
 | | Wix Branded App | Mighty Networks | Disciple | FlutterFlow | AI-Assisted Build |
 |---|---|---|---|---|---|
-| **Monthly cost** | ~$130–360 | $99–425 | $300–600 | ~$80 | ~$35–60 |
+| **Monthly cost** | ~$130–360 | $49–430 | $729+ | ~$80 | ~$35–60 |
 | **Up-front build cost** | $0 | $0 | $0 | $0–8K (if freelancer) | $0–8K (if freelancer) |
 | **Build time** | Days | Days | Days | 6–10 weeks | 2–4 weeks |
 | **Custom feel** | Low (mirrors Wix site) | Low | High | High | Highest |
@@ -385,24 +394,24 @@ There is no perfect option. Each involves a trade-off. Here's how to think about
 **Wix Branded App (~$130–360/mo total).** SGA is already on Wix, so this is the least disruptive path. But Forums are being replaced by Groups, there's no code ownership (cancel and the app disappears in days), and the app mirrors the existing site rather than reimagining the experience. Worth exploring to see if it meets SGA's needs.
 
 ### If SGA wants a polished community platform without a developer:
-**Disciple ($300–600/mo)** delivers a fully branded, purpose-built community app. It's the most expensive option but removes all technical complexity. Worth it if SGA can fund it through a grant or donor.
+**Mighty Networks ($49–189/mo)** is the most affordable ready-made option, but members open a generic Mighty Networks app, not an SGA-branded one. A branded app requires Mighty Pro (custom enterprise pricing — likely expensive).
 
-**Mighty Networks ($99–179/mo)** is cheaper but members open a generic app, not an SGA-branded one. The platform's weak search and feed-based design don't solve SGA's core problems.
+**Disciple ($729+/mo)** delivers a fully branded app but is likely out of reach for a non-profit at that price.
 
-### If SGA has access to a technical volunteer:
-**AI-assisted build (~$35–60/mo)** or **FlutterFlow (~$80/mo)** both produce a custom, branded app. The AI-assisted approach is cheaper and faster but requires more technical skill. FlutterFlow is more visual and approachable but costs more and has its own platform lock-in.
+### If SGA has access to someone comfortable with technology:
+**AI-assisted build (~$35–60/mo)** or **FlutterFlow (~$80/mo)** both produce a custom, branded app. The AI-assisted approach is cheaper and faster but requires more comfort with technology. FlutterFlow is more visual and approachable but costs more and has its own platform lock-in.
 
-Either way, someone technical needs to build it (2–10 weeks depending on approach) and commit to a few hours per month of ongoing maintenance. If that person disappears, the app eventually breaks.
+Either way, someone needs to build it (2–10 weeks depending on approach) and commit to a few hours per month of ongoing maintenance.
 
-### If SGA can secure a grant or significant funding:
-**Hire a developer ($15K–50K up front).** This is the most sustainable long-term answer. A professional builds it, a maintenance contract keeps it running, and SGA isn't dependent on a volunteer. Non-profit technology grants exist specifically for this.
+### If SGA has budget for professional development:
+**Hire a developer ($15K–50K up front).** A professional builds it, a maintenance contract keeps it running, and SGA isn't dependent on a volunteer.
 
 ### What we'd suggest exploring first:
 
 1. **Check what Wix Branded App actually looks like** with SGA's existing content. It's the least work, though at $130–360/mo it's not the cheapest, and the Forum deprecation is a problem.
 2. **If not good enough**, the decision comes down to: does SGA have a technical person willing to volunteer, or does SGA have money?
    - Technical person → AI-assisted build or FlutterFlow
-   - Money → Disciple or hire a developer
+   - Budget → hire a developer
    - Neither → Mighty Networks at $99/mo as a stopgap while SGA figures out the longer-term answer
 
 ---
@@ -414,7 +423,7 @@ Either way, someone technical needs to build it (2–10 weeks depending on appro
 - [Wix Branded App Limitations](https://natively.dev/wix-for-mobile-apps) — independent review of what Wix apps can't do
 - [Wix Forum Deprecation](https://support.wix.com/en/article/wix-forum-move-your-forum-to-wix-groups) — Forum shutdown timeline and migration to Groups
 - [Mighty Networks](https://www.mightynetworks.com/) — community platform
-- [Mighty Pro](https://www.mightynetworks.com/pro) — branded app tier ($33K/yr)
+- [Mighty Pro](https://www.mightynetworks.com/pro) — branded app tier (custom pricing)
 - [Disciple](https://www.disciple.community/) — white-label community app builder
 - [FlutterFlow](https://www.flutterflow.io/) — no-code app builder
 - [FlutterFlow Showcase](https://www.flutterflow.io/showcase) — real apps built with FlutterFlow
