@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ── SGA Brand Tokens (CSS Custom Properties) ── */
+/* ── SGA Brand Tokens ── */
 :root {
   /* Colors */
   --sga-orange: #E8772B;
@@ -9,23 +9,31 @@
   --sga-blue: #2B3990;
   --sga-blue-light: #EAEBF5;
   --sga-blue-dark: #1D2666;
-  --sga-warm-white: #FEFCFA;
-  --sga-warm-gray: #F7F5F2;
+  --sga-warm-white: #FBF8F4;
+  --sga-warm-gray: #F5F1ED;
   --sga-text: #2C2420;
   --sga-text-secondary: #7A6E65;
   --sga-border: #EDE8E3;
   --sga-success: #2D8B55;
   --sga-urgent: #D44930;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(44, 36, 32, 0.06);
-  --shadow-md: 0 4px 12px rgba(44, 36, 32, 0.08);
-  --shadow-lg: 0 8px 24px rgba(44, 36, 32, 0.12);
+  /* Category accent colors */
+  --sga-cat-urgent: #D44930;
+  --sga-cat-community: #E8772B;
+  --sga-cat-expert: #2B3990;
+  --sga-cat-events: #2D8B55;
+
+  /* Shadows — warm tint */
+  --shadow-sm: 0 1px 3px rgba(139, 90, 43, 0.06);
+  --shadow-md: 0 4px 12px rgba(139, 90, 43, 0.08);
+  --shadow-lg: 0 8px 24px rgba(139, 90, 43, 0.12);
+
+  /* Safe area */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* ── Tailwind v4 Theme Extension ── */
 @theme inline {
-  /* Colors */
   --color-sga-orange: var(--sga-orange);
   --color-sga-orange-light: var(--sga-orange-light);
   --color-sga-orange-mid: var(--sga-orange-mid);
@@ -39,26 +47,62 @@
   --color-sga-border: var(--sga-border);
   --color-sga-success: var(--sga-success);
   --color-sga-urgent: var(--sga-urgent);
-
-  /* Fonts */
   --font-sans: var(--font-dm-sans), "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-fraunces), "Fraunces", ui-serif, Georgia, serif;
-
-  /* Border Radii */
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-
-  /* Shadows */
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
   --shadow-sm: var(--shadow-sm);
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
 }
 
 /* ── Base Styles ── */
+html {
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font-sans);
   color: var(--sga-text);
   background-color: var(--sga-warm-white);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* ── Touch & interaction ── */
+a, button, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+/* Staggered children */
+.stagger > * { animation: fadeInUp 0.3s ease-out both; }
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 50ms; }
+.stagger > *:nth-child(3) { animation-delay: 100ms; }
+.stagger > *:nth-child(4) { animation-delay: 150ms; }
+.stagger > *:nth-child(5) { animation-delay: 200ms; }
+
+/* ── Card base ── */
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.card:active {
+  transform: scale(0.98);
 }
