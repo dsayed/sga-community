@@ -9,9 +9,11 @@
 
 ## The Bottom Line
 
-**SGA's Wix Forums are being shut down on March 1, 2026.** Wix has deprecated its Forum app entirely — after that date, all forum data will be deleted. SGA has to act regardless of which direction it chooses.
+**The SGA community site isn't working.** Forums are dead (almost all posts are from staff, with zero member engagement). Training links out to Google Forms. The mobile experience is a shrunken website. Content is scattered across external tools. Members don't come back because there's nothing pulling them in.
 
-We evaluated five approaches. Here's the short version:
+On top of that, **Wix is shutting down its Forum feature on March 1, 2026** — two weeks from now. All forum data will be deleted. SGA has already partially migrated to Wix Groups (a Facebook-style feed), but this doesn't fix the fundamental problems.
+
+SGA needs a community platform that members actually want to open. We evaluated five approaches:
 
 | Approach | Monthly Cost | Branded App? | Needs a Developer? |
 |---|---|---|---|
