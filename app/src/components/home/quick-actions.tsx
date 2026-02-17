@@ -10,23 +10,26 @@ interface QuickAction {
   href: string;
   external?: boolean;
   badge?: number;
+  gradient: string;
 }
 
 export function QuickActions({ forumBadgeCount }: QuickActionsProps) {
   const actions: QuickAction[] = [
-    { icon: "🎓", label: "Training", href: "/training" },
-    { icon: "📚", label: "Library", href: "/library" },
+    { icon: "🎓", label: "Training", href: "/training", gradient: "from-amber-50 to-orange-50" },
+    { icon: "📚", label: "Library", href: "/library", gradient: "from-blue-50 to-indigo-50" },
     {
       icon: "💬",
       label: "Forums",
       href: "/forums",
       badge: forumBadgeCount,
+      gradient: "from-orange-50 to-red-50",
     },
     {
       icon: "📋",
       label: "Vol. Shifts",
       href: "https://www.signupgenius.com",
       external: true,
+      gradient: "from-green-50 to-emerald-50",
     },
   ];
 
@@ -47,8 +50,7 @@ export function QuickActions({ forumBadgeCount }: QuickActionsProps) {
           </>
         );
 
-        const className =
-          "bg-white rounded-md p-3.5 text-center shadow-md cursor-pointer active:scale-[0.96] transition-transform";
+        const className = `card bg-gradient-to-br ${action.gradient} p-4 text-center cursor-pointer`;
 
         if (action.external) {
           return (
