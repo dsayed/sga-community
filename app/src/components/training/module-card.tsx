@@ -3,31 +3,25 @@ import type { TrainingModule, TrainingProgress, TrainingStatus } from "@/lib/typ
 
 interface ModuleCardProps {
   module: TrainingModule;
-  index: number; // 0-based, for numbering
+  index: number;
   progress?: TrainingProgress;
 }
 
-/** Map module title keywords to emoji icons. */
-function getModuleEmoji(title: string): string {
-  const lower = title.toLowerCase();
-  if (lower.includes("body language")) return "\u{1F436}";
-  if (lower.includes("handling")) return "\u{1F91D}";
-  if (lower.includes("meeting needs")) return "\u{1F372}";
-  if (lower.includes("decompression")) return "\u{1F3E0}";
-  if (lower.includes("reinforcement")) return "\u2B50";
-  return "\u{1F4D6}";
-}
+/** Map module title keywords to SGA photos. */
+const MODULE_IMAGES: Record<string, string> = {
+  "body language": "/images/foster-dogs.jpg",
+  "handling": "/images/volunteer.jpg",
+  "decompression": "/images/hero-dog.jpg",
+  "meeting needs": "/images/available-dogs.jpg",
+  "reinforcement": "/images/adoption.jpg",
+};
 
-/** Thumbnail background color based on training status. */
-function getThumbBg(status: TrainingStatus): string {
-  switch (status) {
-    case "completed":
-      return "#E8F5ED";
-    case "in_progress":
-      return "var(--sga-orange-light)";
-    default:
-      return "var(--sga-warm-gray)";
+function getModuleImage(title: string): string {
+  const lower = title.toLowerCase();
+  for (const [keyword, src] of Object.entries(MODULE_IMAGES)) {
+    if (lower.includes(keyword)) return src;
   }
+  return "/images/foster-dogs.jpg";
 }
 
 /** Status badge styling and label. */
@@ -35,17 +29,17 @@ function getBadge(status: TrainingStatus) {
   switch (status) {
     case "completed":
       return {
-        className: "bg-[#E8F5ED] text-sga-success",
+        className: "bg-white/90 text-sga-success",
         label: "\u2713 Completed",
       };
     case "in_progress":
       return {
-        className: "bg-sga-orange-light text-sga-orange",
+        className: "bg-white/90 text-sga-orange",
         label: "In Progress",
       };
     default:
       return {
-        className: "bg-sga-warm-gray text-sga-text-secondary",
+        className: "bg-white/90 text-sga-text-secondary",
         label: "Not Started",
       };
   }
@@ -54,33 +48,31 @@ function getBadge(status: TrainingStatus) {
 export function ModuleCard({ module, index, progress }: ModuleCardProps) {
   const status: TrainingStatus = progress?.status ?? "not_started";
   const badge = getBadge(status);
-  const emoji = getModuleEmoji(module.title);
-  const thumbBg = getThumbBg(status);
+  const imageSrc = getModuleImage(module.title);
 
-  // Link to current step if progress exists, otherwise first step
   const step = progress?.current_step ?? 1;
   const href = `/training/${module.id}/${step}`;
 
   return (
     <Link href={href} className="block">
-      <div className="bg-white mx-4 mb-2.5 rounded-md p-3.5 shadow-sm flex gap-3.5 cursor-pointer active:scale-[0.98] transition-transform">
-        {/* Thumbnail */}
-        <div
-          className="w-16 h-16 rounded-sm flex items-center justify-center text-[28px] shrink-0"
-          style={{ background: thumbBg }}
-        >
-          {emoji}
-        </div>
+      <div className="card mx-4 mb-3 h-36 relative overflow-hidden cursor-pointer">
+        {/* Photo background */}
+        <img
+          src={imageSrc}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
 
-        {/* Info */}
-        <div className="flex-1 min-w-0">
-          <div className="font-semibold text-sm mb-0.5">
+        {/* Content overlay */}
+        <div className="relative h-full p-4 flex flex-col justify-end">
+          <div className="font-serif text-base font-semibold text-white drop-shadow-sm mb-1">
             {index + 1}. {module.title}
           </div>
           {module.description && (
-            <div className="text-xs text-sga-text-secondary mb-1.5 leading-relaxed">
+            <p className="text-xs text-white/70 line-clamp-1 mb-2">
               {module.description}
-            </div>
+            </p>
           )}
           <div>
             <span
