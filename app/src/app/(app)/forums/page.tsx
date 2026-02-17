@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { CategoryTabs } from "@/components/forums/category-tabs";
-import { PostComposerPrompt } from "@/components/forums/post-composer-prompt";
+import { ForumsClientWrapper } from "@/components/forums/forums-client-wrapper";
 import { PostCard } from "@/components/forums/post-card";
 
 export default async function ForumsPage({
@@ -50,7 +50,7 @@ export default async function ForumsPage({
         counts={counts}
         activeSlug={category || null}
       />
-      <PostComposerPrompt />
+      <ForumsClientWrapper categories={categories || []} />
       {posts?.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}
