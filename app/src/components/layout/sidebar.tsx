@@ -19,7 +19,7 @@ const navItems: NavItem[] = [
   { label: "Directory", icon: "👥", href: "#", disabled: true },
 ];
 
-export function Sidebar() {
+export function Sidebar({ userRole }: { userRole?: string }) {
   const pathname = usePathname();
 
   function isActive(href: string) {
@@ -79,6 +79,26 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      {/* Admin section - only for staff/admin users */}
+      {userRole && ["staff", "admin"].includes(userRole) && (
+        <>
+          <div className="mt-auto border-t border-sga-border mx-4 my-3" />
+          <nav className="flex flex-col">
+            <Link
+              href="/admin/training"
+              className={`flex items-center gap-2.5 px-4 py-2.5 text-sm w-full ${
+                isActive("/admin")
+                  ? "bg-sga-orange-light text-sga-orange font-semibold border-r-[3px] border-sga-orange"
+                  : "text-sga-text-secondary hover:bg-sga-warm-gray"
+              }`}
+            >
+              <span className="text-lg w-6 text-center">&#x2699;&#xFE0F;</span>
+              Admin
+            </Link>
+          </nav>
+        </>
+      )}
     </aside>
   );
 }

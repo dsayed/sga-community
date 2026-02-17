@@ -18,9 +18,15 @@ export default async function AppLayout({
     redirect("/login");
   }
 
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+
   return (
     <div className="h-screen flex flex-col md:flex-row">
-      <Sidebar />
+      <Sidebar userRole={profile?.role} />
       <div className="flex-1 flex flex-col min-h-0">
         <TopBar />
         <main className="flex-1 overflow-y-auto">{children}</main>
