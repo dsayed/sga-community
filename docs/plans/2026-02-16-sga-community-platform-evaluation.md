@@ -7,6 +7,22 @@
 
 ---
 
+## Update: We Built It (Feb 17, 2026)
+
+We decided to quickly test the AI-assisted build approach (Option E below) to see how far we could get. The answer: all the way to a deployed app in about a day.
+
+**What happened:** David spent roughly 6 hours over two sessions with Claude Code (Anthropic's AI coding tool). The first session (~4 hrs) built the entire MVP — login, forums with categories and photo upload, 5-module training program with step-through content, a searchable resource library with 21 articles/videos, and admin tools for content authoring. The second session (~2 hrs) set up Supabase, seeded real content, deployed to Vercel, and did a visual refresh with real SGA photography and branding.
+
+**The result:** https://sgacommunity.vercel.app — a working PWA with SGA's logo, real dog photos, warm community aesthetic, and all the core features from the spec. It works on phones, tablets, and desktops. It's not in the app stores (it's a PWA, not a native app), but it can be installed to a phone's home screen and feels app-like.
+
+**Actual tech stack:** Next.js 16 (not Expo as originally suggested below), Supabase, Tailwind CSS, deployed on Vercel. We went with a PWA instead of native apps because it's faster to build, instant to update, and works on every platform without app store review.
+
+**Actual cost:** ~$25/mo (Supabase free tier + Vercel free tier). Could go to $50/mo if usage grows past free tiers.
+
+**What this means for the evaluation below:** The comparative analysis is still accurate and useful context for why we chose this approach. The main thing that changed is the build timeline — "2-4 weeks" turned out to be closer to 1 day with current AI tools. The rest of the trade-offs (maintenance burden, need for a technical person, vendor lock-in comparisons) all still apply.
+
+---
+
 ## The Bottom Line
 
 SGA's community site was built on Wix and has solid bones — a well-organized resource library, training content, and a clear structure. But the platform has limitations that make it hard for the site to reach its potential. The mobile experience isn't app-like, content is spread across external tools (Google Forms, SignUpGenius), and **Wix is shutting down its Forum feature on March 1, 2026** — meaning SGA needs to find a replacement for community discussion regardless.
@@ -256,16 +272,16 @@ Courses feature is an add-on at $108/mo extra. Additional members and storage al
 
 **A note on bias:** This evaluation was written with the help of Claude, an AI tool made by Anthropic. Claude is also the tool recommended for the "vibe coding" approach. We want to be transparent about that. The honest case for this approach is: it produces the most customizable result at the lowest ongoing cost, with the strongest search and zero vendor lock-in. The honest case against it is: it requires the most technical skill, carries the highest maintenance risk, and AI-generated code can have bugs and security issues that a non-technical person can't catch. It is not the right choice if SGA doesn't have a technical person willing to own it.
 
-**Recommended tech stack:**
+**Tech stack (what we actually used):**
 
 | Layer | Tool | Why |
 |---|---|---|
-| Framework | Expo (React Native) | One codebase → iOS + Android + Web |
+| Framework | Next.js 16 (PWA) | Server rendering, instant deploys, works on all platforms |
 | Backend | Supabase | Open-source, built-in admin dashboard |
-| Auth | Supabase Auth | Email/password, magic links |
+| Auth | Supabase Auth | Email/password, invite-only |
 | Database | Supabase (Postgres) | Real full-text search |
-| Storage | Supabase Storage | Videos, documents, images |
-| Hosting | Vercel (web) or app stores (native) | Free tier covers SGA's scale |
+| Storage | Supabase Storage | Forum photos, training images |
+| Hosting | Vercel | Zero-config, free tier covers SGA's scale |
 
 **Pricing (realistic):**
 
@@ -280,7 +296,7 @@ Courses feature is an add-on at $108/mo extra. Additional members and storage al
 | Claude subscription (for building) | $20/mo (existing) |
 | **Total ongoing** | **~$35–60/mo** |
 
-**Build timeline:** 2–4 weeks with a dedicated builder working with AI.
+**Build timeline:** Originally estimated 2–4 weeks. Actual build took ~6 hours over two sessions with Claude Code.
 
 **Strengths:**
 - **Cheapest ongoing cost** — no platform subscriptions, code belongs to SGA
@@ -371,9 +387,9 @@ This does not include the cost of the person building and maintaining it (volunt
 |---|---|---|---|---|---|
 | **Monthly cost** | ~$130–360 | $49–430 | $729+ | ~$80 | ~$35–60 |
 | **Up-front build cost** | $0 | $0 | $0 | $0–8K (if freelancer) | $0–8K (if freelancer) |
-| **Build time** | Days | Days | Days | 6–10 weeks | 2–4 weeks |
+| **Build time** | Days | Days | Days | 6–10 weeks | ~1 day (actual) |
 | **Custom feel** | Low (mirrors Wix site) | Low | High | High | Highest |
-| **Branded iOS + Android app** | Yes | No (unless $33K/yr) | Yes | Yes | Yes |
+| **Branded iOS + Android app** | Yes | No (unless $33K/yr) | Yes | Yes | PWA (installable, not in app stores) |
 | **Features front-and-center** | No (mirrors website) | No (feed-based) | Yes | Yes | Yes |
 | **Admin-friendly** | Very | Very | Very | Moderate | Moderate |
 | **Developer needed** | No | No | No | Yes | Yes |
@@ -386,33 +402,22 @@ This does not include the cost of the person building and maintaining it (volunt
 
 ---
 
-## Recommendation
+## What We Chose
 
-There is no perfect option. Each involves a trade-off. Here's how to think about it:
+We went with **Option E: AI-Assisted Build**. David built the full MVP in ~6 hours using Claude Code, and deployed it to https://sgacommunity.vercel.app.
 
-### If SGA wants the least disruption:
-**Wix Branded App (~$130–360/mo total).** SGA is already on Wix, so this is the least disruptive path. But Forums are being replaced by Groups, there's no code ownership (cancel and the app disappears in days), and the app mirrors the existing site rather than reimagining the experience. Worth exploring to see if it meets SGA's needs.
+**Why this option won:** SGA has a technical volunteer (David), which made the cheapest and most customizable option viable. The build was fast enough that it was easier to just try it than to keep evaluating platforms.
 
-### If SGA wants a polished community platform without a developer:
-**Mighty Networks ($49–189/mo)** is the most affordable ready-made option, but members open a generic Mighty Networks app, not an SGA-branded one. A branded app requires Mighty Pro (custom enterprise pricing — likely expensive).
+**Ongoing commitment:** A few hours per month for maintenance, content updates, and improvements. Any future changes can be made the same way — describe what you want to an AI tool, review the output, deploy.
 
-**Disciple ($729+/mo)** delivers a fully branded app but is likely out of reach for a non-profit at that price.
+**What would change this:** If David is no longer available and SGA can't find another technical volunteer, the fallback would be Mighty Networks ($49–99/mo) as a low-maintenance alternative. The forum content could be exported from Supabase (standard Postgres) and the library content is portable.
 
-### If SGA has access to someone comfortable with technology:
-**AI-assisted build (~$35–60/mo)** or **FlutterFlow (~$80/mo)** both produce a custom, branded app. The AI-assisted approach is cheaper and faster but requires more comfort with technology. FlutterFlow is more visual and approachable but costs more and has its own platform lock-in.
+### Original recommendation (for reference)
 
-Either way, someone needs to build it (2–10 weeks depending on approach) and commit to a few hours per month of ongoing maintenance.
-
-### If SGA has budget for professional development:
-**Hire a developer ($15K–50K up front).** A professional builds it, a maintenance contract keeps it running, and SGA isn't dependent on a volunteer.
-
-### What we'd suggest exploring first:
-
-1. **Check what Wix Branded App actually looks like** with SGA's existing content. It's the least work, though at $130–360/mo it's not the cheapest, and the Forum deprecation is a problem.
-2. **If not good enough**, the decision comes down to: does SGA have a technical person willing to volunteer, or does SGA have money?
-   - Technical person → AI-assisted build or FlutterFlow
-   - Budget → hire a developer
-   - Neither → Mighty Networks at $99/mo as a stopgap while SGA figures out the longer-term answer
+The original analysis below still holds for organizations making this decision. The key variable is whether you have someone comfortable with technology:
+- **Technical person available** → AI-assisted build (cheapest, most custom, fastest with current AI tools)
+- **Budget but no technical person** → Disciple ($729+/mo) or hire a developer ($15K–50K)
+- **Neither** → Mighty Networks ($49–99/mo) as a pragmatic starting point
 
 ---
 
