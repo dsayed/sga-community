@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { TopBar } from "@/components/layout/top-bar";
 import { TabBar } from "@/components/layout/tab-bar";
 import { Sidebar } from "@/components/layout/sidebar";
+import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
 
 export default async function AppLayout({
   children,
@@ -31,6 +32,7 @@ export default async function AppLayout({
         <TopBar />
         <main className="flex-1 overflow-y-auto">{children}</main>
         <TabBar />
+        <PwaInstallPrompt />
       </div>
     </div>
   );
