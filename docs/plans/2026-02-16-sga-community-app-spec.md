@@ -136,23 +136,35 @@ Each screen references the [interactive wireframe prototype](https://dsayed.gith
 - "Mark as Complete" button at the bottom of each module
 
 **What a module looks like inside:**
-- Title and description
-- Content: text with embedded images — like a blog post or a set of slides
-- No quizzes, no video players, no interactive elements
 
-**How content gets authored (MVP):**
+Members step through a series of pages within the app — like a slide deck. Each page has a title, body text, and an optional image. Members tap Next/Back to move through them, then tap "Mark as Complete" at the end.
 
-For launch, training content lives outside the app. The app provides the structure and progress tracking.
+```
+Module: "Dog Body Language"
+  └── Step 1: "Reading Tail Position" — text + image of tail positions
+  └── Step 2: "Ear Signals" — text + image of ear positions
+  └── Step 3: "Body Posture" — text + diagram
+  └── Step 4: "Putting It Together" — summary text
+  └── ✓ Mark Complete
+```
 
-| Approach | How admins create content | Effort to build |
-|---|---|---|
-| **Link out (recommended for MVP)** | Content lives in Google Docs or PDFs. App shows the module list with progress tracking; tapping a module opens the doc. | Very low |
-| **Upload slides/images** | Admin uploads a series of images (from Canva/Google Slides). App shows them in order. | Low |
-| **Built-in editor (Phase 3)** | Admin writes in a rich text editor inside the app. | Medium — only build this if admins ask for it |
+No quizzes, no video players, no interactive elements beyond stepping through pages.
 
-**Admin view:** A simple page showing all members and which modules they've completed. "Show me who hasn't finished training" is the key use case.
+**How content gets authored:**
 
-**Wireframe notes:** The prototype shows the polished end-state with in-app content. For MVP, the module cards look the same but tapping one opens a Google Doc or PDF instead of in-app content.
+An admin page with a simple form:
+1. Select a module (or create a new one)
+2. Add a step: type a title, paste body text, optionally upload an image
+3. Reorder steps by dragging or numbering
+4. Save and publish
+
+That's it. Not a rich text editor — just plain text and images per step. Think "adding slides to a presentation" rather than "writing a Word doc."
+
+**Importing existing content:** Someone manually copies text and images from whatever the training content currently lives in (Google Docs, PDFs, slides) into the step-by-step form. This is a one-time task — SGA currently has 5 modules.
+
+**Admin view:** A page showing all members and which modules they've completed. "Show me who hasn't finished training" is the key use case.
+
+**Wireframe notes:** The prototype shows the module list with progress tracking. The step-through experience inside a module isn't shown in the wireframe yet — it would look like a simple card with text, an image, and Next/Back buttons at the bottom.
 
 ---
 
@@ -218,7 +230,7 @@ This is NOT an API integration. It's a well-placed link.
 - **E-commerce / donations** — out of scope
 - **Quizzes / certificates** — training is a checklist, not an exam
 - **Custom admin dashboard** — Supabase/Firebase dashboards show the data
-- **Course authoring tool** — link to Google Docs for MVP
+- **Rich text editing** — training steps are plain text + images, not formatted documents
 - **In-app shift scheduling** — link to SignUpGenius for MVP
 
 ---
@@ -244,8 +256,9 @@ This is NOT an API integration. It's a well-placed link.
 **Forum Posts:** author, category, title, body, images, created date
 **Forum Comments:** post, author, body, created date
 
-**Training Modules:** title, description, order, content URL (Google Doc/PDF link)
-**Training Progress:** user, module, status (not started/in progress/completed), completed date
+**Training Modules:** title, description, order
+**Training Steps:** module, step number, title, body text, image (optional)
+**Training Progress:** user, module, status (not started/in progress/completed), current step, completed date
 
 **Library Resources:** title, description, category, type (article/video/link), URL, created date
 
@@ -260,12 +273,11 @@ This is NOT an API integration. It's a well-placed link.
 - Home screen with quick links, activity feed, and SignUpGenius link
 - Forums with categories, posting, comments, push notifications
 - Library with search and category filters (migrate existing content from Wix)
-- Training with module list, progress tracking, link-out to Google Docs for content
+- Training with module list, step-through pages, progress tracking, and admin authoring form
 - Bottom tab navigation (mobile) / sidebar (desktop)
 
 ### Phase 2 — After Launch (as needed)
 - Directory with role filters
-- In-app training content (upgrade from Google Docs links)
 - Profile pages
 - Push notifications for new volunteer shifts
 
@@ -279,7 +291,7 @@ This is NOT an API integration. It's a well-placed link.
 
 ## Open Questions for SGA
 
-1. **Who will author training content?** If existing staff can use Google Docs, we can link out for MVP. If they want to write directly in the app, that's Phase 3.
+1. **Who will author training content?** They'll use a simple admin form (title, text, image per step). Someone needs to move the existing 5 modules into this format — probably a one-time task of a few hours.
 2. **Is the app invite-only?** The current Wix site requires login — presumably members are invited by staff.
 3. **How much library content needs migrating?** How many articles/resources are on the current site? Are they links to external content or hosted on Wix?
 4. **Does SGA want app store presence?** If yes, we build native (adds cost and time). If not, a PWA is faster and cheaper.
