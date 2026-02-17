@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGA Community App — Wireframe Prototype</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sga-orange: #E8772B;
+  --sga-orange-light: #FFF3EB;
+  --sga-orange-mid: #FDDCC6;
+  --sga-blue: #2B3990;
+  --sga-blue-light: #EAEBF5;
+  --sga-blue-dark: #1D2666;
+  --sga-warm-white: #FEFCFA;
+  --sga-warm-gray: #F7F5F2;
+  --sga-text: #2C2420;
+  --sga-text-secondary: #7A6E65;
+  --sga-border: #EDE8E3;
+  --sga-success: #2D8B55;
+  --sga-urgent: #D44930;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --shadow-sm: 0 1px 3px rgba(44,36,32,0.06);
+  --shadow-md: 0 4px 12px rgba(44,36,32,0.08);
+  --shadow-lg: 0 8px 24px rgba(44,36,32,0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F0EDE8;
+  color: var(--sga-text);
+  min-height: 100vh;
+}
+
+/* ─── Page Layout ─── */
+.page-header {
+  text-align: center;
+  padding: 40px 24px 20px;
+}
+.page-header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sga-blue-dark);
+  margin-bottom: 4px;
+}
+.page-header p {
+  color: var(--sga-text-secondary);
+  font-size: 14px;
+}
+.page-header .badge {
+  display: inline-block;
+  background: var(--sga-orange-light);
+  color: var(--sga-orange);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.devices-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+  padding: 20px 24px 60px;
+  flex-wrap: wrap;
+}
+
+/* ─── Annotations ─── */
+.annotation-panel {
+  max-width: 280px;
+  flex-shrink: 0;
+}
+.annotation-panel h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sga-blue-dark);
+  margin-bottom: 12px;
+}
+.annotation {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--sga-orange);
+}
+.annotation .label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--sga-orange);
+  margin-bottom: 4px;
+}
+.annotation p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--sga-text-secondary);
+}
+
+/* ─── Phone Frame ─── */
+.phone-frame {
+  width: 375px;
+  height: 812px;
+  background: var(--sga-warm-white);
+  border-radius: 40px;
+  box-shadow: 0 20px 60px rgba(44,36,32,0.15), 0 0 0 8px #1a1a1a, 0 0 0 10px #333;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 28px;
+  background: #1a1a1a;
+  border-radius: 0 0 18px 18px;
+  z-index: 100;
+}
+.phone-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 28px;
+  overflow: hidden;
+}
+
+/* ─── Desktop Frame ─── */
+.desktop-frame {
+  width: 680px;
+  background: var(--sga-warm-white);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(44,36,32,0.15), 0 0 0 2px #ccc;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.desktop-titlebar {
+  height: 32px;
+  background: #F0F0F0;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 6px;
+  border-bottom: 1px solid #ddd;
+}
+.desktop-titlebar .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.desktop-titlebar .dot.red { background: #FF5F57; }
+.desktop-titlebar .dot.yellow { background: #FDBC40; }
+.desktop-titlebar .dot.green { background: #28C840; }
+.desktop-titlebar .url {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  color: #888;
+}
+.desktop-screen {
+  height: 620px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ─── Mobile Top Bar ─── */
+.mobile-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px 10px;
+  background: var(--sga-warm-white);
+  border-bottom: 1px solid var(--sga-border);
+  flex-shrink: 0;
+}
+.mobile-topbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mobile-topbar .logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--sga-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.mobile-topbar .logo-text {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--sga-blue-dark);
+}
+.mobile-topbar .logo-text span { color: var(--sga-orange); }
+.mobile-topbar .icons {
+  display: flex;
+  gap: 14px;
+}
+.mobile-topbar .icons .icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--sga-warm-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+}
+.notif-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background: var(--sga-urgent);
+  border-radius: 50%;
+  border: 2px solid var(--sga-warm-white);
+}
+
+/* ─── Mobile Bottom Tabs ─── */
+.mobile-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 0 28px;
+  background: var(--sga-warm-white);
+  border-top: 1px solid var(--sga-border);
+  flex-shrink: 0;
+}
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  border: none;
+  background: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.tab-item .tab-icon {
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.4;
+  transition: all 0.2s;
+}
+.tab-item .tab-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--sga-text-secondary);
+  opacity: 0.6;
+  transition: all 0.2s;
+}
+.tab-item.active .tab-icon {
+  opacity: 1;
+}
+.tab-item.active .tab-label {
+  color: var(--sga-orange);
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* ─── Content Area ─── */
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* ─── Urgent Banner ─── */
+.urgent-banner {
+  background: linear-gradient(135deg, var(--sga-urgent), #B83A25);
+  color: white;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.urgent-banner .pulse {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ─── Home Screen ─── */
+.home-hero {
+  position: relative;
+  height: 180px;
+  background: linear-gradient(135deg, var(--sga-blue) 0%, var(--sga-blue-dark) 100%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.home-hero .greeting {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+}
+.home-hero .greeting-sub {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+}
+.home-hero .dog-emoji {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 64px;
+  opacity: 0.2;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 16px;
+  margin-top: -24px;
+  position: relative;
+  z-index: 1;
+}
+.quick-action {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 14px 8px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.quick-action:active { transform: scale(0.96); }
+.quick-action .qa-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+  display: block;
+}
+.quick-action .qa-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sga-text);
+}
+.quick-action .qa-badge {
+  display: inline-block;
+  background: var(--sga-urgent);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px 10px;
+}
+.section-header h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--sga-text);
+}
+.section-header .see-all {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sga-orange);
+  cursor: pointer;
+}
+
+/* ─── Activity Feed Cards ─── */
+.feed-card {
+  background: white;
+  margin: 0 16px 10px;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.feed-card .feed-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.feed-card .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.feed-card .avatar.staff { background: var(--sga-blue-light); color: var(--sga-blue); }
+.feed-card .avatar.member { background: var(--sga-orange-light); color: var(--sga-orange); }
+.feed-card .feed-meta .name {
+  font-weight: 600;
+  font-size: 13px;
+}
+.feed-card .feed-meta .role {
+  font-size: 10px;
+  color: var(--sga-blue);
+  background: var(--sga-blue-light);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-left: 4px;
+}
+.feed-card .feed-meta .time {
+  font-size: 11px;
+  color: var(--sga-text-secondary);
+}
+.feed-card .feed-category {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--sga-orange);
+  margin-bottom: 4px;
+}
+.feed-card .feed-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.feed-card .feed-preview {
+  font-size: 13px;
+  color: var(--sga-text-secondary);
+  line-height: 1.4;
+}
+.feed-card .feed-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--sga-border);
+}
+.feed-card .feed-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--sga-text-secondary);
+  cursor: pointer;
+}
+
+/* ─── Training Screen ─── */
+.training-progress {
+  background: white;
+  margin: 16px;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.training-progress h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.progress-bar-outer {
+  height: 8px;
+  background: var(--sga-warm-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.progress-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sga-orange), #F5A623);
+  border-radius: 4px;
+  transition: width 0.5s;
+}
+.progress-text {
+  font-size: 12px;
+  color: var(--sga-text-secondary);
+}
+
+.course-card {
+  background: white;
+  margin: 0 16px 10px;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 14px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.course-card:active { transform: scale(0.98); }
+.course-card .course-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.course-card .course-info { flex: 1; }
+.course-card .course-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.course-card .course-desc {
+  font-size: 12px;
+  color: var(--sga-text-secondary);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.course-card .course-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.course-card .course-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.course-badge.completed { background: #E8F5ED; color: var(--sga-success); }
+.course-badge.in-progress { background: var(--sga-orange-light); color: var(--sga-orange); }
+.course-badge.not-started { background: var(--sga-warm-gray); color: var(--sga-text-secondary); }
+
+/* ─── Library Screen ─── */
+.search-bar {
+  margin: 16px;
+  position: relative;
+}
+.search-bar input {
+  width: 100%;
+  padding: 12px 16px 12px 40px;
+  border: 1px solid var(--sga-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  background: white;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--sga-text);
+}
+.search-bar input::placeholder { color: #bbb; }
+.search-bar .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0.4;
+}
+
+.library-categories {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.library-categories::-webkit-scrollbar { display: none; }
+.lib-cat-pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid var(--sga-border);
+  background: white;
+  color: var(--sga-text-secondary);
+  transition: all 0.15s;
+}
+.lib-cat-pill.active {
+  background: var(--sga-blue);
+  color: white;
+  border-color: var(--sga-blue);
+}
+
+.resource-card {
+  background: white;
+  margin: 0 16px 10px;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+}
+.resource-card .res-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.resource-card .res-info { flex: 1; }
+.resource-card .res-type {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+.resource-card .res-type.article { color: var(--sga-blue); }
+.resource-card .res-type.video { color: var(--sga-orange); }
+.resource-card .res-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.resource-card .res-desc {
+  font-size: 12px;
+  color: var(--sga-text-secondary);
+  line-height: 1.3;
+}
+
+/* ─── Forums Screen ─── */
+.forum-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  overflow-x: auto;
+}
+.forum-tab {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  background: var(--sga-warm-gray);
+  color: var(--sga-text-secondary);
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.forum-tab.active {
+  background: var(--sga-orange);
+  color: white;
+}
+.forum-tab .count {
+  font-size: 10px;
+  opacity: 0.7;
+  margin-left: 2px;
+}
+
+.new-post-prompt {
+  background: white;
+  margin: 0 16px 12px;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  border: 1px dashed var(--sga-border);
+}
+.new-post-prompt .prompt-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sga-orange-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.new-post-prompt .prompt-text {
+  font-size: 13px;
+  color: var(--sga-text-secondary);
+}
+.new-post-prompt .prompt-icons {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  font-size: 16px;
+  opacity: 0.4;
+}
+
+/* ─── Directory Screen ─── */
+.directory-filters {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+}
+.dir-filter {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--sga-border);
+  background: white;
+  color: var(--sga-text-secondary);
+  font-family: 'DM Sans', sans-serif;
+}
+.dir-filter.active {
+  background: var(--sga-blue);
+  color: white;
+  border-color: var(--sga-blue);
+}
+
+.member-card {
+  background: white;
+  margin: 0 16px 10px;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.member-card .member-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.member-card .member-info { flex: 1; }
+.member-card .member-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+.member-card .member-role {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 2px;
+}
+.member-role.foster { background: #E8F5ED; color: var(--sga-success); }
+.member-role.volunteer { background: var(--sga-blue-light); color: var(--sga-blue); }
+.member-role.adopter { background: var(--sga-orange-light); color: var(--sga-orange); }
+.member-role.staff { background: #FDE8E8; color: var(--sga-urgent); }
+.member-card .member-location {
+  font-size: 12px;
+  color: var(--sga-text-secondary);
+  margin-top: 2px;
+}
+.member-card .member-action {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--sga-orange-light);
+  color: var(--sga-orange);
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ─── Desktop Sidebar ─── */
+.desktop-sidebar {
+  width: 220px;
+  background: var(--sga-warm-white);
+  border-right: 1px solid var(--sga-border);
+  padding: 20px 0;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+.desktop-sidebar .sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px 20px;
+  border-bottom: 1px solid var(--sga-border);
+  margin-bottom: 12px;
+}
+.desktop-sidebar .sidebar-logo .logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--sga-blue);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.desktop-sidebar .sidebar-logo .logo-text {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sga-blue-dark);
+  line-height: 1.2;
+}
+.desktop-sidebar .sidebar-logo .logo-text span { color: var(--sga-orange); }
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sga-text-secondary);
+  text-align: left;
+}
+.sidebar-nav-item:hover {
+  background: var(--sga-warm-gray);
+}
+.sidebar-nav-item.active {
+  background: var(--sga-orange-light);
+  color: var(--sga-orange);
+  font-weight: 600;
+  border-right: 3px solid var(--sga-orange);
+}
+.sidebar-nav-item .nav-icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+.sidebar-nav-item .nav-badge {
+  margin-left: auto;
+  background: var(--sga-urgent);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+
+.desktop-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* ─── Desktop Content Adaptations ─── */
+.desktop-content .content-area {
+  max-width: 600px;
+  margin: 0 auto;
+  overflow-y: auto;
+  height: 100%;
+}
+.desktop-content .urgent-banner {
+  border-radius: 0;
+}
+
+/* ─── Screen Labels ─── */
+.device-label {
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sga-blue-dark);
+  margin-bottom: 12px;
+}
+.device-sublabel {
+  text-align: center;
+  font-size: 12px;
+  color: var(--sga-text-secondary);
+  margin-bottom: 12px;
+  margin-top: -8px;
+}
+
+/* ─── Screen navigation for wireframe ─── */
+.screen-nav {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px;
+  flex-wrap: wrap;
+}
+.screen-nav-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--sga-border);
+  background: white;
+  color: var(--sga-text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s;
+}
+.screen-nav-btn.active {
+  background: var(--sga-blue-dark);
+  color: white;
+  border-color: var(--sga-blue-dark);
+}
+
+/* ─── Recommendation Box ─── */
+.reco-box {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+}
+.reco-box .reco-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--sga-orange);
+}
+.reco-box h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--sga-blue-dark);
+  margin-bottom: 12px;
+}
+.reco-box ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reco-box li {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--sga-text);
+  padding-left: 24px;
+  position: relative;
+}
+.reco-box li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--sga-orange);
+}
+
+@media (max-width: 1200px) {
+  .devices-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .annotation-panel { display: none; }
+  .desktop-frame { width: 100%; max-width: 680px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>SGA Community App</h1>
+  <p>Interactive Wireframe Prototype</p>
+  <div class="badge">Tap screens to navigate</div>
+</div>
+
+<div class="screen-nav">
+  <button class="screen-nav-btn active" onclick="switchScreen('home')">Home</button>
+  <button class="screen-nav-btn" onclick="switchScreen('forums')">Forums</button>
+  <button class="screen-nav-btn" onclick="switchScreen('training')">Training</button>
+  <button class="screen-nav-btn" onclick="switchScreen('library')">Library</button>
+  <button class="screen-nav-btn" onclick="switchScreen('directory')">Directory</button>
+</div>
+
+<div class="devices-container">
+
+  <!-- Annotations Left -->
+  <div class="annotation-panel">
+    <h3>Design Decisions</h3>
+    <div class="annotation" id="anno-home" style="display:block">
+      <div class="label">Bottom Tab Bar</div>
+      <p>Five core sections always one tap away. No hamburger menus, no hunting. This is the single biggest UX upgrade over the Wix site.</p>
+    </div>
+    <div class="annotation" id="anno-home2" style="display:block">
+      <div class="label">Quick Action Tiles</div>
+      <p>Training, Library, Forums, Directory visible immediately on launch. No scrolling to find them — the #1 complaint about the current site.</p>
+    </div>
+    <div class="annotation" id="anno-home3" style="display:block">
+      <div class="label">Urgent Needs Banner</div>
+      <p>Push notifications + in-app banner for time-sensitive volunteer/foster requests. This is what turns a passive website into an active coordination tool.</p>
+    </div>
+    <div class="annotation" id="anno-forums" style="display:none">
+      <div class="label">Low-Friction Posting</div>
+      <p>"What's happening with your foster?" prompt + photo/camera buttons. The current forum has 0 member-generated posts — this encourages sharing.</p>
+    </div>
+    <div class="annotation" id="anno-forums2" style="display:none">
+      <div class="label">Category Tabs</div>
+      <p>Horizontal scrollable tabs keep all 5 forum categories one tap away. The current site requires navigating to a separate page to find categories.</p>
+    </div>
+    <div class="annotation" id="anno-training" style="display:none">
+      <div class="label">Progress Tracking</div>
+      <p>Members see exactly where they are in training. The current site links to Google Forms with no tracking. This builds completion motivation.</p>
+    </div>
+    <div class="annotation" id="anno-training2" style="display:none">
+      <div class="label">In-App Courses</div>
+      <p>Videos, text, and interactive content hosted inside the app — not linking out to Google Forms. Members stay in the experience.</p>
+    </div>
+    <div class="annotation" id="anno-library" style="display:none">
+      <div class="label">Search-First</div>
+      <p>A foster at 10pm with a barking dog needs to find "barking" resources instantly. Search is front and center, not buried.</p>
+    </div>
+    <div class="annotation" id="anno-library2" style="display:none">
+      <div class="label">Category Filters</div>
+      <p>Preserves the current site's excellent library structure but makes it horizontally scrollable and tappable rather than a long page scroll.</p>
+    </div>
+    <div class="annotation" id="anno-directory" style="display:none">
+      <div class="label">Role Filters</div>
+      <p>"Show me fosters in Bellevue" or "find a volunteer" — the current directory is just a flat grid with no way to filter by role or location.</p>
+    </div>
+    <div class="annotation" id="anno-directory2" style="display:none">
+      <div class="label">Actionable Cards</div>
+      <p>Each member card shows role, location, and a direct message button. The current directory only shows follow counts which aren't useful.</p>
+    </div>
+  </div>
+
+  <!-- Phone -->
+  <div>
+    <div class="device-label">Mobile App</div>
+    <div class="device-sublabel">What members see on their phone</div>
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="mobile-topbar">
+          <div class="logo">
+            <div class="logo-icon">&#x1F43E;</div>
+            <div class="logo-text">Saving <span>Great</span> Animals</div>
+          </div>
+          <div class="icons">
+            <div class="icon-btn">&#x1F50D;</div>
+            <div class="icon-btn">&#x1F514;<div class="notif-dot"></div></div>
+          </div>
+        </div>
+
+        <div class="content-area" id="mobile-content">
+          <!-- HOME -->
+          <div class="screen active" id="m-home">
+            <div class="urgent-banner">
+              <div class="pulse"></div>
+              <span><strong>Urgent:</strong> Foster needed for Bella in Redmond</span>
+            </div>
+            <div class="home-hero">
+              <div class="dog-emoji">&#x1F436;</div>
+              <div class="greeting">Hey David &#x1F44B;</div>
+              <div class="greeting-sub">3 new posts &middot; 1 upcoming event</div>
+            </div>
+            <div class="quick-actions">
+              <div class="quick-action" onclick="switchScreen('training')">
+                <span class="qa-icon">&#x1F393;</span>
+                <span class="qa-label">Training</span>
+              </div>
+              <div class="quick-action" onclick="switchScreen('library')">
+                <span class="qa-icon">&#x1F4DA;</span>
+                <span class="qa-label">Library</span>
+              </div>
+              <div class="quick-action" onclick="switchScreen('forums')">
+                <span class="qa-icon">&#x1F4AC;</span>
+                <span class="qa-label">Forums</span>
+                <span class="qa-badge">3 new</span>
+              </div>
+              <div class="quick-action" onclick="switchScreen('directory')">
+                <span class="qa-icon">&#x1F465;</span>
+                <span class="qa-label">Directory</span>
+              </div>
+            </div>
+            <div class="section-header">
+              <h3>Recent Activity</h3>
+              <span class="see-all">See all</span>
+            </div>
+            <div class="feed-card">
+              <div class="feed-header">
+                <div class="avatar staff">LP</div>
+                <div class="feed-meta">
+                  <div><span class="name">Lily Piecora</span><span class="role">Staff</span></div>
+                  <div class="time">2 hours ago</div>
+                </div>
+              </div>
+              <div class="feed-category">Foster & Volunteer Needs</div>
+              <div class="feed-title">Doug's Place needs coverage this Saturday 10am-4pm</div>
+              <div class="feed-preview">Belle and Boomer would love some company! Shifts can be split if needed.</div>
+              <div class="feed-actions">
+                <span class="feed-action">&#x2764;&#xFE0F; 4</span>
+                <span class="feed-action">&#x1F4AC; 2</span>
+                <span class="feed-action">&#x1F440; 28</span>
+              </div>
+            </div>
+            <div class="feed-card">
+              <div class="feed-header">
+                <div class="avatar member">SM</div>
+                <div class="feed-meta">
+                  <div><span class="name">Sarah M.</span><span class="role">Foster</span></div>
+                  <div class="time">5 hours ago</div>
+                </div>
+              </div>
+              <div class="feed-category">Community Conversation</div>
+              <div class="feed-title">Rosie's first walk on a leash! &#x1F389;</div>
+              <div class="feed-preview">After 3 weeks of patience, this girl finally walked a full block without pulling. So proud!</div>
+              <div class="feed-actions">
+                <span class="feed-action">&#x2764;&#xFE0F; 12</span>
+                <span class="feed-action">&#x1F4AC; 8</span>
+                <span class="feed-action">&#x1F440; 45</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORUMS -->
+          <div class="screen" id="m-forums">
+            <div class="forum-tabs">
+              <button class="forum-tab active">All<span class="count"> (79)</span></button>
+              <button class="forum-tab">Needs<span class="count"> (54)</span></button>
+              <button class="forum-tab">Chat<span class="count"> (7)</span></button>
+              <button class="forum-tab">Events<span class="count"> (10)</span></button>
+              <button class="forum-tab">Ask Expert<span class="count"> (0)</span></button>
+            </div>
+            <div class="new-post-prompt">
+              <div class="prompt-avatar">&#x1F43E;</div>
+              <span class="prompt-text">What's happening with your foster?</span>
+              <div class="prompt-icons">&#x1F4F7; &#x1F3A5;</div>
+            </div>
+            <div class="feed-card">
+              <div class="feed-header">
+                <div class="avatar staff">LP</div>
+                <div class="feed-meta">
+                  <div><span class="name">Lily Piecora</span><span class="role">Staff</span></div>
+                  <div class="time">2 hours ago</div>
+                </div>
+              </div>
+              <div class="feed-category">Foster & Volunteer Needs</div>
+              <div class="feed-title">Doug's Place needs coverage this Saturday</div>
+              <div class="feed-preview">Belle and Boomer would love some company! Shifts can be split.</div>
+              <div class="feed-actions">
+                <span class="feed-action">&#x2764;&#xFE0F; 4</span>
+                <span class="feed-action">&#x1F4AC; 2</span>
+                <span class="feed-action">&#x1F440; 28</span>
+              </div>
+            </div>
+            <div class="feed-card">
+              <div class="feed-header">
+                <div class="avatar member">SM</div>
+                <div class="feed-meta">
+                  <div><span class="name">Sarah M.</span></div>
+                  <div class="time">5 hours ago</div>
+                </div>
+              </div>
+              <div class="feed-category">Community Conversation</div>
+              <div class="feed-title">Rosie's first walk on a leash! &#x1F389;</div>
+              <div class="feed-preview">After 3 weeks of patience, she walked a full block without pulling!</div>
+              <div class="feed-actions">
+                <span class="feed-action">&#x2764;&#xFE0F; 12</span>
+                <span class="feed-action">&#x1F4AC; 8</span>
+                <span class="feed-action">&#x1F440; 45</span>
+              </div>
+            </div>
+            <div class="feed-card">
+              <div class="feed-header">
+                <div class="avatar member">JR</div>
+                <div class="feed-meta">
+                  <div><span class="name">James R.</span></div>
+                  <div class="time">Yesterday</div>
+                </div>
+              </div>
+              <div class="feed-category">Ask an Expert</div>
+              <div class="feed-title">My foster is resource guarding his food bowl — help?</div>
+              <div class="feed-preview">He growls when I walk near his bowl during meals. Is this normal for a new foster?</div>
+              <div class="feed-actions">
+                <span class="feed-action">&#x2764;&#xFE0F; 2</span>
+                <span class="feed-action">&#x1F4AC; 5</span>
+                <span class="feed-action">&#x1F440; 31</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TRAINING -->
+          <div class="screen" id="m-training">
+            <div class="training-progress">
+              <h4>Your Training Progress</h4>
+              <div class="progress-bar-outer">
+                <div class="progress-bar-inner" style="width: 40%"></div>
+              </div>
+              <div class="progress-text">2 of 5 modules completed</div>
+            </div>
+            <div class="section-header">
+              <h3>Foster Training Basics</h3>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb" style="background: #E8F5ED;">&#x1F436;</div>
+              <div class="course-info">
+                <div class="course-title">1. Dog Body Language</div>
+                <div class="course-desc">Learn to read signals — tail, ears, posture, and what they mean</div>
+                <div class="course-meta">
+                  <span class="course-badge completed">&#x2713; Completed</span>
+                </div>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb" style="background: #E8F5ED;">&#x1F91D;</div>
+              <div class="course-info">
+                <div class="course-title">2. Safe Handling</div>
+                <div class="course-desc">Proper techniques for leashing, crating, and introducing to new spaces</div>
+                <div class="course-meta">
+                  <span class="course-badge completed">&#x2713; Completed</span>
+                </div>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb" style="background: var(--sga-orange-light);">&#x1F372;</div>
+              <div class="course-info">
+                <div class="course-title">3. Meeting Needs</div>
+                <div class="course-desc">Food, water, exercise, enrichment, and medical care basics</div>
+                <div class="course-meta">
+                  <span class="course-badge in-progress">In Progress</span>
+                </div>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb" style="background: var(--sga-warm-gray);">&#x1F3E0;</div>
+              <div class="course-info">
+                <div class="course-title">4. Decompression</div>
+                <div class="course-desc">Helping your foster adjust to a new home environment safely</div>
+                <div class="course-meta">
+                  <span class="course-badge not-started">Not Started</span>
+                </div>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="course-thumb" style="background: var(--sga-warm-gray);">&#x2B50;</div>
+              <div class="course-info">
+                <div class="course-title">5. Positive Reinforcement</div>
+                <div class="course-desc">Reward-based training techniques that work</div>
+                <div class="course-meta">
+                  <span class="course-badge not-started">Not Started</span>
+                </div>
+              </div>
+            </div>
+            <div class="section-header">
+              <h3>Training Events</h3>
+              <span class="see-all">See all</span>
+            </div>
+            <div class="feed-card">
+              <div class="feed-title">&#x1F6B6; Pack Walk — Feb 21st</div>
+              <div class="feed-preview">Robinswood Park &middot; 10:00 AM &middot; All skill levels welcome</div>
+              <div class="feed-actions">
+                <span class="feed-action" style="color: var(--sga-orange); font-weight: 600;">RSVP &#x2192;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LIBRARY -->
+          <div class="screen" id="m-library">
+            <div class="search-bar">
+              <span class="search-icon">&#x1F50D;</span>
+              <input type="text" placeholder="Search articles, videos, resources...">
+            </div>
+            <div class="library-categories">
+              <span class="lib-cat-pill active">All</span>
+              <span class="lib-cat-pill">Dog Training</span>
+              <span class="lib-cat-pill">Dog Health</span>
+              <span class="lib-cat-pill">Foster Resources</span>
+              <span class="lib-cat-pill">Volunteer</span>
+              <span class="lib-cat-pill">Pet Loss</span>
+            </div>
+            <div class="section-header">
+              <h3>Dog Training</h3>
+              <span class="see-all">12 topics</span>
+            </div>
+            <div class="resource-card">
+              <div class="res-icon" style="background: var(--sga-orange-light);">&#x1F4F9;</div>
+              <div class="res-info">
+                <div class="res-type video">Video &middot; 8 min</div>
+                <div class="res-title">Understanding Dog Body Language</div>
+                <div class="res-desc">A visual guide to what your foster dog is telling you</div>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="res-icon" style="background: var(--sga-blue-light);">&#x1F4C4;</div>
+              <div class="res-info">
+                <div class="res-type article">Article &middot; 5 min read</div>
+                <div class="res-title">Crate Training 101</div>
+                <div class="res-desc">Step-by-step guide to making the crate a happy place</div>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="res-icon" style="background: var(--sga-orange-light);">&#x1F4F9;</div>
+              <div class="res-info">
+                <div class="res-type video">Video &middot; 12 min</div>
+                <div class="res-title">Leash Reactivity: What To Do</div>
+                <div class="res-desc">When your foster lunges at other dogs on walks</div>
+              </div>
+            </div>
+            <div class="resource-card">
+              <div class="res-icon" style="background: var(--sga-blue-light);">&#x1F4C4;</div>
+              <div class="res-info">
+                <div class="res-type article">Article &middot; 3 min read</div>
+                <div class="res-title">Separation Anxiety Quick Fixes</div>
+                <div class="res-desc">5 things you can try tonight if your foster can't be left alone</div>
+              </div>
+            </div>
+            <div class="section-header">
+              <h3>Dog Health</h3>
+              <span class="see-all">See all</span>
+            </div>
+            <div class="resource-card">
+              <div class="res-icon" style="background: #E8F5ED;">&#x1F3E5;</div>
+              <div class="res-info">
+                <div class="res-type article">Article &middot; 4 min read</div>
+                <div class="res-title">When to Call the Vet vs. Wait It Out</div>
+                <div class="res-desc">A guide to common symptoms and when they're emergencies</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIRECTORY -->
+          <div class="screen" id="m-directory">
+            <div class="search-bar">
+              <span class="search-icon">&#x1F50D;</span>
+              <input type="text" placeholder="Search members...">
+            </div>
+            <div class="directory-filters">
+              <button class="dir-filter active">All</button>
+              <button class="dir-filter">Fosters</button>
+              <button class="dir-filter">Volunteers</button>
+              <button class="dir-filter">Adopters</button>
+              <button class="dir-filter">Staff</button>
+            </div>
+            <div class="member-card">
+              <div class="member-avatar" style="background: #FDE8E8; color: var(--sga-urgent);">LP</div>
+              <div class="member-info">
+                <div class="member-name">Lily Piecora</div>
+                <span class="member-role staff">Staff</span>
+                <div class="member-location">&#x1F4CD; Seattle, WA</div>
+              </div>
+              <button class="member-action">Message</button>
+            </div>
+            <div class="member-card">
+              <div class="member-avatar" style="background: #E8F5ED; color: var(--sga-success);">JS</div>
+              <div class="member-info">
+                <div class="member-name">Jacintha Sayed</div>
+                <span class="member-role staff">Staff</span>
+                <div class="member-location">&#x1F4CD; Renton, WA</div>
+              </div>
+              <button class="member-action">Message</button>
+            </div>
+            <div class="member-card">
+              <div class="member-avatar" style="background: #E8F5ED; color: var(--sga-success);">SM</div>
+              <div class="member-info">
+                <div class="member-name">Sarah Martinez</div>
+                <span class="member-role foster">Foster</span>
+                <div class="member-location">&#x1F4CD; Bellevue, WA</div>
+              </div>
+              <button class="member-action">Message</button>
+            </div>
+            <div class="member-card">
+              <div class="member-avatar" style="background: var(--sga-blue-light); color: var(--sga-blue);">JR</div>
+              <div class="member-info">
+                <div class="member-name">James Rodriguez</div>
+                <span class="member-role volunteer">Volunteer</span>
+                <div class="member-location">&#x1F4CD; Kirkland, WA</div>
+              </div>
+              <button class="member-action">Message</button>
+            </div>
+            <div class="member-card">
+              <div class="member-avatar" style="background: var(--sga-orange-light); color: var(--sga-orange);">MG</div>
+              <div class="member-info">
+                <div class="member-name">Marni Geehart</div>
+                <span class="member-role adopter">Adopter</span>
+                <div class="member-location">&#x1F4CD; Issaquah, WA</div>
+              </div>
+              <button class="member-action">Message</button>
+            </div>
+            <div class="member-card">
+              <div class="member-avatar" style="background: var(--sga-blue-light); color: var(--sga-blue);">JB</div>
+              <div class="member-info">
+                <div class="member-name">Jesse Bustamonte</div>
+                <span class="member-role volunteer">Volunteer</span>
+                <div class="member-location">&#x1F4CD; Redmond, WA</div>
+              </div>
+              <button class="member-action">Message</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-tabs">
+          <button class="tab-item active" onclick="switchScreen('home')">
+            <span class="tab-icon">&#x1F3E0;</span>
+            <span class="tab-label">Home</span>
+          </button>
+          <button class="tab-item" onclick="switchScreen('forums')">
+            <span class="tab-icon">&#x1F4AC;</span>
+            <span class="tab-label">Forums</span>
+          </button>
+          <button class="tab-item" onclick="switchScreen('training')">
+            <span class="tab-icon">&#x1F393;</span>
+            <span class="tab-label">Training</span>
+          </button>
+          <button class="tab-item" onclick="switchScreen('library')">
+            <span class="tab-icon">&#x1F4DA;</span>
+            <span class="tab-label">Library</span>
+          </button>
+          <button class="tab-item" onclick="switchScreen('directory')">
+            <span class="tab-icon">&#x1F465;</span>
+            <span class="tab-label">People</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop -->
+  <div>
+    <div class="device-label">Desktop Web</div>
+    <div class="device-sublabel">Same app, responsive on desktop browsers</div>
+    <div class="desktop-frame">
+      <div class="desktop-titlebar">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+        <div class="url">community.savinggreatanimals.org</div>
+      </div>
+      <div class="desktop-screen">
+        <div class="desktop-sidebar">
+          <div class="sidebar-logo">
+            <div class="logo-icon">&#x1F43E;</div>
+            <div class="logo-text">Saving<br><span>Great</span> Animals</div>
+          </div>
+          <button class="sidebar-nav-item active" onclick="switchScreen('home')">
+            <span class="nav-icon">&#x1F3E0;</span> Home
+          </button>
+          <button class="sidebar-nav-item" onclick="switchScreen('forums')">
+            <span class="nav-icon">&#x1F4AC;</span> Forums
+            <span class="nav-badge">3</span>
+          </button>
+          <button class="sidebar-nav-item" onclick="switchScreen('training')">
+            <span class="nav-icon">&#x1F393;</span> Training
+          </button>
+          <button class="sidebar-nav-item" onclick="switchScreen('library')">
+            <span class="nav-icon">&#x1F4DA;</span> Library
+          </button>
+          <button class="sidebar-nav-item" onclick="switchScreen('directory')">
+            <span class="nav-icon">&#x1F465;</span> Directory
+          </button>
+          <button class="sidebar-nav-item">
+            <span class="nav-icon">&#x1F4C5;</span> Calendar
+          </button>
+          <button class="sidebar-nav-item">
+            <span class="nav-icon">&#x1F4DD;</span> Blog
+          </button>
+          <button class="sidebar-nav-item" style="margin-top: 20px; border-top: 1px solid var(--sga-border); padding-top: 16px;">
+            <span class="nav-icon">&#x2699;&#xFE0F;</span> Settings
+          </button>
+        </div>
+        <div class="desktop-content">
+          <div class="content-area" id="desktop-content">
+            <!-- Desktop mirrors mobile screens -->
+            <div class="screen active" id="d-home">
+              <div class="urgent-banner">
+                <div class="pulse"></div>
+                <span><strong>Urgent:</strong> Foster needed for Bella in Redmond — <u>View details</u></span>
+              </div>
+              <div class="home-hero">
+                <div class="dog-emoji">&#x1F436;</div>
+                <div class="greeting">Hey David &#x1F44B;</div>
+                <div class="greeting-sub">3 new posts &middot; 1 upcoming event</div>
+              </div>
+              <div class="quick-actions">
+                <div class="quick-action" onclick="switchScreen('training')">
+                  <span class="qa-icon">&#x1F393;</span>
+                  <span class="qa-label">Training</span>
+                </div>
+                <div class="quick-action" onclick="switchScreen('library')">
+                  <span class="qa-icon">&#x1F4DA;</span>
+                  <span class="qa-label">Library</span>
+                </div>
+                <div class="quick-action" onclick="switchScreen('forums')">
+                  <span class="qa-icon">&#x1F4AC;</span>
+                  <span class="qa-label">Forums</span>
+                  <span class="qa-badge">3 new</span>
+                </div>
+                <div class="quick-action" onclick="switchScreen('directory')">
+                  <span class="qa-icon">&#x1F465;</span>
+                  <span class="qa-label">Directory</span>
+                </div>
+              </div>
+              <div class="section-header"><h3>Recent Activity</h3><span class="see-all">See all</span></div>
+              <div class="feed-card">
+                <div class="feed-header">
+                  <div class="avatar staff">LP</div>
+                  <div class="feed-meta">
+                    <div><span class="name">Lily Piecora</span><span class="role">Staff</span></div>
+                    <div class="time">2 hours ago</div>
+                  </div>
+                </div>
+                <div class="feed-category">Foster & Volunteer Needs</div>
+                <div class="feed-title">Doug's Place needs coverage this Saturday 10am-4pm</div>
+                <div class="feed-preview">Belle and Boomer would love some company! Shifts can be split if needed. Comment below or DM me if you're available.</div>
+                <div class="feed-actions">
+                  <span class="feed-action">&#x2764;&#xFE0F; 4</span>
+                  <span class="feed-action">&#x1F4AC; 2</span>
+                  <span class="feed-action">&#x1F440; 28</span>
+                </div>
+              </div>
+              <div class="feed-card">
+                <div class="feed-header">
+                  <div class="avatar member">SM</div>
+                  <div class="feed-meta">
+                    <div><span class="name">Sarah M.</span><span class="role">Foster</span></div>
+                    <div class="time">5 hours ago</div>
+                  </div>
+                </div>
+                <div class="feed-category">Community Conversation</div>
+                <div class="feed-title">Rosie's first walk on a leash! &#x1F389;</div>
+                <div class="feed-preview">After 3 weeks of patience, this girl finally walked a full block without pulling. So proud of her progress!</div>
+                <div class="feed-actions">
+                  <span class="feed-action">&#x2764;&#xFE0F; 12</span>
+                  <span class="feed-action">&#x1F4AC; 8</span>
+                  <span class="feed-action">&#x1F440; 45</span>
+                </div>
+              </div>
+            </div>
+            <div class="screen" id="d-forums">
+              <div class="forum-tabs">
+                <button class="forum-tab active">All<span class="count"> (79)</span></button>
+                <button class="forum-tab">Needs<span class="count"> (54)</span></button>
+                <button class="forum-tab">Chat<span class="count"> (7)</span></button>
+                <button class="forum-tab">Events<span class="count"> (10)</span></button>
+                <button class="forum-tab">Ask Expert<span class="count"> (0)</span></button>
+              </div>
+              <div class="new-post-prompt">
+                <div class="prompt-avatar">&#x1F43E;</div>
+                <span class="prompt-text">What's happening with your foster?</span>
+                <div class="prompt-icons">&#x1F4F7; &#x1F3A5;</div>
+              </div>
+              <div class="feed-card">
+                <div class="feed-header">
+                  <div class="avatar staff">LP</div>
+                  <div class="feed-meta">
+                    <div><span class="name">Lily Piecora</span><span class="role">Staff</span></div>
+                    <div class="time">2 hours ago</div>
+                  </div>
+                </div>
+                <div class="feed-category">Foster & Volunteer Needs</div>
+                <div class="feed-title">Doug's Place needs coverage this Saturday</div>
+                <div class="feed-preview">Belle and Boomer would love some company! Shifts can be split.</div>
+                <div class="feed-actions">
+                  <span class="feed-action">&#x2764;&#xFE0F; 4</span>
+                  <span class="feed-action">&#x1F4AC; 2</span>
+                  <span class="feed-action">&#x1F440; 28</span>
+                </div>
+              </div>
+              <div class="feed-card">
+                <div class="feed-header">
+                  <div class="avatar member">JR</div>
+                  <div class="feed-meta">
+                    <div><span class="name">James R.</span></div>
+                    <div class="time">Yesterday</div>
+                  </div>
+                </div>
+                <div class="feed-category">Ask an Expert</div>
+                <div class="feed-title">My foster is resource guarding his food bowl — help?</div>
+                <div class="feed-preview">He growls when I walk near his bowl during meals. Is this normal for a new foster?</div>
+                <div class="feed-actions">
+                  <span class="feed-action">&#x2764;&#xFE0F; 2</span>
+                  <span class="feed-action">&#x1F4AC; 5</span>
+                  <span class="feed-action">&#x1F440; 31</span>
+                </div>
+              </div>
+            </div>
+            <div class="screen" id="d-training">
+              <div class="training-progress">
+                <h4>Your Training Progress</h4>
+                <div class="progress-bar-outer"><div class="progress-bar-inner" style="width: 40%"></div></div>
+                <div class="progress-text">2 of 5 modules completed</div>
+              </div>
+              <div class="section-header"><h3>Foster Training Basics</h3></div>
+              <div class="course-card">
+                <div class="course-thumb" style="background: #E8F5ED;">&#x1F436;</div>
+                <div class="course-info">
+                  <div class="course-title">1. Dog Body Language</div>
+                  <div class="course-desc">Learn to read signals — tail, ears, posture</div>
+                  <div class="course-meta"><span class="course-badge completed">&#x2713; Completed</span></div>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-thumb" style="background: #E8F5ED;">&#x1F91D;</div>
+                <div class="course-info">
+                  <div class="course-title">2. Safe Handling</div>
+                  <div class="course-desc">Proper techniques for leashing, crating, and introductions</div>
+                  <div class="course-meta"><span class="course-badge completed">&#x2713; Completed</span></div>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-thumb" style="background: var(--sga-orange-light);">&#x1F372;</div>
+                <div class="course-info">
+                  <div class="course-title">3. Meeting Needs</div>
+                  <div class="course-desc">Food, water, exercise, enrichment, and medical care basics</div>
+                  <div class="course-meta"><span class="course-badge in-progress">In Progress</span></div>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-thumb" style="background: var(--sga-warm-gray);">&#x1F3E0;</div>
+                <div class="course-info">
+                  <div class="course-title">4. Decompression</div>
+                  <div class="course-desc">Helping your foster adjust to a new home</div>
+                  <div class="course-meta"><span class="course-badge not-started">Not Started</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="screen" id="d-library">
+              <div class="search-bar"><span class="search-icon">&#x1F50D;</span><input type="text" placeholder="Search articles, videos, resources..."></div>
+              <div class="library-categories">
+                <span class="lib-cat-pill active">All</span>
+                <span class="lib-cat-pill">Dog Training</span>
+                <span class="lib-cat-pill">Dog Health</span>
+                <span class="lib-cat-pill">Foster Resources</span>
+                <span class="lib-cat-pill">Volunteer</span>
+              </div>
+              <div class="section-header"><h3>Dog Training</h3><span class="see-all">12 topics</span></div>
+              <div class="resource-card">
+                <div class="res-icon" style="background: var(--sga-orange-light);">&#x1F4F9;</div>
+                <div class="res-info">
+                  <div class="res-type video">Video &middot; 8 min</div>
+                  <div class="res-title">Understanding Dog Body Language</div>
+                  <div class="res-desc">A visual guide to what your foster dog is telling you</div>
+                </div>
+              </div>
+              <div class="resource-card">
+                <div class="res-icon" style="background: var(--sga-blue-light);">&#x1F4C4;</div>
+                <div class="res-info">
+                  <div class="res-type article">Article &middot; 5 min read</div>
+                  <div class="res-title">Crate Training 101</div>
+                  <div class="res-desc">Step-by-step guide to making the crate a happy place</div>
+                </div>
+              </div>
+              <div class="resource-card">
+                <div class="res-icon" style="background: var(--sga-orange-light);">&#x1F4F9;</div>
+                <div class="res-info">
+                  <div class="res-type video">Video &middot; 12 min</div>
+                  <div class="res-title">Leash Reactivity: What To Do</div>
+                  <div class="res-desc">When your foster lunges at other dogs on walks</div>
+                </div>
+              </div>
+            </div>
+            <div class="screen" id="d-directory">
+              <div class="search-bar"><span class="search-icon">&#x1F50D;</span><input type="text" placeholder="Search members..."></div>
+              <div class="directory-filters">
+                <button class="dir-filter active">All</button>
+                <button class="dir-filter">Fosters</button>
+                <button class="dir-filter">Volunteers</button>
+                <button class="dir-filter">Adopters</button>
+                <button class="dir-filter">Staff</button>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar" style="background: #FDE8E8; color: var(--sga-urgent);">LP</div>
+                <div class="member-info">
+                  <div class="member-name">Lily Piecora</div>
+                  <span class="member-role staff">Staff</span>
+                  <div class="member-location">&#x1F4CD; Seattle, WA</div>
+                </div>
+                <button class="member-action">Message</button>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar" style="background: #E8F5ED; color: var(--sga-success);">SM</div>
+                <div class="member-info">
+                  <div class="member-name">Sarah Martinez</div>
+                  <span class="member-role foster">Foster</span>
+                  <div class="member-location">&#x1F4CD; Bellevue, WA</div>
+                </div>
+                <button class="member-action">Message</button>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar" style="background: var(--sga-blue-light); color: var(--sga-blue);">JR</div>
+                <div class="member-info">
+                  <div class="member-name">James Rodriguez</div>
+                  <span class="member-role volunteer">Volunteer</span>
+                  <div class="member-location">&#x1F4CD; Kirkland, WA</div>
+                </div>
+                <button class="member-action">Message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recommendations -->
+<div class="reco-box">
+  <div class="reco-card">
+    <h3>Key Recommendations</h3>
+    <ul>
+      <li><strong>Bottom tab bar with 5 core sections</strong> — Home, Forums, Training, Library, People. Every feature is always one tap away. This is the single biggest improvement over the current site where features are hidden in menus.</li>
+      <li><strong>Urgent needs banner with push notifications</strong> — Time-sensitive foster/volunteer requests appear as a persistent banner + push notification. This transforms a passive website into an active coordination tool.</li>
+      <li><strong>In-app training with progress tracking</strong> — Courses hosted natively with video, text, and completion status. No more linking out to Google Forms. Members see exactly where they are.</li>
+      <li><strong>Search-first library</strong> — A foster at 10pm with a barking problem needs to find "barking" resources instantly. Full-text search is front and center, with category filters preserving the current site's excellent library structure.</li>
+      <li><strong>Low-friction posting in forums</strong> — "What's happening with your foster?" prompt with camera/photo buttons encourages member-generated content. The current forums have near-zero member posts because posting requires too many steps.</li>
+      <li><strong>Filterable member directory</strong> — Role tags (foster, volunteer, adopter, staff), location, and direct message buttons. "Show me fosters near me" is a real use case the current flat grid can't serve.</li>
+      <li><strong>Same codebase, responsive on desktop</strong> — Sidebar navigation on desktop, bottom tabs on mobile. One app that works everywhere. Built as a PWA (Progressive Web App) so it's installable on phones without the App Store.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function switchScreen(name) {
+  // Update mobile screens
+  document.querySelectorAll('#mobile-content .screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('m-' + name)?.classList.add('active');
+
+  // Update desktop screens
+  document.querySelectorAll('#desktop-content .screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('d-' + name)?.classList.add('active');
+
+  // Update mobile tabs
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-item').forEach(t => {
+    if (t.querySelector('.tab-label')?.textContent.toLowerCase().replace('people','directory') === name) {
+      t.classList.add('active');
+    }
+  });
+  // Special case for home
+  if (name === 'home') {
+    document.querySelector('.tab-item')?.classList.add('active');
+  }
+
+  // Update sidebar
+  document.querySelectorAll('.sidebar-nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.sidebar-nav-item').forEach(n => {
+    if (n.textContent.trim().toLowerCase().replace('people','directory') === name) {
+      n.classList.add('active');
+    }
+  });
+
+  // Update screen nav buttons
+  document.querySelectorAll('.screen-nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.screen-nav-btn').forEach(b => {
+    if (b.textContent.toLowerCase() === name) {
+      b.classList.add('active');
+    }
+  });
+
+  // Update annotations
+  document.querySelectorAll('.annotation').forEach(a => a.style.display = 'none');
+  document.querySelectorAll('[id^="anno-' + name + '"]').forEach(a => a.style.display = 'block');
+}
+</script>
+
+</body>
+</html>
