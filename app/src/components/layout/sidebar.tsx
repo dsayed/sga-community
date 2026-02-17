@@ -31,14 +31,7 @@ export function Sidebar({ userRole }: { userRole?: string }) {
     <aside className="hidden md:flex w-[220px] bg-sga-warm-white border-r border-sga-border py-5 shrink-0 flex-col">
       {/* Logo section */}
       <div className="flex items-center gap-2.5 px-4 pb-5 border-b border-sga-border mb-3">
-        <div className="w-9 h-9 bg-sga-blue rounded-[10px] flex items-center justify-center text-white text-base shrink-0">
-          🐾
-        </div>
-        <span className="font-serif text-sm font-bold text-sga-blue-dark leading-tight">
-          Saving
-          <br />
-          <span className="text-sga-orange">Great</span> Animals
-        </span>
+        <img src="/images/sga-logo.png" alt="SGA" className="h-9 w-auto shrink-0" />
       </div>
 
       {/* Navigation */}

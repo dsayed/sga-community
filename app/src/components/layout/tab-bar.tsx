@@ -27,7 +27,10 @@ export function TabBar() {
   }
 
   return (
-    <nav className="flex items-center justify-around py-2 pb-7 bg-sga-warm-white border-t border-sga-border md:hidden">
+    <nav
+      className="flex items-center justify-around py-2 bg-sga-warm-white border-t border-sga-border md:hidden"
+      style={{ paddingBottom: "calc(0.5rem + var(--safe-bottom))" }}
+    >
       {tabs.map((tab) => {
         const active = !tab.disabled && isActive(tab.href);
 
