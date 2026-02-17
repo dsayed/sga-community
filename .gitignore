@@ -1,4 +1,6 @@
 .DS_Store
 *.png
+!app/public/images/*.png
+!app/public/icons/*.png
 node_modules/
 .env
