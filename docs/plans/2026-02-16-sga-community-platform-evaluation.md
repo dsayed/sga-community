@@ -1,7 +1,21 @@
 # SGA Community Platform Evaluation
 
 **Date:** 2026-02-16
-**Context:** Saving Great Animals (SGA) is a dog rescue non-profit evaluating options to replace or improve their community platform.
+**Context:** Saving Great Animals (SGA) is a dog rescue non-profit evaluating options to replace their Wix-powered community site with something mobile-first, branded, and purpose-built.
+
+**Interactive wireframe:** [View the prototype](https://dsayed.github.io/sga-community/wireframes/sga-community-app.html) — shows what a replacement app could look like across 5 screens (Home, Forums, Training, Library, Directory) on both mobile and desktop.
+
+---
+
+## The Bottom Line
+
+We evaluated off-the-shelf community platforms (Mighty Networks, Disciple, Circle, Skool) and custom build approaches (FlutterFlow, AI-assisted coding, professional development). **None of the off-the-shelf platforms work for SGA.** Here's why:
+
+- **Mighty Networks** ($99/mo) — members open a generic "Mighty Networks" app, not an SGA app. Getting SGA's own branded app costs $33,000/year. The platform is feed-based with weak search, which doesn't solve SGA's content discoverability problem.
+- **Disciple** ($300–600/mo) — actually delivers a branded app, but 3–6x over budget.
+- **Circle, Skool, others** — same fundamental problem: generic platform feel, no branded app at reasonable cost, content buried in feeds.
+
+**SGA needs a custom-built app.** Three paths can get there — each with real trade-offs. See the [Recommendation](#recommendation) section below.
 
 ---
 
@@ -318,22 +332,62 @@ Primarily education/creator-focused. Web-only at the time of evaluation. Limited
 
 ---
 
-## Recommended Next Steps
+## Recommendation
 
-1. **Download and try LO Sister and Tony Robbins Arena** — show SGA leadership. Ask: "If it looked like this but said SGA — would this work?"
+Off-the-shelf platforms don't meet SGA's needs. **SGA needs a custom-built app.** There are three ways to get there:
 
-2. **If yes** — contact Mighty Networks sales, ask about non-profit pricing for Mighty Pro (branded app). Many platforms offer unpublished non-profit discounts.
+### Path 1: AI-Assisted Build ("Vibe Coding")
+A technical volunteer describes what they want to an AI tool (like Claude) and it writes the code. Think of it as having a free junior developer who works instantly but needs supervision.
 
-3. **If no ("not custom enough")** — the decision becomes: does SGA have access to a technical person willing to build and loosely maintain a custom app?
-   - **If yes** → Vibe coding with Claude is the best ROI (cheapest, fastest, most control)
-   - **If no but budget is flexible** → Explore Disciple or Mighty Pro, potentially funded by a grant or donor sponsorship
-   - **If neither** → Accept Mighty Networks' $99/mo plan as the pragmatic "good enough" solution and revisit in 12 months as the landscape evolves
+| | |
+|---|---|
+| **Cost** | ~$0–20/mo ongoing |
+| **Build time** | 2–4 weeks |
+| **Who builds it** | A technical volunteer working with AI |
+| **Ongoing effort** | A few hours/month for updates and fixes |
+| **What you get** | Fully custom app, SGA-branded, real search, no vendor lock-in |
+| **The catch** | Someone technical has to be willing to own it. If that person disappears, the app stops getting updated. |
 
-4. **If pursuing the custom build (Options C or D):**
-   - Decide native app vs PWA (recommendation: start with PWA for speed, add native later if needed)
-   - Identify the builder (David? A tech volunteer? A freelancer?)
-   - Budget for initial build + ongoing maintenance
-   - Start with a minimal version: auth + forums + resource library, then add training courses and directory
+### Path 2: No-Code Builder (FlutterFlow)
+A visual drag-and-drop tool for building real apps. Like building a website in Squarespace, but for mobile apps.
+
+| | |
+|---|---|
+| **Cost** | ~$80/mo ongoing |
+| **Build time** | 6–10 weeks |
+| **Who builds it** | A semi-technical volunteer or freelancer ($3K–8K) |
+| **Ongoing effort** | A few hours/month for updates and fixes |
+| **What you get** | Custom native app in the app store under SGA's name |
+| **The catch** | Same dependency on a builder. FlutterFlow itself is a platform — if they raise prices or shut down, you have to migrate. |
+
+### Path 3: Hire a Developer
+Pay a professional to build and maintain the app.
+
+| | |
+|---|---|
+| **Cost** | $15K–50K to build + $3K–10K/year to maintain |
+| **Build time** | 2–4 months |
+| **Who builds it** | A freelancer or small agency |
+| **Ongoing effort** | Paid maintenance contract |
+| **What you get** | Professional-grade app, someone accountable |
+| **The catch** | The cost. This is the right answer if budget allows, but it's likely out of reach without a grant or major donor. |
+
+### What All Three Paths Require
+
+No matter which path SGA chooses, a custom app means:
+
+1. **Someone has to build it.** There is no way around this. The question is whether that person is a volunteer, a freelancer, or a paid developer.
+2. **Someone has to maintain it.** Apps need updates — iOS changes, bugs surface, members request features. Plan for a few hours per month minimum.
+3. **Content migration is real work.** The library articles, training modules, and member accounts from the Wix site need to be moved over. Budget 1–2 weeks for this regardless of approach.
+4. **Start small.** Launch with Home + Forums + Library. Add Training and Directory in a second phase. Don't try to build everything at once.
+
+### Our Suggestion
+
+**Path 1 (AI-assisted build) if SGA has access to a technical volunteer.** It's the cheapest, fastest, produces the best result, and the code belongs to SGA with zero vendor lock-in. The wireframe prototype linked at the top of this document was built this way in a single session.
+
+**Path 3 (hire a developer) if SGA can fund it.** Worth exploring grants — many exist for non-profit technology. This removes the volunteer dependency problem.
+
+**Path 2 (FlutterFlow) as a middle ground** if the volunteer is semi-technical but not a coder.
 
 ---
 
