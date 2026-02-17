@@ -17,6 +17,16 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "SGA Community",
   description: "Saving Great Animals — Community App",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "SGA Community",
+  },
+  icons: {
+    icon: "/icons/icon.svg",
+    apple: "/icons/icon.svg",
+  },
 };
 
 export const viewport: Viewport = {

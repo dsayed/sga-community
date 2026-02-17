@@ -1,0 +1,17 @@
+{
+  "name": "SGA Community",
+  "short_name": "SGA",
+  "description": "Saving Great Animals \u2014 Community App",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FEFCFA",
+  "theme_color": "#E8772B",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
