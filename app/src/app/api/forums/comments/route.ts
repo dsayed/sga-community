@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       author_id: user.id,
       body: commentBody.trim(),
     })
-    .select("*, author:profiles(*)")
+    .select("*, author:profiles!forum_comments_author_id_fkey(*)")
     .single();
 
   if (error) {

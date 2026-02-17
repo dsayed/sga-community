@@ -20,7 +20,7 @@ export default async function ForumsPage({
   // Fetch posts (optionally filtered by category)
   let query = supabase
     .from("forum_posts")
-    .select("*, author:profiles(*), category:forum_categories(*)")
+    .select("*, author:profiles!forum_posts_author_id_fkey(*), category:forum_categories(*)")
     .order("created_at", { ascending: false })
     .limit(20);
 

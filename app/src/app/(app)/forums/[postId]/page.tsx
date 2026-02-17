@@ -47,7 +47,7 @@ export default async function PostDetailPage({
   // Fetch the post with author and category
   const { data: post, error: postError } = await supabase
     .from("forum_posts")
-    .select("*, author:profiles(*), category:forum_categories(*)")
+    .select("*, author:profiles!forum_posts_author_id_fkey(*), category:forum_categories(*)")
     .eq("id", postId)
     .single();
 
@@ -61,7 +61,7 @@ export default async function PostDetailPage({
   const [commentsResult, reactionCountResult, userResult] = await Promise.all([
     supabase
       .from("forum_comments")
-      .select("*, author:profiles(*)")
+      .select("*, author:profiles!forum_comments_author_id_fkey(*)")
       .eq("post_id", postId)
       .order("created_at"),
     supabase
