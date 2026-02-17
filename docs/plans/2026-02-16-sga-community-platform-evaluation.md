@@ -1,25 +1,20 @@
 # SGA Community Platform Evaluation
 
-**Date:** 2026-02-16
+**Date:** 2026-02-16 (updated Feb 17)
 **Context:** Saving Great Animals (SGA) is a dog rescue non-profit evaluating options to replace their Wix-powered community site with something mobile-first, branded, and purpose-built.
 
-**Interactive wireframe:** [View the prototype](https://dsayed.github.io/sga-community/wireframes/sga-community-app.html) — shows what a replacement app could look like across 5 screens (Home, Forums, Training, Library, Directory) on both mobile and desktop.
+**Working prototype:** [sgacommunity.vercel.app](https://sgacommunity.vercel.app) — a quick test build to explore what a custom app could look like
+**Interactive wireframe:** [View the mockup](https://dsayed.github.io/sga-community/wireframes/sga-community-app.html) — the original design across 5 screens
 
 ---
 
-## Update: We Built It (Feb 17, 2026)
+## Quick Test: We Tried Building One
 
-We decided to quickly test the AI-assisted build approach (Option E below) to see how far we could get. The answer: all the way to a deployed app in about a day.
+To get a feel for the AI-assisted build approach (Option E below), David spent roughly 6 hours "vibe coding" with Claude Code (Anthropic's AI coding tool). The goal was to see how far we could get, how hard it would be, and whether the result would be good enough to consider seriously.
 
-**What happened:** David spent roughly 6 hours over two sessions with Claude Code (Anthropic's AI coding tool). The first session (~4 hrs) built the entire MVP — login, forums with categories and photo upload, 5-module training program with step-through content, a searchable resource library with 21 articles/videos, and admin tools for content authoring. The second session (~2 hrs) set up Supabase, seeded real content, deployed to Vercel, and did a visual refresh with real SGA photography and branding.
+**What we built:** A working prototype with login, forums with categories and photo upload, a 5-module training program with step-through content, a searchable resource library with 21 articles/videos, and admin tools for content authoring. It works on phones, tablets, and desktops.
 
-**The result:** https://sgacommunity.vercel.app — a working PWA with SGA's logo, real dog photos, warm community aesthetic, and all the core features from the spec. It works on phones, tablets, and desktops. It's not in the app stores (it's a PWA, not a native app), but it can be installed to a phone's home screen and feels app-like.
-
-**Actual tech stack:** Next.js 16 (not Expo as originally suggested below), Supabase, Tailwind CSS, deployed on Vercel. We went with a PWA instead of native apps because it's faster to build, instant to update, and works on every platform without app store review.
-
-**Actual cost:** ~$25/mo (Supabase free tier + Vercel free tier). Could go to $50/mo if usage grows past free tiers.
-
-**What this means for the evaluation below:** The comparative analysis is still accurate and useful context for why we chose this approach. The main thing that changed is the build timeline — "2-4 weeks" turned out to be closer to 1 day with current AI tools. The rest of the trade-offs (maintenance burden, need for a technical person, vendor lock-in comparisons) all still apply.
+**What this tells us:** The "2-4 week" build estimate for a custom app turned out to be closer to 1 day with current AI tools. That changes the trade-off math significantly — the custom build option is faster and cheaper than we originally thought. The rest of the trade-offs (maintenance burden, need for a technical person, vendor lock-in comparisons) all still apply.
 
 ---
 
@@ -276,7 +271,7 @@ Courses feature is an add-on at $108/mo extra. Additional members and storage al
 
 | Layer | Tool | Why |
 |---|---|---|
-| Framework | Next.js 16 (PWA) | Server rendering, instant deploys, works on all platforms |
+| Framework | Next.js 16 | Server rendering, instant deploys, works on all platforms |
 | Backend | Supabase | Open-source, built-in admin dashboard |
 | Auth | Supabase Auth | Email/password, invite-only |
 | Database | Supabase (Postgres) | Real full-text search |
@@ -389,7 +384,7 @@ This does not include the cost of the person building and maintaining it (volunt
 | **Up-front build cost** | $0 | $0 | $0 | $0–8K (if freelancer) | $0–8K (if freelancer) |
 | **Build time** | Days | Days | Days | 6–10 weeks | ~1 day (actual) |
 | **Custom feel** | Low (mirrors Wix site) | Low | High | High | Highest |
-| **Branded iOS + Android app** | Yes | No (unless $33K/yr) | Yes | Yes | PWA (installable, not in app stores) |
+| **Branded iOS + Android app** | Yes | No (unless $33K/yr) | Yes | Yes | Installable, not in app stores |
 | **Features front-and-center** | No (mirrors website) | No (feed-based) | Yes | Yes | Yes |
 | **Admin-friendly** | Very | Very | Very | Moderate | Moderate |
 | **Developer needed** | No | No | No | Yes | Yes |
@@ -402,22 +397,15 @@ This does not include the cost of the person building and maintaining it (volunt
 
 ---
 
-## What We Chose
+## Recommendation
 
-We went with **Option E: AI-Assisted Build**. David built the full MVP in ~6 hours using Claude Code, and deployed it to https://sgacommunity.vercel.app.
+The key variable is whether SGA has someone comfortable with technology:
 
-**Why this option won:** SGA has a technical volunteer (David), which made the cheapest and most customizable option viable. The build was fast enough that it was easier to just try it than to keep evaluating platforms.
-
-**Ongoing commitment:** A few hours per month for maintenance, content updates, and improvements. Any future changes can be made the same way — describe what you want to an AI tool, review the output, deploy.
-
-**What would change this:** If David is no longer available and SGA can't find another technical volunteer, the fallback would be Mighty Networks ($49–99/mo) as a low-maintenance alternative. The forum content could be exported from Supabase (standard Postgres) and the library content is portable.
-
-### Original recommendation (for reference)
-
-The original analysis below still holds for organizations making this decision. The key variable is whether you have someone comfortable with technology:
-- **Technical person available** → AI-assisted build (cheapest, most custom, fastest with current AI tools)
+- **Technical person available** → AI-assisted build (cheapest, most custom, fastest with current AI tools). The prototype at the top of this document shows what ~6 hours of effort produces.
 - **Budget but no technical person** → Disciple ($729+/mo) or hire a developer ($15K–50K)
 - **Neither** → Mighty Networks ($49–99/mo) as a pragmatic starting point
+
+**If going with the custom build:** Ongoing commitment is a few hours per month for maintenance, content updates, and improvements. Any future changes can be made the same way — describe what you want to an AI tool, review the output, deploy. If the technical person is no longer available, the fallback would be Mighty Networks ($49–99/mo). Content is portable — it's stored in a standard database, not locked into a platform.
 
 ---
 
