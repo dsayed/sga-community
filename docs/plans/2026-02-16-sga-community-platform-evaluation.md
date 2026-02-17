@@ -11,7 +11,7 @@
 
 SGA's community site was built on Wix and has solid bones — a well-organized resource library, training content, and a clear structure. But the platform has limitations that make it hard for the site to reach its potential. The mobile experience isn't app-like, content is spread across external tools (Google Forms, SignUpGenius), and **Wix is shutting down its Forum feature on March 1, 2026** — meaning SGA needs to find a replacement for community discussion regardless.
 
-Note: Wix disabled forum posting in October 2025, which explains why the forums appear inactive. SGA has already started migrating to Wix Groups.
+Note: Wix disabled forum posting in October 2025, which explains why the forums appear inactive. The site's navigation includes a "Groups" link, which may have been added automatically by Wix as part of the forum deprecation.
 
 We looked at five approaches for what comes next:
 
@@ -56,7 +56,7 @@ SGA currently runs a **Wix-powered private community website** for volunteers, f
 
 **Opportunities for improvement:**
 
-1. **Forums.** Wix disabled forum posting in October 2025 and is deleting the Forum feature March 1, 2026, so the forum appears inactive. SGA has started migrating to Wix Groups. A new platform would need its own discussion/community feature.
+1. **Forums.** Wix disabled forum posting in October 2025 and is deleting the Forum feature March 1, 2026, which explains why the forums appear inactive. Wix's recommended replacement is "Groups" (a Facebook-style feed). Any new platform would need its own discussion/community feature.
 
 2. **Training.** Currently links out to Google Forms for course access. Hosting training content directly in the platform (with video, text, and progress tracking) would be a better experience.
 
