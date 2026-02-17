@@ -15,7 +15,7 @@ We evaluated five approaches. Here's the short version:
 
 | Approach | Monthly Cost | Branded App? | Needs a Developer? |
 |---|---|---|---|
-| **Wix Branded App** | ~$200 + current Wix plan | Yes (iOS + Android) | No |
+| **Wix Branded App** | ~$130–360 total (app + site plan) | Yes (iOS + Android) | No |
 | **Mighty Networks** | $99–425 (branded = $33K/yr) | Only at $33K/yr | No |
 | **Disciple** | $300–600 | Yes | No |
 | **FlutterFlow** | ~$80 | Yes | Yes |
@@ -113,26 +113,36 @@ The platform exists so that **vetted SGA people can help each other and find ans
 
 ### Option A: Wix Branded App
 
-**What:** Wix offers a branded mobile app product that turns your existing Wix site into a native iOS and Android app under SGA's name in the app stores. Since SGA is already on Wix, this is the path of least resistance.
+**What:** [Wix App Builder](https://www.wix.com/app-builder) turns your existing Wix site into a native iOS and Android app under SGA's name in the app stores. Since SGA is already on Wix, this is the path of least resistance. An AI chatbot helps generate the app layout from a description of your goals.
 
-**Pricing:** ~$200/mo for the Branded App plan, plus SGA's existing Wix subscription, plus app store fees ($99/yr Apple, $25 one-time Google).
+**Pricing:**
+
+| Item | Cost |
+|---|---|
+| Branded App plan | $99–200/mo |
+| Wix website plan (required, separate) | $17–159/mo |
+| Apple Developer Program | $99/yr |
+| Google Play Developer | $25 one-time |
+| **Total** | **~$130–360/mo** depending on plans |
 
 **Strengths:**
 - **Least disruption** — SGA is already on Wix, so existing content, members, and admin workflows carry over
 - **Branded native app** in both app stores under SGA's name
 - **No developer needed** — Wix handles everything
 - Syncs automatically between website and app
-- Push notifications
-- Integrates with Wix Bookings, events, and other Wix features
+- Push notifications (basic — no scheduling)
+- AI-powered app creation since 2024
 
 **Weaknesses:**
-- **Wix just killed Forums** — the core community feature SGA needs is being deprecated. Wix Groups is the replacement but it's more like Facebook feeds than structured discussions
-- **Same content discoverability problem** — the app mirrors the website, so if content is buried on the site, it'll be buried in the app
-- **You're deeper into Wix** — more money committed to a platform that just removed a feature SGA depends on
-- **Customization is limited** — it's still a Wix site in app form
-- **$200/mo is significant** for what is essentially a wrapper around the existing site
+- **Wix just killed Forums** — the core community feature SGA needs is being deprecated (deleted March 1, 2026). Wix Groups is the replacement but it's more like Facebook feeds than structured discussions
+- **The app mirrors the website** — if content is buried on the site, it'll be buried in the app. This doesn't solve the discoverability problem
+- **No code ownership** — Wix owns everything. Cancel your subscription and the app is removed from stores within 2–3 days
+- **No offline mode** — internet required at all times, no local caching
+- **No deep linking** — can't link directly to a specific resource or forum post within the app
+- **Limited customization** — rigid templates, minimal design control. Still feels like a Wix site in app form
+- **Expensive for what it is** — $130–360/mo for a wrapper around the existing site
 
-**Verdict:** Worth exploring as the quickest, lowest-effort option — but the Forum deprecation is a serious red flag. SGA would be paying more for a platform that just took away a core feature. Best case: Wix Groups turns out to be good enough. Worst case: SGA pays $200/mo for an app that still doesn't solve the engagement and discoverability problems.
+**Verdict:** Quickest, lowest-effort option. But SGA would be paying significantly more for a platform that just removed a core feature (Forums), while getting limited customization and zero code ownership. Worth a look only if Wix Groups turns out to be an acceptable forum replacement and if the existing site structure is good enough when wrapped in an app.
 
 ---
 
@@ -348,16 +358,17 @@ This does not include the cost of the person building and maintaining it (volunt
 
 | | Wix Branded App | Mighty Networks | Disciple | FlutterFlow | AI-Assisted Build |
 |---|---|---|---|---|---|
-| **Monthly cost** | ~$200 + Wix plan | $99–425 | $300–600 | ~$80 | ~$35–60 |
+| **Monthly cost** | ~$130–360 | $99–425 | $300–600 | ~$80 | ~$35–60 |
 | **Up-front build cost** | $0 | $0 | $0 | $0–8K (if freelancer) | $0–8K (if freelancer) |
 | **Build time** | Days | Days | Days | 6–10 weeks | 2–4 weeks |
-| **Custom feel** | Low (it's still Wix) | Low | High | High | Highest |
+| **Custom feel** | Low (mirrors Wix site) | Low | High | High | Highest |
 | **Branded iOS + Android app** | Yes | No (unless $33K/yr) | Yes | Yes | Yes |
 | **Features front-and-center** | No (mirrors website) | No (feed-based) | Yes | Yes | Yes |
 | **Admin-friendly** | Very | Very | Very | Moderate | Moderate |
 | **Developer needed** | No | No | No | Yes | Yes |
 | **Search quality** | Same as Wix | Weak | Unknown | Limited | Strong (Postgres) |
-| **Forums** | Wix killed them | Built-in | Built-in | Custom-built | Custom-built |
+| **Forums** | Wix killed them (Groups only) | Built-in | Built-in | Custom-built | Custom-built |
+| **Code ownership** | No (removed in 2-3 days if you cancel) | No | No | Partial (export possible) | Yes (fully yours) |
 | **Vendor lock-in** | High (Wix) | High | High | Medium | None |
 | **Security** | Handled by Wix | Handled by platform | Handled by platform | Needs setup | Needs setup |
 | **Risk if builder leaves** | N/A | N/A | N/A | App slowly breaks | App slowly breaks |
@@ -369,7 +380,7 @@ This does not include the cost of the person building and maintaining it (volunt
 There is no perfect option. Each involves a trade-off. Here's how to think about it:
 
 ### If SGA wants the least disruption:
-**Wix Branded App ($200/mo + existing Wix plan).** SGA is already on Wix. This gets a branded app in the stores with minimal effort. But Wix just killed Forums — the replacement (Groups) may or may not work for SGA's needs. Try it first and see if Groups is acceptable. This is the fastest path.
+**Wix Branded App (~$130–360/mo total).** SGA is already on Wix. This gets a branded app in the stores with minimal effort. But Wix just killed Forums (the replacement is Groups, which is more like Facebook), there's no code ownership (cancel and the app disappears in days), and the app mostly mirrors the current site — which is the site SGA already finds inadequate. Worth a quick look, but be clear-eyed about what it is: more money for the same experience in app form.
 
 ### If SGA wants a polished community platform without a developer:
 **Disciple ($300–600/mo)** delivers a fully branded, purpose-built community app. It's the most expensive option but removes all technical complexity. Worth it if SGA can fund it through a grant or donor.
@@ -386,7 +397,7 @@ Either way, someone technical needs to build it (2–10 weeks depending on appro
 
 ### What we'd suggest exploring first:
 
-1. **Check what Wix Branded App actually looks like** with SGA's existing content. It might be good enough, and it's the least work.
+1. **Check what Wix Branded App actually looks like** with SGA's existing content. It's the least work, though at $130–360/mo it's not the cheapest, and the Forum deprecation is a problem.
 2. **If not good enough**, the decision comes down to: does SGA have a technical person willing to volunteer, or does SGA have money?
    - Technical person → AI-assisted build or FlutterFlow
    - Money → Disciple or hire a developer
@@ -396,7 +407,9 @@ Either way, someone technical needs to build it (2–10 weeks depending on appro
 
 ## Key Sources
 
-- [Wix Branded App](https://support.wix.com/en/article/branded-app-by-wix-purchasing-a-branded-app-plan) — Wix's branded mobile app product
+- [Wix App Builder](https://www.wix.com/app-builder) — Wix's branded mobile app product
+- [Wix Branded App Pricing](https://support.wix.com/en/article/branded-app-by-wix-purchasing-a-branded-app-plan) — purchasing details
+- [Wix Branded App Limitations](https://natively.dev/wix-for-mobile-apps) — independent review of what Wix apps can't do
 - [Wix Forum Deprecation](https://support.wix.com/en/article/wix-forum-move-your-forum-to-wix-groups) — Forum shutdown timeline and migration to Groups
 - [Mighty Networks](https://www.mightynetworks.com/) — community platform
 - [Mighty Pro](https://www.mightynetworks.com/pro) — branded app tier ($33K/yr)
