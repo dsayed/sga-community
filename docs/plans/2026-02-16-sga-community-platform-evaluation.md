@@ -9,13 +9,20 @@
 
 ## The Bottom Line
 
-We evaluated off-the-shelf community platforms (Mighty Networks, Disciple, Circle, Skool) and custom build approaches (FlutterFlow, AI-assisted coding, professional development). **None of the off-the-shelf platforms work for SGA.** Here's why:
+**SGA's Wix Forums are being shut down on March 1, 2026.** Wix has deprecated its Forum app entirely — after that date, all forum data will be deleted. SGA has to act regardless of which direction it chooses.
 
-- **Mighty Networks** ($99/mo) — members open a generic "Mighty Networks" app, not an SGA app. Getting SGA's own branded app costs $33,000/year. The platform is feed-based with weak search, which doesn't solve SGA's content discoverability problem.
-- **Disciple** ($300–600/mo) — actually delivers a branded app, but 3–6x over budget.
-- **Circle, Skool, others** — same fundamental problem: generic platform feel, no branded app at reasonable cost, content buried in feeds.
+We evaluated five approaches. Here's the short version:
 
-**SGA needs a custom-built app.** Three paths can get there — each with real trade-offs. See the [Recommendation](#recommendation) section below.
+| Approach | Monthly Cost | Branded App? | Needs a Developer? |
+|---|---|---|---|
+| **Wix Branded App** | ~$200 + current Wix plan | Yes (iOS + Android) | No |
+| **Mighty Networks** | $99–425 (branded = $33K/yr) | Only at $33K/yr | No |
+| **Disciple** | $300–600 | Yes | No |
+| **FlutterFlow** | ~$80 | Yes | Yes |
+| **AI-Assisted Build** | ~$30–60 | Yes | Yes |
+| **Hire a Developer** | $15K–50K up front + $3K–10K/yr | Yes | They are the developer |
+
+Each is explained in detail below, along with considerations for [security](#security), [training content & video hosting](#training-content--video-hosting), and [costs that apply regardless of approach](#costs-that-apply-to-any-custom-build).
 
 ---
 
@@ -23,10 +30,12 @@ We evaluated off-the-shelf community platforms (Mighty Networks, Disciple, Circl
 
 SGA currently runs a **Wix-powered private community website** for volunteers, fosters, and adopters. It requires login and serves as both an information resource and a social space.
 
+**Urgent: Wix Forum is being discontinued.** As of April 2025, Wix Forum was removed from the App Market. Posting was disabled October 2025. All forum data will be deleted March 1, 2026. Wix is pushing users to migrate to "Wix Groups," which are more like Facebook-style social feeds — not structured forums.
+
 ### Current features:
-- **Training courses** — structured learning for fosters/volunteers
-- **Resource library** — articles, videos, documents
-- **Forums** — peer discussion and community interaction
+- **Training courses** — structured learning for fosters/volunteers (currently links to Google Forms)
+- **Resource library** — articles, videos, documents (well-organized, worth preserving)
+- **Forums** — peer discussion (dead — being deleted by Wix)
 - **Blog** — from the public website
 - **Calendar** — from the public website
 - **Member directory** — profiles of people associated with SGA
@@ -45,31 +54,15 @@ SGA currently runs a **Wix-powered private community website** for volunteers, f
 
 **What's broken:**
 
-1. **Forums are dead.** Most recent post is from Sep 2025 (5+ months stale). Of 5 forum categories, "Ask an Expert" has 0 posts. "Community Conversation" has 7. Almost every post is from staff, not community members. Posts get 0 reactions, 0 comments, 9–42 views. This is a broadcast channel, not a community.
+1. **Forums are dead** (and being deleted). Most recent post was Sep 2025. Almost every post is from staff, not community members. Posts get 0 reactions, 0 comments. This is a broadcast channel, not a community.
 
-2. **Training links out to Google Forms.** The "Access Foster Training Basics" button opens a Google Form, not a course. Training content isn't in the platform. The training section describes 5 modules (dog body language, safe handling, meeting needs, decompression, positive reinforcement) but the actual content lives externally.
+2. **Training links out to Google Forms.** The "Access Foster Training Basics" button opens a Google Form, not a course. Training content isn't in the platform.
 
-3. **Mobile experience is a shrunken website.** On phone viewport: nav bar is cramped, page is an endless scroll, forum cards are tiny, resource tiles are easy to miss. No bottom tab bar, no app-like navigation. It's a responsive website, not a mobile experience.
+3. **Mobile experience is a shrunken website.** No bottom tab bar, no app-like navigation. It's a responsive website, not a mobile experience.
 
 4. **Directory is bare-bones.** Grid of avatars with Follow/Following counts. No roles (foster, volunteer, adopter), no filters, no bios. Can't tell who does what.
 
 5. **Content is fragmented across external tools.** Training → Google Forms. Volunteer signups → SignUpGenius. Behavioral support → another Google Form. Doug's Place volunteering → SignUpGenius. The site links you *out* rather than keeping you *in*.
-
-6. **Low blog output.** Only 3 blog posts visible.
-
-7. **Wix chat bubble** is the only real-time interaction, but it's a generic Wix feature not tied to community context.
-
-**What any replacement must address:**
-
-| Current problem | Replacement requirement |
-|---|---|
-| Forums are dead | Push notifications, easy mobile posting, visible activity |
-| Training links to Google Forms | Host training content natively — videos, text, progress tracking |
-| Mobile is a shrunken website | Mobile-first design — bottom tabs, thumb-friendly, app-like |
-| Directory is useless | Roles, filters, bios — "show me all fosters in Bellevue" |
-| Content fragmented externally | Bring signups, support requests, training inside the app |
-| Library structure is good | Preserve category structure — strongest asset to migrate |
-| Staff-only posts | Lower barrier for members — prompts, photo sharing, quick updates |
 
 ---
 
@@ -78,10 +71,10 @@ SGA currently runs a **Wix-powered private community website** for volunteers, f
 | Requirement | Detail |
 |---|---|
 | **Community size** | 100–500 active members |
-| **Budget** | $20–100/mo (flexible if justified) |
-| **Admins** | Non-technical, time-poor staff |
-| **Users** | Some can barely do email — simplicity is critical |
-| **Mobile** | Strong desire for a mobile app experience |
+| **Budget** | TBD — see pricing for each option below |
+| **Admins** | Non-technical, time-poor staff (mostly volunteers) |
+| **Users** | Widely varying comfort levels with technology — simplicity is critical |
+| **Mobile** | Must work as a real app on both iOS and Android |
 | **All-in-one** | Everything must be in one place — no hybrid multi-tool approaches |
 | **Branding** | SGA wants something that feels custom, not generic |
 | **Discoverability** | Training, library, forums, directory need to be front-and-center, not buried in menus |
@@ -89,6 +82,10 @@ SGA currently runs a **Wix-powered private community website** for volunteers, f
 
 ### Core value of the community
 The platform exists so that **vetted SGA people can help each other and find answers** — whether those answers come from peers (forums) or curated content (library/training).
+
+### Other considerations
+- **Shift scheduling.** SGA currently uses [SignUpGenius](https://www.signupgenius.com) for volunteer shift scheduling. The current Wix site already links out to SignUpGenius for things like Doug's Place volunteering. Any replacement should at minimum integrate SignUpGenius links prominently (not buried in external links like today). Ideally, shift signups would eventually happen inside the app itself, but linking to SignUpGenius is a fine starting point.
+- **Member directory.** The directory serves a specific purpose for SGA: connecting fosters with nearby volunteers, finding people by role, and enabling direct messaging. "Show me fosters near me in Bellevue" is a real use case when someone needs emergency help with an animal. It's not essential for launch, but it's valuable.
 
 ---
 
@@ -106,15 +103,40 @@ The platform exists so that **vetted SGA people can help each other and find ans
 
 **SGA can realistically have two of these three, not all three.**
 
-- Custom vision + no developer = expensive white-label platform
+- Custom vision + no developer = expensive platform (Disciple at $300+/mo, or Mighty Pro at $33K/yr)
 - Custom vision + low budget = needs a committed volunteer developer
-- No developer + low budget = off-the-shelf platform with its generic look
+- No developer + low budget = off-the-shelf platform (Wix Branded App or Mighty Networks) with limitations
 
 ---
 
 ## Options Evaluated
 
-### Option A: Off-the-Shelf Community Platform (Mighty Networks)
+### Option A: Wix Branded App
+
+**What:** Wix offers a branded mobile app product that turns your existing Wix site into a native iOS and Android app under SGA's name in the app stores. Since SGA is already on Wix, this is the path of least resistance.
+
+**Pricing:** ~$200/mo for the Branded App plan, plus SGA's existing Wix subscription, plus app store fees ($99/yr Apple, $25 one-time Google).
+
+**Strengths:**
+- **Least disruption** — SGA is already on Wix, so existing content, members, and admin workflows carry over
+- **Branded native app** in both app stores under SGA's name
+- **No developer needed** — Wix handles everything
+- Syncs automatically between website and app
+- Push notifications
+- Integrates with Wix Bookings, events, and other Wix features
+
+**Weaknesses:**
+- **Wix just killed Forums** — the core community feature SGA needs is being deprecated. Wix Groups is the replacement but it's more like Facebook feeds than structured discussions
+- **Same content discoverability problem** — the app mirrors the website, so if content is buried on the site, it'll be buried in the app
+- **You're deeper into Wix** — more money committed to a platform that just removed a feature SGA depends on
+- **Customization is limited** — it's still a Wix site in app form
+- **$200/mo is significant** for what is essentially a wrapper around the existing site
+
+**Verdict:** Worth exploring as the quickest, lowest-effort option — but the Forum deprecation is a serious red flag. SGA would be paying more for a platform that just took away a core feature. Best case: Wix Groups turns out to be good enough. Worst case: SGA pays $200/mo for an app that still doesn't solve the engagement and discoverability problems.
+
+---
+
+### Option B: Off-the-Shelf Community Platform (Mighty Networks)
 
 **What:** Purpose-built community platform with native mobile apps, forums, courses, resource library, member directory, and events.
 
@@ -128,43 +150,36 @@ The platform exists so that **vetted SGA people can help each other and find ans
 | Growth | $425/mo | No |
 | Mighty Pro | $33,000/year (~$2,750/mo) | Yes |
 
-Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise pricing, not viable for SGA. All other plans put members inside the generic Mighty Networks app.
+Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise pricing. All other plans put members inside the generic Mighty Networks app.
 
-**Vendor lock-in risk:** Mighty Networks has restructured and increased pricing multiple times. A non-profit committing recurring revenue to a platform with no data portability and no ability to export community content is exposed to future price increases with no leverage.
+**Vendor lock-in risk:** Mighty Networks has restructured and increased pricing multiple times. No data portability, no way to export community content.
 
 **Strengths:**
 - Everything in one place — forums, courses, library, directory, events, calendar
 - Native mobile app included (iOS + Android)
 - Non-technical admins can manage everything
-- Onboarding flows, engagement automation, badges, leaderboards
-- Can be live in weeks, not months
-- 84% member-generated content rate across the platform
-- AI-suggested discussion prompts to keep community active
+- Can be live in days, not months
 
 **Weaknesses:**
 - **Feed-based, not threaded** — valuable answers scroll away, weak knowledge-base behavior
-- **Limited customization** — all Mighty Networks communities look similar, fixed layout
-- **Weak search** — directly conflicts with "content is hard to find" pain point
-- **Basic course features** — no quizzes, completion certificates, or surveys
-- **Doesn't feel like a custom app** — features are "Spaces" in a generic feed structure, not purpose-built sections
-- **Branded app (own icon in app store) costs significantly more** — the $99/mo plan puts members inside the Mighty Networks app
-- **Group chats can't add members after creation** — annoying for rotating volunteer base
-- **Navigation issues** — many sections open as popups rather than full pages
+- **Limited customization** — all Mighty Networks communities look similar
+- **Weak search** — directly conflicts with SGA's discoverability problem
+- **Doesn't feel like a custom app** — features are "Spaces" in a generic feed
+- **Branded app costs $33K/year** — without it, members open the generic Mighty Networks app
+- **Group chats can't add members after creation** — bad for rotating volunteers
 
 **Examples to try:**
-- [LO Sister](https://apps.apple.com/us/app/lo-sister-by-sadie-rob-huff/id1519069830) — branded Mighty Pro app for a faith community
-- [Tony Robbins Arena](https://apps.apple.com/us/app/tony-robbins-arena/id1639175511) — 30K+ member community
-- [Mighty Networks app](https://apps.apple.com/us/app/mighty-networks/id1081683081) — browse free communities to see the non-branded experience
+- [Mighty Networks app](https://apps.apple.com/us/app/mighty-networks/id1081683081) — browse free communities to see what members experience
 
-**Verdict:** Branded app is out of reach at $33K/year. Without it, members open the generic Mighty Networks app — which is just a nicer version of the Wix community SGA already has. The $99–179/mo plans are the fastest path to "something real" but don't match SGA's vision of a custom-feeling branded app with features front-and-center. Significant vendor lock-in risk at any tier.
+**Verdict:** The $99–179/mo plans are the fastest path to "something real" but members open a generic Mighty Networks app, not an SGA app. The platform doesn't solve the discoverability problem. Significant vendor lock-in.
 
 ---
 
-### Option B: White-Label Community App (Disciple)
+### Option C: White-Label Community App (Disciple)
 
 **What:** Fully branded native app (SGA's name in the app store) with community, content, courses, and events. Disciple handles all the tech.
 
-**Pricing:** Starting ~$300+/mo. Adding a mobile app pushes to ~$458/mo. Scaling to 1,000 members adds ~$108/mo.
+**Pricing:** Starting ~$300+/mo. Adding a mobile app pushes to ~$458/mo.
 
 **Strengths:**
 - Fully branded — own app icon, SGA's name in the app store
@@ -175,22 +190,17 @@ Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise p
 - No developer needed
 
 **Weaknesses:**
-- **3–6x over budget** at $300–600/mo
+- **Expensive** at $300–600/mo ($3,600–7,200/year)
 - Fewer integrations than competitors
 - Less mature feature set than Mighty Networks
-- Scaling costs add up with member growth
 
-**Examples to try:**
-- [The Collective by Disciple](https://apps.apple.com/us/app/the-collective-by-disciple/id1501311891) — Disciple's own showcase
-- Browse [disciple.community](https://www.disciple.community/) for more examples
-
-**Verdict:** Closest to what SGA envisions out of the box, but the price is a dealbreaker at current budget. Could work if SGA secures a grant or dedicated donor sponsorship (~$3,600–6,000/year).
+**Verdict:** Closest to what SGA envisions out of the box, but the price is significant. Could work if SGA secures a grant or dedicated donor sponsorship.
 
 ---
 
-### Option C: No-Code App Builder (FlutterFlow + Firebase)
+### Option D: No-Code App Builder (FlutterFlow + Firebase)
 
-**What:** Build a custom native app using FlutterFlow's visual drag-and-drop builder, with Firebase as the backend database and auth system. Publishes real native apps to iOS and Android app stores.
+**What:** Build a custom native app using FlutterFlow's visual drag-and-drop builder, with Firebase as the backend. Publishes real native apps to iOS and Android app stores.
 
 **Pricing:** ~$80/mo (FlutterFlow $70/mo + Apple Developer $99/yr + Google Play $25 one-time).
 
@@ -199,207 +209,200 @@ Branded app in app stores requires Mighty Pro tier at $33K/year — enterprise p
 **Strengths:**
 - **Custom UI** — SGA gets exactly the app they're envisioning
 - Dedicated screens for Training, Library, Forums, Directory, Calendar
-- Real native apps in the app store under SGA's name
-- Within budget
+- Real native apps in the app store under SGA's name (iOS + Android)
 - AI features in FlutterFlow can generate initial layouts from prompts
 
 **Weaknesses:**
 - **Requires a technical builder** — not something a non-technical admin can do
-- **Backend expertise needed** — Firebase data modeling, auth configuration, push notifications
-- **Ongoing maintenance required** — bug fixes, iOS/Android updates 2–4x/year, new features
+- **Backend expertise needed** — Firebase data modeling, auth, push notifications
+- **Ongoing maintenance required** — bug fixes, iOS/Android updates 2–4x/year
 - **If the builder leaves, the app slowly breaks** — updates stop, store compliance lapses
-- **Firebase search is limited** — may need additional service (Algolia) for good content search
-- **Firebase costs scale with usage** — charged per read/write operation
-- **FlutterFlow has scaling limits** — performance issues reported on larger/complex apps
-- **Content management is a database interface** — not as friendly as Mighty's admin panel
-- **Export is one-way** — if you leave FlutterFlow, the exported Flutter code needs refactoring
+- **Firebase search is limited** — may need additional service (Algolia) for content search
+- **FlutterFlow itself is a platform** — if they raise prices or shut down, you have to migrate
+- **Content management is a database interface** — not as friendly as a purpose-built admin panel
 
-**Who needs to build it:**
-- Someone comfortable with visual tools and logical thinking
-- Willing to learn Firebase/database concepts
-- Available 10–20 hrs/week during the build
-- Available for ongoing maintenance
+**Who needs to build it:** Someone comfortable with visual tools and logical thinking, willing to learn Firebase/database concepts, available 10–20 hrs/week during the build and a few hours/month ongoing.
 
-**If hiring a freelancer:** ~$3,000–8,000 for initial build + ongoing maintenance budget (~$500/year for tweaks).
+**If hiring a freelancer:** ~$3,000–8,000 for initial build + ~$500/year for ongoing maintenance.
 
-**Examples to try:**
-- [SuperQueer](https://www.flutterflow.io/showcase) — LGBTQ+ community app (440+ partners, 72% engagement)
-- [Squadd](https://www.flutterflow.io/showcase) — social community + events app
-- Browse [FlutterFlow Showcase](https://www.flutterflow.io/showcase) for more
-
-**Verdict:** Gives SGA the custom app they want at a price they can afford, but trades "no developer needed" for "need a developer sometimes." Only viable if a committed technical volunteer or small freelance budget exists.
+**Verdict:** Gives SGA the custom app they want, but trades "no developer needed" for "need a developer sometimes." Only viable if a committed technical volunteer or small freelance budget exists.
 
 ---
 
-### Option D: Vibe Coding with AI (Claude + Expo/Next.js + Supabase)
+### Option E: AI-Assisted Build ("Vibe Coding")
 
-**What:** Build a fully custom app by describing features conversationally to an AI coding assistant (Claude). Uses standard web/mobile frameworks and an open-source backend.
+**What:** Build a fully custom app by describing features conversationally to an AI coding assistant. The AI writes the code; a technical person reviews and deploys it. Uses standard web/mobile frameworks and an open-source backend.
+
+**A note on bias:** This evaluation was written with the help of Claude, an AI tool made by Anthropic. Claude is also the tool recommended for the "vibe coding" approach. We want to be transparent about that. The honest case for this approach is: it produces the most customizable result at the lowest ongoing cost, with the strongest search and zero vendor lock-in. The honest case against it is: it requires the most technical skill, carries the highest maintenance risk, and AI-generated code can have bugs and security issues that a non-technical person can't catch. It is not the right choice if SGA doesn't have a technical person willing to own it.
 
 **Recommended tech stack:**
 
 | Layer | Tool | Why |
 |---|---|---|
-| Framework | Expo (React Native) or Next.js (PWA) | Cross-platform from one codebase |
-| Backend | Supabase | Open-source, simpler than Firebase, built-in admin dashboard |
+| Framework | Expo (React Native) | One codebase → iOS + Android + Web |
+| Backend | Supabase | Open-source, built-in admin dashboard |
 | Auth | Supabase Auth | Email/password, magic links |
-| Database | Supabase (Postgres) | Real database with real full-text search |
+| Database | Supabase (Postgres) | Real full-text search |
 | Storage | Supabase Storage | Videos, documents, images |
 | Hosting | Vercel (web) or app stores (native) | Free tier covers SGA's scale |
 
-**Pricing:** ~$0–20/mo (Supabase free tier + Vercel free tier + existing Claude subscription). Add $99/yr for Apple Developer if going native.
+**Pricing (realistic):**
 
-**Build timeline:** 2–4 weeks with a dedicated builder working with Claude.
+| Item | Cost |
+|---|---|
+| Supabase (Pro plan for production) | $25/mo |
+| Vercel hosting | $0–20/mo |
+| Apple Developer Program | $99/yr (~$8/mo) |
+| Google Play Developer | $25 one-time |
+| Domain name | ~$12/yr (~$1/mo) |
+| Video hosting (Bunny CDN) | ~$1–5/mo |
+| Claude subscription (for building) | $20/mo (existing) |
+| **Total ongoing** | **~$35–60/mo** |
+
+**Build timeline:** 2–4 weeks with a dedicated builder working with AI.
 
 **Strengths:**
-- **Cheapest option** — no platform subscriptions, code is yours
-- **Fastest initial build** — describing features is faster than clicking through FlutterFlow menus
+- **Cheapest ongoing cost** — no platform subscriptions, code belongs to SGA
 - **Total control** — every screen, every interaction, exactly as SGA envisions
-- **Real search** — Postgres full-text search actually works; solves the discoverability problem properly
-- **No platform lock-in** — standard React/JavaScript code, maintainable by any developer
-- **Supabase dashboard** — gives non-technical admins a spreadsheet-like interface to manage content and users
-- **PWA option eliminates app store complexity** — no Apple review process, instant updates, installable on phones
-- **Future-proof maintenance story** — as AI tools improve, anyone can paste the codebase into Claude and say "fix X"
-- **No vendor dependency** — if Supabase or Vercel change pricing, the code runs anywhere
+- **Real search** — Postgres full-text search actually works; solves the discoverability problem
+- **No platform lock-in** — standard React/JavaScript code, any developer can maintain it
+- **Supabase dashboard** — gives admins a spreadsheet-like interface to manage content and users
+- **Future-proof maintenance** — as AI tools improve, anyone can say "fix X" and get help
 
 **Weaknesses:**
-- **Same maintenance problem as FlutterFlow, arguably worse** — if the builder disappears, SGA has code nobody understands
-- **You (David) become the developer** — at least initially, this is your project to own
-- **AI-generated code can accumulate technical debt** — a year of patches may make future changes harder
+- **Requires a technical person** — someone has to build it and review the AI's output
+- **If the builder disappears, the app stops getting updated** — same risk as FlutterFlow
+- **AI-generated code can have bugs and security issues** — needs human review
 - **Custom code means custom bugs** — no pre-tested components handling edge cases
 - **Testing is manual** — no built-in QA like platform solutions provide
-- **PWA trade-off** — if going PWA instead of native, push notifications only work on iOS 16.4+ and there's no app store presence
 
-**Native app vs PWA decision:**
-
-| | Native (Expo) | PWA (Next.js) |
-|---|---|---|
-| App store presence | Yes | No |
-| Push notifications | Full support | iOS 16.4+ only |
-| Install experience | Download from store | "Add to Home Screen" |
-| Updates | App store review process | Instant |
-| Deployment complexity | Higher | Much lower |
-| Cost | +$99/yr Apple | $0 |
-
-**Build phase comparison with FlutterFlow:**
-
-| Phase | FlutterFlow | Vibe Coding |
-|---|---|---|
-| Home screen + navigation | 2–3 days | 1–2 hours |
-| User auth + profiles | 3–5 days | 2–4 hours |
-| Forums (posts, comments, threads) | 1–2 weeks | 1–2 days |
-| Resource library (searchable) | 1 week | 1 day |
-| Training courses | 1–2 weeks | 1–2 days |
-| Member directory | 3–5 days | Half a day |
-| Calendar/events | 3–5 days | Half a day |
-| Polish, testing, deploy | 1–2 weeks | 1–2 weeks |
-| **Total** | **6–10 weeks** | **2–4 weeks** |
-
-**Verdict:** Produces the best app for the least money in the least time — but only if a technical person (likely David) is willing to build it and at least loosely maintain it. The most ambitious option with the highest ceiling and the most personal commitment required.
+**Verdict:** Produces the most custom result for the least ongoing money — but only if a technical person is willing to build it and loosely maintain it. Highest ceiling, most personal commitment.
 
 ---
 
 ## Options Not Pursued
 
-### Discord/Slack + separate CMS
-Rejected because users can barely do email — multiple tools is not workable. Everything must be in one place.
+- **Discord/Slack + separate CMS** — Multiple tools is not workable for this audience. Everything must be in one place.
+- **Circle** — Similar to Mighty Networks. No branded app at reasonable cost. Same feed-based limitations.
+- **Skool** — Education/creator-focused. Web-only. Limited feature set for SGA's needs.
 
-### Custom-coded app (traditional development)
-Rejected because no dedicated developer exists and budget doesn't support hiring one ($50K+ for a professional build).
+---
 
-### Circle (community platform)
-Similar to Mighty Networks. Slightly cheaper tiers but stricter storage/moderator limits. No branded app at reasonable price point. Same fundamental limitations as Mighty — feed-based, generic structure.
+## Training Content & Video Hosting
 
-### Skool (community + courses)
-Primarily education/creator-focused. Web-only at the time of evaluation. Limited feature set for SGA's needs.
+A core problem with the current site is that training links out to Google Forms. Any replacement needs to host training content natively — videos, articles, and progress tracking inside the app.
+
+**For video hosting**, the options are inexpensive:
+- **Bunny CDN** (~$1/mo) — pay-as-you-go, extremely cheap for SGA's scale. Host training videos directly.
+- **Vimeo** ($9/mo) — more polished player, privacy controls, easy embedding.
+- **YouTube (unlisted videos)** — free, but less professional and less control over the experience.
+- **Supabase Storage** — included in the backend if using vibe coding approach. Works for smaller video libraries.
+
+**For course structure**, the app would need:
+- Modules with video + text content
+- Progress tracking (which modules has this member completed?)
+- Completion status visible to admins
+- Ability for admins to add/edit courses without a developer
+
+This replaces the Google Forms approach entirely. Whether using FlutterFlow or vibe coding, course functionality is built into the app. For Mighty Networks or Disciple, courses are a built-in feature. For Wix Branded App, Wix has some course/membership features but they're limited.
+
+---
+
+## Security
+
+Any app handling member data needs basic security practices:
+
+**For off-the-shelf platforms (Wix, Mighty Networks, Disciple):** Security is handled by the platform. This is a genuine advantage — they have dedicated security teams, handle compliance, and manage data encryption. SGA doesn't have to think about it.
+
+**For custom builds (FlutterFlow or vibe coding):**
+- **Authentication** — Supabase Auth and Firebase Auth both provide industry-standard login security (encrypted passwords, session management, rate limiting). This is not DIY — it's handled by the backend service.
+- **Data access** — Row-level security policies in Supabase (or Firestore rules in Firebase) control who can see what. Members can only see their own private data; public content is readable by all authenticated users. This needs to be set up correctly.
+- **HTTPS** — All data in transit is encrypted by default with Vercel, Supabase, and Firebase.
+- **The real risk** — a custom app is only as secure as the person who builds it. AI-generated code can introduce vulnerabilities (SQL injection, exposed API keys, misconfigured permissions) that a non-technical person wouldn't catch. If going the custom route, a security review by someone experienced is worth the investment before launch.
+- **Ongoing** — dependencies need updating, security patches need applying. This is part of the maintenance burden.
+
+**Bottom line:** Off-the-shelf platforms win on security with zero effort. Custom builds can be equally secure but require someone who knows what they're doing to set it up right.
+
+---
+
+## Costs That Apply to Any Custom Build
+
+Regardless of whether SGA chooses FlutterFlow or vibe coding, these costs exist:
+
+| Item | Cost | Notes |
+|---|---|---|
+| Apple Developer Program | $99/year | Required to publish in the iOS App Store |
+| Google Play Developer | $25 one-time | Required to publish in the Google Play Store |
+| Domain name | ~$12/year | e.g., community.savinggreatanimals.org |
+| Video hosting | $1–9/month | Bunny CDN or Vimeo for training videos |
+| Backend hosting | $0–25/month | Supabase or Firebase — free tier may suffice initially |
+| Web hosting | $0–20/month | Vercel or similar — free tier likely sufficient |
+
+**Minimum realistic ongoing cost for a custom app: ~$30–60/month.**
+
+This does not include the cost of the person building and maintaining it (volunteer time or freelancer fees).
 
 ---
 
 ## Summary Comparison
 
-| | Mighty Networks | Disciple | FlutterFlow | Vibe Coding |
-|---|---|---|---|---|
-| **Monthly cost** | $99–425 (no branded app) or $2,750 (branded) | $300–600 | ~$80 | ~$0–20 |
-| **Build time** | Days (setup) | Days (setup) | 6–10 weeks | 2–4 weeks |
-| **Custom feel** | Low | High | High | Highest |
-| **Features front-and-center** | No (feed-based) | Yes | Yes | Yes |
-| **Mobile app** | Generic Mighty app (branded = $33K/yr) | Yes (branded) | Yes (branded) | Yes (branded or PWA) |
-| **Admin-friendly** | Very | Very | Moderate | Moderate (Supabase dashboard) |
-| **Developer needed** | No | No | Yes (build + maintain) | Yes (build + maintain) |
-| **Search quality** | Weak | Unknown | Limited (Firebase) | Strong (Postgres) |
-| **Vendor lock-in** | High (no data export, price increases) | High | Medium (FlutterFlow) | None |
-| **Risk if builder leaves** | N/A | N/A | App slowly breaks | App slowly breaks |
-| **Within SGA budget** | Courses plan only ($99) | No | Yes | Yes |
+| | Wix Branded App | Mighty Networks | Disciple | FlutterFlow | AI-Assisted Build |
+|---|---|---|---|---|---|
+| **Monthly cost** | ~$200 + Wix plan | $99–425 | $300–600 | ~$80 | ~$35–60 |
+| **Up-front build cost** | $0 | $0 | $0 | $0–8K (if freelancer) | $0–8K (if freelancer) |
+| **Build time** | Days | Days | Days | 6–10 weeks | 2–4 weeks |
+| **Custom feel** | Low (it's still Wix) | Low | High | High | Highest |
+| **Branded iOS + Android app** | Yes | No (unless $33K/yr) | Yes | Yes | Yes |
+| **Features front-and-center** | No (mirrors website) | No (feed-based) | Yes | Yes | Yes |
+| **Admin-friendly** | Very | Very | Very | Moderate | Moderate |
+| **Developer needed** | No | No | No | Yes | Yes |
+| **Search quality** | Same as Wix | Weak | Unknown | Limited | Strong (Postgres) |
+| **Forums** | Wix killed them | Built-in | Built-in | Custom-built | Custom-built |
+| **Vendor lock-in** | High (Wix) | High | High | Medium | None |
+| **Security** | Handled by Wix | Handled by platform | Handled by platform | Needs setup | Needs setup |
+| **Risk if builder leaves** | N/A | N/A | N/A | App slowly breaks | App slowly breaks |
 
 ---
 
 ## Recommendation
 
-Off-the-shelf platforms don't meet SGA's needs. **SGA needs a custom-built app.** There are three ways to get there:
+There is no perfect option. Each involves a trade-off. Here's how to think about it:
 
-### Path 1: AI-Assisted Build ("Vibe Coding")
-A technical volunteer describes what they want to an AI tool (like Claude) and it writes the code. Think of it as having a free junior developer who works instantly but needs supervision.
+### If SGA wants the least disruption:
+**Wix Branded App ($200/mo + existing Wix plan).** SGA is already on Wix. This gets a branded app in the stores with minimal effort. But Wix just killed Forums — the replacement (Groups) may or may not work for SGA's needs. Try it first and see if Groups is acceptable. This is the fastest path.
 
-| | |
-|---|---|
-| **Cost** | ~$0–20/mo ongoing |
-| **Build time** | 2–4 weeks |
-| **Who builds it** | A technical volunteer working with AI |
-| **Ongoing effort** | A few hours/month for updates and fixes |
-| **What you get** | Fully custom app, SGA-branded, real search, no vendor lock-in |
-| **The catch** | Someone technical has to be willing to own it. If that person disappears, the app stops getting updated. |
+### If SGA wants a polished community platform without a developer:
+**Disciple ($300–600/mo)** delivers a fully branded, purpose-built community app. It's the most expensive option but removes all technical complexity. Worth it if SGA can fund it through a grant or donor.
 
-### Path 2: No-Code Builder (FlutterFlow)
-A visual drag-and-drop tool for building real apps. Like building a website in Squarespace, but for mobile apps.
+**Mighty Networks ($99–179/mo)** is cheaper but members open a generic app, not an SGA-branded one. The platform's weak search and feed-based design don't solve SGA's core problems.
 
-| | |
-|---|---|
-| **Cost** | ~$80/mo ongoing |
-| **Build time** | 6–10 weeks |
-| **Who builds it** | A semi-technical volunteer or freelancer ($3K–8K) |
-| **Ongoing effort** | A few hours/month for updates and fixes |
-| **What you get** | Custom native app in the app store under SGA's name |
-| **The catch** | Same dependency on a builder. FlutterFlow itself is a platform — if they raise prices or shut down, you have to migrate. |
+### If SGA has access to a technical volunteer:
+**AI-assisted build (~$35–60/mo)** or **FlutterFlow (~$80/mo)** both produce a custom, branded app. The AI-assisted approach is cheaper and faster but requires more technical skill. FlutterFlow is more visual and approachable but costs more and has its own platform lock-in.
 
-### Path 3: Hire a Developer
-Pay a professional to build and maintain the app.
+Either way, someone technical needs to build it (2–10 weeks depending on approach) and commit to a few hours per month of ongoing maintenance. If that person disappears, the app eventually breaks.
 
-| | |
-|---|---|
-| **Cost** | $15K–50K to build + $3K–10K/year to maintain |
-| **Build time** | 2–4 months |
-| **Who builds it** | A freelancer or small agency |
-| **Ongoing effort** | Paid maintenance contract |
-| **What you get** | Professional-grade app, someone accountable |
-| **The catch** | The cost. This is the right answer if budget allows, but it's likely out of reach without a grant or major donor. |
+### If SGA can secure a grant or significant funding:
+**Hire a developer ($15K–50K up front).** This is the most sustainable long-term answer. A professional builds it, a maintenance contract keeps it running, and SGA isn't dependent on a volunteer. Non-profit technology grants exist specifically for this.
 
-### What All Three Paths Require
+### What we'd suggest exploring first:
 
-No matter which path SGA chooses, a custom app means:
-
-1. **Someone has to build it.** There is no way around this. The question is whether that person is a volunteer, a freelancer, or a paid developer.
-2. **Someone has to maintain it.** Apps need updates — iOS changes, bugs surface, members request features. Plan for a few hours per month minimum.
-3. **Content migration is real work.** The library articles, training modules, and member accounts from the Wix site need to be moved over. Budget 1–2 weeks for this regardless of approach.
-4. **Start small.** Launch with Home + Forums + Library. Add Training and Directory in a second phase. Don't try to build everything at once.
-
-### Our Suggestion
-
-**Path 1 (AI-assisted build) if SGA has access to a technical volunteer.** It's the cheapest, fastest, produces the best result, and the code belongs to SGA with zero vendor lock-in. The wireframe prototype linked at the top of this document was built this way in a single session.
-
-**Path 3 (hire a developer) if SGA can fund it.** Worth exploring grants — many exist for non-profit technology. This removes the volunteer dependency problem.
-
-**Path 2 (FlutterFlow) as a middle ground** if the volunteer is semi-technical but not a coder.
+1. **Check what Wix Branded App actually looks like** with SGA's existing content. It might be good enough, and it's the least work.
+2. **If not good enough**, the decision comes down to: does SGA have a technical person willing to volunteer, or does SGA have money?
+   - Technical person → AI-assisted build or FlutterFlow
+   - Money → Disciple or hire a developer
+   - Neither → Mighty Networks at $99/mo as a stopgap while SGA figures out the longer-term answer
 
 ---
 
 ## Key Sources
 
+- [Wix Branded App](https://support.wix.com/en/article/branded-app-by-wix-purchasing-a-branded-app-plan) — Wix's branded mobile app product
+- [Wix Forum Deprecation](https://support.wix.com/en/article/wix-forum-move-your-forum-to-wix-groups) — Forum shutdown timeline and migration to Groups
 - [Mighty Networks](https://www.mightynetworks.com/) — community platform
-- [Mighty Pro](https://www.mightynetworks.com/pro) — branded app tier
+- [Mighty Pro](https://www.mightynetworks.com/pro) — branded app tier ($33K/yr)
 - [Disciple](https://www.disciple.community/) — white-label community app builder
 - [FlutterFlow](https://www.flutterflow.io/) — no-code app builder
 - [FlutterFlow Showcase](https://www.flutterflow.io/showcase) — real apps built with FlutterFlow
 - [Supabase](https://supabase.com/) — open-source backend platform
-- [FlutterFlow Expert Interview](https://www.lowcode.agency/blog/what-you-can-and-cant-do-with-flutterflow) — honest capabilities assessment
-- [Mighty Networks vs Circle (2026)](https://www.learningrevolution.net/mighty-networks-vs-circle/) — platform comparison
-- [Mighty Networks Review (2026)](https://whop.com/blog/mighty-networks/) — independent review
-- [Mighty Networks Review - LinoDash](https://linodash.com/mighty-networks-review/) — 1-year user review
+- [Bunny CDN](https://bunny.net/) — affordable video hosting (~$1/mo)
+- [Wix Branded App Pricing](https://www.davydovconsulting.com/post/wix-branded-app-pricing-everything-you-need-to-know) — cost breakdown
