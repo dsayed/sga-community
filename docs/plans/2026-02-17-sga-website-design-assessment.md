@@ -41,7 +41,7 @@ The good news: the content and information architecture are solid. The problems 
 
 **Current:** Slider with a single photo and small text.
 
-**Recommended:** Full-viewport hero with a single striking image (dog looking at camera, or a happy adoption moment), a large emotional headline featuring the "8,500+" stat, and two clear CTAs. No slider — [sliders reduce conversions](https://www.nngroup.com/articles/auto-forwarding/) and most users never see past slide 1.
+**Recommended:** Full-viewport hero with a single striking image (dog looking at camera, or a happy adoption moment), a large emotional headline featuring the "8,500+" stat, and two clear CTAs. No slider — [auto-rotating carousels perform poorly](https://cxl.com/blog/dont-use-automatic-image-sliders-or-carousels/) because users treat them like banner ads (banner blindness), and most never interact past slide 1.
 
 ### 2. Simplify the Navigation
 
