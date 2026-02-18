@@ -3,5 +3,6 @@
 !app/public/images/*.png
 !app/public/icons/*.png
 !app/docs/screenshots/*.png
+!website/images/*.png
 node_modules/
 .env

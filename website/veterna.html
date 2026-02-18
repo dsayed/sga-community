@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saving Great Animals | The Right Dog For The Right Home</title>
+  <meta name="description" content="Saving Great Animals is a Seattle-based dog rescue nonprofit. Since 2007, we've matched 8,500+ dogs with their forever homes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: #2C2420; background: #FBF8F4; line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'Fraunces', serif; line-height: 1.2; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    /* Focus styles */
+    a:focus-visible, button:focus-visible { outline: 3px solid #E8772B; outline-offset: 2px; border-radius: 4px; }
+    /* Fade-in animation */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ---- UTILITY BAR ---- */
+    .utility-bar { background: #2B3990; color: #fff; font-size: 0.85rem; padding: 8px 0; }
+    .utility-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .utility-info { display: flex; gap: 24px; flex-wrap: wrap; }
+    .utility-info span { display: flex; align-items: center; gap: 6px; }
+    .utility-social { display: flex; gap: 14px; }
+    .utility-social a { color: #fff; opacity: 0.85; transition: opacity 0.2s; }
+    .utility-social a:hover { opacity: 1; }
+    .icon-sm { width: 16px; height: 16px; }
+
+    /* ---- NAVIGATION ---- */
+    .navbar { background: #fff; border-bottom: 1px solid #EDE8E3; position: sticky; top: 0; z-index: 100; transition: box-shadow 0.3s; }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(44,36,32,0.08); }
+    .navbar .container { display: flex; align-items: center; justify-content: space-between; padding-top: 0; padding-bottom: 0; min-height: 72px; }
+    .nav-logo img { height: 48px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-weight: 500; font-size: 0.95rem; color: #2C2420; padding: 8px 0; position: relative; transition: color 0.2s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: #E8772B; transition: width 0.3s; }
+    .nav-links a:hover { color: #E8772B; }
+    .nav-links a:hover::after { width: 100%; }
+    .btn-donate { background: #E8772B; color: #fff !important; padding: 10px 28px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .btn-donate:hover { background: #d4691f; transform: translateY(-1px); }
+    .btn-donate::after { display: none !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #2C2420; margin: 5px 0; transition: transform 0.3s, opacity 0.3s; }
+
+    /* ---- HERO ---- */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url('images/hero-dog-full.jpg') center/cover no-repeat; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(27,38,102,0.45) 0%, rgba(27,38,102,0.75) 100%); }
+    .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; max-width: 800px; padding: 40px 24px; }
+    .hero-content h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 12px rgba(0,0,0,0.2); }
+    .hero-content p { font-size: clamp(1rem, 2vw, 1.2rem); margin-bottom: 36px; opacity: 0.92; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: #E8772B; color: #fff; padding: 14px 36px; border-radius: 6px; font-weight: 600; font-size: 1rem; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { background: #d4691f; transform: translateY(-2px); }
+    .btn-outline { border: 2px solid #fff; color: #fff; padding: 12px 34px; border-radius: 6px; font-weight: 600; font-size: 1rem; background: transparent; cursor: pointer; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+    .paw-deco { position: absolute; bottom: 60px; right: 8%; opacity: 0.08; font-size: 8rem; z-index: 1; transform: rotate(-15deg); pointer-events: none; }
+
+    /* ---- SERVICES ---- */
+    .services { padding: 100px 0; background: #FBF8F4; }
+    .section-heading { text-align: center; margin-bottom: 56px; }
+    .section-heading h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); color: #2C2420; margin-bottom: 12px; }
+    .section-heading p { color: #7A6E65; max-width: 560px; margin: 0 auto; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .service-card { background: #fff; border-radius: 12px; padding: 40px 32px; text-align: center; box-shadow: 0 4px 24px rgba(44,36,32,0.06); border: 1px solid #EDE8E3; transition: transform 0.3s, box-shadow 0.3s; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(44,36,32,0.1); }
+    .service-icon { width: 64px; height: 64px; background: #2B3990; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+    .service-icon svg { width: 28px; height: 28px; fill: #fff; }
+    .service-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .service-card p { color: #7A6E65; margin-bottom: 20px; font-size: 0.95rem; }
+    .service-card a { color: #E8772B; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+    .service-card a:hover { color: #d4691f; }
+
+    /* ---- STATS ---- */
+    .stats { background: #2B3990; padding: 80px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; color: #fff; }
+    .stat-item h3 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 4px; }
+    .stat-item p { font-size: 0.95rem; opacity: 0.85; }
+
+    /* ---- FEATURED DOGS ---- */
+    .featured-dogs { padding: 100px 0; background: #FBF8F4; }
+    .dogs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .dog-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(44,36,32,0.06); border: 1px solid #EDE8E3; transition: transform 0.3s, box-shadow 0.3s; }
+    .dog-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(44,36,32,0.1); }
+    .dog-card img { width: 100%; height: 250px; object-fit: cover; }
+    .dog-card-body { padding: 24px; }
+    .dog-card-body h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .dog-card-body .breed { color: #7A6E65; font-size: 0.9rem; margin-bottom: 16px; }
+    .dog-card-body a { color: #E8772B; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+    .dog-card-body a:hover { color: #d4691f; }
+
+    /* ---- CTA BANNER ---- */
+    .cta-banner { position: relative; padding: 100px 0; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; background: url('images/volunteer.jpg') center/cover no-repeat; }
+    .cta-overlay { position: absolute; inset: 0; background: rgba(43,57,144,0.88); }
+    .cta-content { position: relative; z-index: 2; text-align: center; color: #fff; }
+    .cta-content h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; }
+    .cta-content p { font-size: 1.1rem; opacity: 0.9; max-width: 580px; margin: 0 auto 36px; }
+
+    /* ---- PARTNERS ---- */
+    .partners { padding: 80px 0; background: #fff; }
+    .partners-row { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .partner-item { color: #7A6E65; font-weight: 600; font-size: 1rem; padding: 16px 28px; border: 1px solid #EDE8E3; border-radius: 8px; transition: color 0.2s, border-color 0.2s; }
+    .partner-item:hover { color: #2B3990; border-color: #2B3990; }
+
+    /* ---- FOOTER ---- */
+    .footer { background: #1D2666; color: #fff; padding: 64px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .footer-logo img { height: 44px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+    .footer-mission { opacity: 0.8; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.7; }
+    .footer-social { display: flex; gap: 14px; }
+    .footer-social a { color: #fff; opacity: 0.7; transition: opacity 0.2s; }
+    .footer-social a:hover { opacity: 1; }
+    .footer h4 { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 20px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .footer-links a { display: block; opacity: 0.75; font-size: 0.9rem; padding: 5px 0; transition: opacity 0.2s; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-contact p { opacity: 0.75; font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; }
+    .footer-bottom { text-align: center; padding: 24px 0; font-size: 0.85rem; opacity: 0.6; }
+
+    /* ---- MOBILE ---- */
+    @media (max-width: 900px) {
+      .services-grid, .dogs-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      .utility-info { font-size: 0.78rem; gap: 12px; }
+      .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: #fff; flex-direction: column; padding: 80px 32px 32px; gap: 0; box-shadow: -4px 0 24px rgba(0,0,0,0.1); transition: right 0.35s ease; z-index: 200; }
+      .nav-links.open { right: 0; }
+      .nav-links a { padding: 14px 0; border-bottom: 1px solid #EDE8E3; width: 100%; }
+      .nav-links a::after { display: none; }
+      .btn-donate { width: 100%; text-align: center; margin-top: 12px; }
+      .hamburger { display: block; z-index: 250; }
+      .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .hamburger.active span:nth-child(2) { opacity: 0; }
+      .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+      .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 150; }
+      .mobile-overlay.open { display: block; }
+      .services-grid, .dogs-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .utility-info span:nth-child(3) { display: none; }
+      .partners-row { gap: 8px; }
+      .partner-item { padding: 12px 18px; font-size: 0.85rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Utility Bar -->
+  <div class="utility-bar" role="banner">
+    <div class="container">
+      <div class="utility-info">
+        <span>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:info@savinggreatanimals.org">info@savinggreatanimals.org</a>
+        </span>
+        <span>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.34a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0122 16.92z"/></svg>
+          (206) 555-7297
+        </span>
+        <span>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Seattle, WA
+        </span>
+      </div>
+      <div class="utility-social" aria-label="Social media links">
+        <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Twitter / X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="Saving Great Animals home">
+        <img src="images/sga-logo.png" alt="Saving Great Animals logo" width="160" height="48">
+      </a>
+      <div class="nav-links" id="navLinks" role="menubar">
+        <a href="#about" role="menuitem">About</a>
+        <a href="#adopt" role="menuitem">Adopt</a>
+        <a href="#foster" role="menuitem">Foster</a>
+        <a href="#involved" role="menuitem">Get Involved</a>
+        <a href="#resources" role="menuitem">Resources</a>
+        <a href="#donate" class="btn-donate" role="menuitem">Donate</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="mobile-overlay" id="mobileOverlay"></div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="hero-bg" role="img" aria-label="A happy dog in a sunny field"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content fade-in">
+      <h1>8,500+ Dogs Have Found Their Forever Home</h1>
+      <p>Since 2007, Saving Great Animals has been matching the right dog with the right home in the Seattle area.</p>
+      <div class="hero-buttons">
+        <a href="#adopt" class="btn-primary">Meet Our Dogs</a>
+        <a href="#foster" class="btn-outline">Become a Foster</a>
+      </div>
+    </div>
+    <div class="paw-deco" aria-hidden="true">&#128062;</div>
+  </header>
+
+  <!-- Services / How You Can Help -->
+  <section class="services" id="about">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <h2>How You Can Help</h2>
+        <p>There are many ways to make a difference in the life of a rescue dog.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card fade-in">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="#fff"><path d="M4.5 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm5-4a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm5 0a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm5 4a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM12 12c-1.5 0-5 2.5-5 5.5S9 22 12 22s5-1 5-4.5S13.5 12 12 12z"/></svg>
+          </div>
+          <h3>Adopt</h3>
+          <p>37 dogs waiting for a family. Your perfect companion could be one click away.</p>
+          <a href="#adopt">View Available Dogs &rarr;</a>
+        </article>
+        <article class="service-card fade-in" id="foster">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <h3>Foster</h3>
+          <p>Open your home, save a life. Foster families are the backbone of our mission.</p>
+          <a href="#foster">Learn About Fostering &rarr;</a>
+        </article>
+        <article class="service-card fade-in" id="involved">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="#fff"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3>Volunteer</h3>
+          <p>Join our community of 200+ volunteers making a real impact for dogs in need.</p>
+          <a href="#involved">Get Involved &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Stats -->
+  <section class="stats" aria-label="Impact statistics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <h3>8,500+</h3>
+          <p>Dogs Homed</p>
+        </div>
+        <div class="stat-item fade-in">
+          <h3>17+</h3>
+          <p>Years of Rescue</p>
+        </div>
+        <div class="stat-item fade-in">
+          <h3>37</h3>
+          <p>Dogs Available Now</p>
+        </div>
+        <div class="stat-item fade-in">
+          <h3>200+</h3>
+          <p>Active Volunteers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Dogs -->
+  <section class="featured-dogs" id="adopt">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <h2>Meet Some of Our Dogs</h2>
+        <p>Each one is waiting for the right family. Could it be yours?</p>
+      </div>
+      <div class="dogs-grid">
+        <article class="dog-card fade-in">
+          <img src="images/available-dogs.jpg" alt="Luna, a friendly Labrador Mix looking for a home" loading="lazy">
+          <div class="dog-card-body">
+            <h3>Luna</h3>
+            <p class="breed">2 years old &middot; Labrador Mix</p>
+            <a href="#">Learn More &rarr;</a>
+          </div>
+        </article>
+        <article class="dog-card fade-in">
+          <img src="images/foster-dogs.jpg" alt="Cooper, a playful Terrier Mix in foster care" loading="lazy">
+          <div class="dog-card-body">
+            <h3>Cooper</h3>
+            <p class="breed">1 year old &middot; Terrier Mix</p>
+            <a href="#">Learn More &rarr;</a>
+          </div>
+        </article>
+        <article class="dog-card fade-in">
+          <img src="images/adoption.jpg" alt="Bella, a gentle Shepherd Mix ready for adoption" loading="lazy">
+          <div class="dog-card-body">
+            <h3>Bella</h3>
+            <p class="breed">3 years old &middot; Shepherd Mix</p>
+            <a href="#">Learn More &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner" aria-label="Call to action">
+    <div class="cta-bg" role="img" aria-label="Volunteers with rescue dogs"></div>
+    <div class="cta-overlay"></div>
+    <div class="container">
+      <div class="cta-content fade-in">
+        <h2>Every Dog Deserves a Chance</h2>
+        <p>Whether you adopt, foster, volunteer, or donate &mdash; you make the difference.</p>
+        <a href="#involved" class="btn-primary">Get Involved Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="partners" id="resources">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <h2>Our Partners</h2>
+      </div>
+      <div class="partners-row fade-in">
+        <span class="partner-item">MudBay</span>
+        <span class="partner-item">Bissell</span>
+        <span class="partner-item">Chewy</span>
+        <span class="partner-item">Pet Pantry</span>
+        <span class="partner-item">SPCA</span>
+        <span class="partner-item">Pet Supplies Plus</span>
+        <span class="partner-item">Carter Subaru</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="donate">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="images/sga-logo.png" alt="Saving Great Animals logo" width="140" height="42">
+          </div>
+          <p class="footer-mission">Saving Great Animals is a 501(c)(3) nonprofit dog rescue based in Seattle, WA. We believe every dog deserves a safe, loving home, and we work tirelessly to match the right dog with the right family.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Twitter / X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#adopt">Adopt</a>
+            <a href="#foster">Foster</a>
+            <a href="#involved">Volunteer</a>
+            <a href="#">Events</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact">
+            <p>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              P.O. Box 12345<br>Seattle, WA 98101
+            </p>
+            <p>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.34a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0122 16.92z"/></svg>
+              (206) 555-7297
+            </p>
+            <p>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@savinggreatanimals.org
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Saving Great Animals. The Right Dog For The Right Home.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('mobileOverlay');
+
+    function toggleMenu() {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active');
+      overlay.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // Close menu on link click
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (navLinks.classList.contains('open')) toggleMenu();
+      });
+    });
+
+    // Sticky navbar shadow on scroll
+    var navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', function() {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Fade-in on scroll with IntersectionObserver
+    var fadeEls = document.querySelectorAll('.fade-in');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      fadeEls.forEach(function(el) { observer.observe(el); });
+    } else {
+      fadeEls.forEach(function(el) { el.classList.add('visible'); });
+    }
+  </script>
+</body>
+</html>

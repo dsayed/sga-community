@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGA Website Prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #FBF8F4; color: #2C2420; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; }
+    h1 { font-family: 'Fraunces', serif; font-size: 2.4rem; margin-bottom: 12px; text-align: center; }
+    .subtitle { color: #7A6E65; font-size: 1.1rem; margin-bottom: 48px; text-align: center; max-width: 520px; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 800px; width: 100%; }
+    .card { background: #fff; border-radius: 20px; padding: 40px 32px; box-shadow: 0 4px 24px rgba(139,90,43,0.08); border: 1px solid #EDE8E3; transition: transform 0.3s, box-shadow 0.3s; text-align: center; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(139,90,43,0.12); }
+    .card h2 { font-family: 'Fraunces', serif; font-size: 1.6rem; margin-bottom: 8px; }
+    .card p { color: #7A6E65; font-size: 0.95rem; margin-bottom: 24px; line-height: 1.6; }
+    .card a { display: inline-block; background: #E8772B; color: #fff; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background 0.2s; }
+    .card a:hover { background: #d4691f; }
+    .logo { height: 64px; margin-bottom: 24px; }
+    @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } h1 { font-size: 1.8rem; } }
+  </style>
+</head>
+<body>
+  <img src="images/sga-logo.png" alt="Saving Great Animals" class="logo">
+  <h1>Website Redesign Prototypes</h1>
+  <p class="subtitle">Two homepage concepts for savinggreatanimals.org. Compare both and pick a direction.</p>
+  <div class="cards">
+    <div class="card">
+      <h2>Veterna Style</h2>
+      <p>Professional nonprofit aesthetic. Utility bar, structured grid, institutional trust-building feel.</p>
+      <a href="veterna.html">View Prototype</a>
+    </div>
+    <div class="card">
+      <h2>Adoptix Style</h2>
+      <p>Modern &amp; playful. Colorful sections, rounded cards, split hero, community-focused warmth.</p>
+      <a href="adoptix.html">View Prototype</a>
+    </div>
+  </div>
+</body>
+</html>
