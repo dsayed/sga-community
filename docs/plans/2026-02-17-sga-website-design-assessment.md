@@ -181,20 +181,24 @@ These don't require a rebuild — just WordPress theme/plugin changes:
 
 **Total: ~90 minutes of work** for meaningful improvements to accessibility and user experience.
 
+**A note on CSS changes:** Several of these fixes involve editing the site's CSS. On an older WordPress theme, CSS changes can have unintended side effects — a font-size change might break a layout somewhere, or a touch-target fix might shift spacing on another page. The content-only fixes (alt text, copyright, Twitter → X, popup settings) are safe. The CSS fixes should be tested carefully on a staging site first, or saved for when the theme is replaced.
+
 ---
 
 ## Paths Forward
 
 ### Path A: WordPress Refresh with FSE Theme
 
-Update the existing WordPress site with the quick wins above and a modern Full Site Editing (FSE) theme. FSE is the direction WordPress is heading — block-based themes are the most future-proof choice and don't require third-party page builder plugins (Elementor, WPBakery, etc.) that add maintenance overhead and potential compatibility issues.
+Stay on WordPress but switch to a modern Full Site Editing (FSE) theme. FSE is the direction WordPress is heading — block-based themes are the most future-proof choice and don't require third-party page builder plugins (Elementor, WPBakery, etc.) that add maintenance overhead and potential compatibility issues.
 
 **FSE theme options for animal rescue:**
 
-| Theme | Platform | Key Features | Price |
+| Theme | Platform | Clickable Preview | Price |
 |---|---|---|---|
-| **[Veterna](https://themeforest.net/item/veterna-pet-rescue-animal-welfare-fse-wordpress-theme/57221668)** | ThemeForest | Block-based FSE, optimized for pet welfare/rescue orgs. Most aligned with WordPress's direction | ~$69 |
-| **[Adoptix](https://gutenix.com/products/adoptix/)** ([live demo](https://gutenix.com/demo/gutenberg/adoptix/)) | Gutenix | Gutenberg-native, specialized pet directory and online adoption management | ~$49 |
+| **[Veterna](https://themeforest.net/item/veterna-pet-rescue-animal-welfare-fse-wordpress-theme/57221668)** | ThemeForest | [**Preview with SGA branding**](https://dsayed.github.io/sga-community/veterna.html) | ~$69 |
+| **[Adoptix](https://gutenix.com/products/adoptix/)** ([theme demo](https://gutenix.com/demo/gutenberg/adoptix/)) | Gutenix | [**Preview with SGA branding**](https://dsayed.github.io/sga-community/adoptix.html) | ~$49 |
+
+The clickable previews above show what each theme's design language would look like with SGA's real photography, brand colors, and content. Compare both at [dsayed.github.io/sga-community](https://dsayed.github.io/sga-community/).
 
 *Other themes exist (Litl' Pal, Pet Rescue, Zupet, FourPaws) but use Elementor, WPBakery, or Brizy page builders, adding a plugin dependency. FSE-native themes are the better long-term choice.*
 
@@ -214,42 +218,35 @@ Update the existing WordPress site with the quick wins above and a modern Full S
 **Effort:** A few days of work for the web developer
 **Cost:** Theme license ($49–69) + developer time
 
-### Path B: Custom Prototype
+### Path B: Custom Website
 
-Build a static site showing what a redesigned SGA homepage could look like — using actual SGA photography, brand colors (blue + orange), and the DM Sans + Fraunces font pairing from the community app.
+Replace WordPress entirely with a custom-built site. This removes all theme constraints and allows full control over design, performance, and integration (e.g., a proper RescueGroups-powered Available Dogs page instead of a basic embed).
 
-**Two homepage prototypes are live now:**
-- [**Veterna style**](https://dsayed.github.io/sga-community/veterna.html) — professional nonprofit aesthetic with utility bar, structured grid, and institutional trust-building feel
-- [**Adoptix style**](https://dsayed.github.io/sga-community/adoptix.html) — modern and playful with colorful sections, rounded cards, split hero, and community-focused warmth
+The key challenge is **ongoing maintenance for non-technical staff**. WordPress's value is that anyone on the SGA team can log in and edit a page. A custom site needs a plan for that. Options include:
 
-Both use SGA's real dog photos, brand colors, and the same fonts as the community app. Compare them at [dsayed.github.io/sga-community](https://dsayed.github.io/sga-community/).
+- **Headless CMS** (e.g., Sanity, Decap CMS, or Contentful) — SGA staff edit content through a friendly web interface, and changes automatically publish to the site. Decap CMS is free and git-backed, meaning no additional database or hosting cost.
+- **Markdown + GitHub** — simpler content (event announcements, blog posts, resource updates) lives in plain text files that can be edited directly on GitHub. Less friendly than a CMS, but zero cost and no additional infrastructure.
+- **Hybrid** — WordPress stays as the CMS backend (staff keep their familiar admin panel), but the public-facing site is a separate custom frontend that pulls content from WordPress via its REST API. Best of both worlds, but more complex to set up.
 
 **Pros:**
-- Shows, don't tell — a visual prototype is worth 1000 words of design recommendations
-- Can incorporate all the design recommendations above with no theme constraints
-- Creates visual continuity with the community app
-- If SGA likes the direction, the prototype can evolve into the production site
-- Same tech stack as the community app (shared knowledge, lower maintenance burden)
+- Full design control — no theme constraints
+- Better performance (static site vs WordPress's server-rendered pages)
+- Visual continuity with the community app (same tech stack, same design tokens)
+- Proper RescueGroups API integration for the Available Dogs page
+- If SGA likes the direction, the community app and public site share maintenance knowledge
 
 **Cons:**
-- Requires someone technical to maintain long-term (same trade-off as the community app)
-- Would need to integrate RescueGroups API for the Available Dogs page
-- Migration from WordPress means moving content
+- Requires a CMS solution so non-technical staff can update content
+- Migration from WordPress means moving existing content
+- Requires someone technical for structural changes (new pages, layout changes) — content updates can be self-serve, but development changes cannot
 
-**Effort:** A few hours for a homepage prototype; 1-2 weeks for a full site
-**Cost:** Vercel free tier + domain
-
-### Path C: Share This Assessment
-
-Hand this document to SGA and Alice Wonder Marketing as a set of recommendations. They can implement the quick wins immediately and use the design recommendations to guide a future refresh on their own timeline.
-
-**Pros:** Zero commitment, immediately actionable quick wins
-**Cons:** Less likely to result in a significant visual transformation
+**Effort:** 1–2 weeks for a full site with CMS integration
+**Cost:** Vercel free tier + domain + CMS (free tier available for Decap/Sanity)
 
 ---
 
 ## Recommendation
 
-Start with the **quick wins** regardless of which path you choose — 90 minutes of work for real accessibility and usability improvements that help SGA's members today.
+Start with the **safe quick wins** (alt text, copyright, popup settings) regardless of which path you choose — these are content changes that won't risk breaking anything.
 
-Then, compare the two **Path B** prototypes at [dsayed.github.io/sga-community](https://dsayed.github.io/sga-community/) to see what "modern and engaging" could actually look like. Pick a direction, react to it, iterate.
+Then, compare the two theme previews at [dsayed.github.io/sga-community](https://dsayed.github.io/sga-community/) and decide: does **Path A** (WordPress + new theme) give SGA enough of a visual upgrade, or does the organization want the full control of **Path B** (custom site)?
