@@ -250,3 +250,60 @@ The key challenge is **ongoing maintenance for non-technical staff**. WordPress'
 Start with the **safe quick wins** (alt text, copyright, popup settings) regardless of which path you choose — these are content changes that won't risk breaking anything.
 
 Then, compare the two theme previews at [dsayed.github.io/sga-community](https://dsayed.github.io/sga-community/) and decide: does **Path A** (WordPress + new theme) give SGA enough of a visual upgrade, or does the organization want the full control of **Path B** (custom site)?
+
+---
+
+## Addendum: Hosting & Infrastructure Details
+
+**Discovered:** 2026-02-17
+
+### Current Hosting
+
+| Detail | Value |
+|---|---|
+| **Hosting Provider** | GoDaddy |
+| **IP Address** | `107.180.51.101` |
+| **Nameservers** | `ns21.domaincontrol.com`, `ns22.domaincontrol.com` (GoDaddy DNS) |
+| **Domain Registrar** | Tucows Domains Inc. (reseller — DNS points to GoDaddy) |
+| **Web Server** | Apache |
+| **PHP Version** | 7.4.33 |
+| **CMS** | WordPress (confirmed via `wp-json` REST API headers) |
+| **Domain Registered** | 2008-01-18 |
+| **Domain Expires** | 2027-01-18 |
+| **Active Plugin** | The Events Calendar (detected via `x-tec-api` response headers) |
+
+### Infrastructure Concerns
+
+1. **PHP 7.4 is end-of-life** — security updates stopped in November 2022. Should upgrade to PHP 8.1+ regardless of which path forward is chosen. This is a security risk.
+2. **TTFB of 1,167ms** — over a second before the first byte arrives. GoDaddy shared hosting is a known contributor to slow WordPress performance.
+3. **Domain expires January 2027** — not urgent, but worth noting for renewal planning.
+
+### Creating a Staging Site
+
+Before making any changes to the live site (quick wins, theme switch, or full rebuild), a staging copy should be created first. The approach depends on the GoDaddy plan type:
+
+**If GoDaddy Managed WordPress:**
+- One-click staging is available in the GoDaddy dashboard
+- Creates a clone at a subdomain (e.g., `staging.savinggreatanimals.org`)
+
+**If GoDaddy cPanel / shared hosting (more likely given the age of the site):**
+- Use the **WP Staging** plugin (free) — creates a clone in a subdirectory (e.g., `savinggreatanimals.org/staging/`)
+- Or manually: copy files + export database with `mysqldump` + import into a new database + run `wp search-replace` to update URLs
+
+**Key steps regardless of method:**
+1. Back up the database and `wp-content/` before anything else
+2. After cloning, block search engines on staging (Settings > Reading > "Discourage search engines")
+3. Install a "Disable Emails" plugin on staging so it doesn't email real users
+4. Password-protect the staging URL with `.htaccess` basic auth
+5. Test CSS quick wins (font size, hero overlay, touch targets) on staging before applying to production — older themes can have unexpected side effects from CSS changes
+
+### Backup Strategy
+
+The site should have backups in place before any modifications. Recommended approach:
+
+1. **Install UpdraftPlus** (free) — schedule automatic weekly backups to Google Drive or Dropbox
+2. **Before any update**, take a manual backup via UpdraftPlus (one click)
+3. **What to back up:** database (posts, settings, plugin data), `wp-content/uploads/` (media library), `wp-content/themes/` (current theme), `wp-config.php`
+4. **Test the restore process** at least once — a backup that can't be restored is worthless
+
+**Note on The Events Calendar:** This plugin stores event data in custom database tables. Standard WordPress backup tools (UpdraftPlus, WP Staging) handle this correctly, but if doing a manual `mysqldump`, ensure all tables are included — not just the default `wp_` prefixed ones.
