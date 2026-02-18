@@ -216,9 +216,13 @@ Update the existing WordPress site with the quick wins above and a modern Full S
 
 ### Path B: Custom Prototype
 
-Build a static Next.js site showing what a redesigned SGA homepage and key pages could look like — using the actual SGA photography, brand colors (blue + orange), and the DM Sans + Fraunces font pairing from the community app. Deploy to Vercel for easy sharing.
+Build a static site showing what a redesigned SGA homepage could look like — using actual SGA photography, brand colors (blue + orange), and the DM Sans + Fraunces font pairing from the community app.
 
-This is a tangible thing SGA's board can look at and react to, not just a document of suggestions. Similar to how the community app prototype was built in ~6 hours.
+**Two homepage prototypes are live now:**
+- [**Veterna style**](https://dsayed.github.io/sga-community/veterna.html) — professional nonprofit aesthetic with utility bar, structured grid, and institutional trust-building feel
+- [**Adoptix style**](https://dsayed.github.io/sga-community/adoptix.html) — modern and playful with colorful sections, rounded cards, split hero, and community-focused warmth
+
+Both use SGA's real dog photos, brand colors, and the same fonts as the community app. Compare them at [dsayed.github.io/sga-community](https://dsayed.github.io/sga-community/).
 
 **Pros:**
 - Shows, don't tell — a visual prototype is worth 1000 words of design recommendations
@@ -248,4 +252,4 @@ Hand this document to SGA and Alice Wonder Marketing as a set of recommendations
 
 Start with the **quick wins** regardless of which path you choose — 90 minutes of work for real accessibility and usability improvements that help SGA's members today.
 
-Then, if SGA wants to see what "modern and engaging" could actually look like, **Path B** (a custom prototype) is the fastest way to make it tangible. It worked for the community app — build something real, react to it, iterate.
+Then, compare the two **Path B** prototypes at [dsayed.github.io/sga-community](https://dsayed.github.io/sga-community/) to see what "modern and engaging" could actually look like. Pick a direction, react to it, iterate.
