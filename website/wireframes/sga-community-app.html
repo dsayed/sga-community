@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGA Community App — Mobile Wireframes &amp; UX Rationale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+       PRESENTATION SHELL — design consultancy feel
+       ═══════════════════════════════════════════ */
+    :root {
+      --blue: #2B3990;
+      --blue-light: #3d4fa8;
+      --blue-pale: #E8EAF6;
+      --orange: #E8772B;
+      --orange-light: #F5A623;
+      --warm-white: #FBF8F4;
+      --warm-gray: #F5F0EB;
+      --text-primary: #2C2420;
+      --text-secondary: #7A6E65;
+      --text-muted: #A89E95;
+      --border: #EDE8E3;
+      --card-bg: #fff;
+      --success: #2E7D32;
+      --success-light: #E8F5E9;
+      --warning: #F57F17;
+      --warning-light: #FFF8E1;
+      --danger: #C62828;
+      --danger-light: #FFEBEE;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #1a1a2e;
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .doc-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, var(--blue) 100%);
+      padding: 80px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .doc-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('../images/hero-dog-full.jpg') center/cover no-repeat;
+      opacity: 0.08;
+    }
+    .doc-header * { position: relative; z-index: 1; }
+    .doc-header .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .doc-header .logo-icon {
+      width: 48px; height: 48px;
+      background: var(--orange);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .doc-header .logo-text {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .doc-header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .doc-header h1 span { color: var(--orange); }
+    .doc-header .subtitle {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .doc-header .meta {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .doc-header .meta-item {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .doc-header .meta-item strong {
+      color: rgba(255,255,255,0.7);
+      display: block;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.95rem;
+    }
+
+    /* ── NAV ── */
+    .screen-nav {
+      background: #16213e;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 40px;
+    }
+    .screen-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .screen-nav-inner::-webkit-scrollbar { display: none; }
+    .screen-nav a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      padding: 16px 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .screen-nav a:hover,
+    .screen-nav a:focus { color: #fff; border-bottom-color: var(--orange); }
+
+    /* ── SECTION LAYOUT ── */
+    .screen-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+    .screen-section + .screen-section {
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* ── WIREFRAME LAYOUT ── */
+    .wireframe-row {
+      display: grid;
+      grid-template-columns: 375px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .wireframe-row { grid-template-columns: 1fr; }
+      .screen-section { padding: 48px 20px; }
+      .doc-header { padding: 48px 20px 40px; }
+      .screen-nav { padding: 0 20px; }
+    }
+
+    /* ── PHONE FRAME ── */
+    .phone-frame {
+      width: 375px;
+      background: var(--warm-white);
+      border-radius: 40px;
+      border: 8px solid #333;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+      overflow: hidden;
+      position: relative;
+    }
+    @media (max-width: 900px) {
+      .phone-frame { width: 100%; max-width: 375px; margin: 0 auto; }
+    }
+    .phone-notch {
+      width: 150px; height: 28px;
+      background: #333;
+      border-radius: 0 0 20px 20px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+    .phone-screen {
+      min-height: 700px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── ANNOTATIONS ── */
+    .annotations {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .annotation {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 20px 24px;
+      position: relative;
+    }
+    .annotation::before {
+      content: attr(data-num);
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background: var(--orange);
+      color: #fff;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .annotation h4 {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .annotation p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .annotation .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 8px;
+    }
+    .tag-ux { background: rgba(43,57,144,0.2); color: #7986CB; }
+    .tag-engagement { background: rgba(232,119,43,0.2); color: #FFB74D; }
+    .tag-mobile { background: rgba(46,125,50,0.2); color: #81C784; }
+    .tag-perf { background: rgba(198,40,40,0.2); color: #EF9A9A; }
+
+    /* ── ISSUE CALLOUT ── */
+    .current-issues {
+      background: rgba(198,40,40,0.08);
+      border: 1px solid rgba(198,40,40,0.15);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .current-issues h4 {
+      color: #EF9A9A;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .current-issues ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .current-issues li {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+      padding-left: 18px;
+      position: relative;
+    }
+    .current-issues li::before {
+      content: '\2717';
+      position: absolute;
+      left: 0;
+      color: #EF9A9A;
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════════
+       WIREFRAME INNARDS — the actual phone UI
+       ═══════════════════════════════════════════ */
+
+    /* ── Shared app chrome ── */
+    .app-status-bar {
+      height: 4px;
+    }
+    .app-top-bar {
+      background: var(--blue);
+      color: #fff;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .app-top-bar .logo-sm {
+      font-family: 'Fraunces', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .app-top-bar .logo-sm em {
+      font-style: normal;
+      color: var(--orange);
+    }
+    .app-top-bar-icons {
+      display: flex;
+      gap: 14px;
+    }
+    .app-top-bar-icons .icon-circle {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+    }
+    .app-top-bar-icons .notif-dot {
+      position: relative;
+    }
+    .app-top-bar-icons .notif-dot::after {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      position: absolute;
+      top: -1px; right: -1px;
+      border: 1.5px solid var(--blue);
+    }
+
+    /* ── Tab bar ── */
+    .app-tab-bar {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 6px;
+      position: relative;
+      z-index: 5;
+    }
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .tab-item.active { color: var(--orange); }
+    .tab-icon {
+      width: 24px; height: 24px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .tab-item.active .tab-icon {
+      background: rgba(232,119,43,0.1);
+    }
+
+    /* ── Phone content scrollable area ── */
+    .app-content {
+      padding: 16px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--warm-white);
+    }
+
+    /* ── Marker circles on phone (correspond to annotations) ── */
+    .marker {
+      position: absolute;
+      width: 22px; height: 22px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(232,119,43,0.4);
+    }
+
+    /* ── Reusable wireframe components ── */
+    .wf-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+    .wf-card-sm {
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+    .wf-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .wf-avatar.staff { background: var(--blue); color: #fff; }
+    .wf-badge {
+      font-size: 0.6rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .wf-badge-staff { background: var(--blue-pale); color: var(--blue); }
+    .wf-badge-urgent { background: var(--danger-light); color: var(--danger); }
+    .wf-badge-new { background: var(--warning-light); color: var(--warning); }
+    .wf-badge-done { background: var(--success-light); color: var(--success); }
+    .wf-badge-category { background: var(--warm-gray); color: var(--text-secondary); }
+
+    .wf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .wf-btn-primary { background: var(--orange); color: #fff; }
+    .wf-btn-outline { background: transparent; color: var(--blue); border: 1.5px solid var(--border); }
+
+    .wf-section-heading {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .wf-text-sm { font-size: 0.75rem; color: var(--text-secondary); }
+    .wf-text-xs { font-size: 0.65rem; color: var(--text-muted); }
+    .wf-text-body { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Urgent banner */
+    .wf-urgent-banner {
+      background: linear-gradient(135deg, var(--danger-light) 0%, #fff 100%);
+      border: 1.5px solid rgba(198,40,40,0.15);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .wf-urgent-icon {
+      width: 32px; height: 32px;
+      background: var(--danger);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Quick action grid */
+    .wf-quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .wf-quick-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 10px;
+      text-align: center;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .wf-quick-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .wf-quick-card .label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Progress bar */
+    .wf-progress {
+      height: 6px;
+      background: var(--warm-gray);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .wf-progress-fill {
+      height: 100%;
+      background: var(--success);
+      border-radius: 3px;
+    }
+
+    /* Category pills */
+    .wf-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .wf-pill {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1.5px solid var(--border);
+      color: var(--text-secondary);
+      background: #fff;
+    }
+    .wf-pill.active {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    /* Module card */
+    .wf-module-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      gap: 0;
+    }
+    .wf-module-thumb {
+      width: 80px;
+      min-height: 80px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .wf-module-thumb .num {
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+      color: rgba(255,255,255,0.3);
+      font-weight: 700;
+    }
+    .wf-module-body {
+      padding: 12px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Forum post card */
+    .wf-post-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .wf-post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wf-post-meta {
+      flex: 1;
+    }
+    .wf-post-actions {
+      display: flex;
+      gap: 16px;
+      padding-top: 6px;
+      border-top: 1px solid var(--warm-gray);
+    }
+    .wf-post-action {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Library resource card */
+    .wf-resource-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .wf-resource-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .wf-resource-icon.video { background: #E8F5E9; }
+    .wf-resource-icon.article { background: var(--blue-pale); }
+    .wf-resource-icon.link { background: var(--warm-gray); }
+
+    /* Search bar */
+    .wf-search {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Step viewer */
+    .wf-step-header {
+      background: var(--blue);
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wf-step-content {
+      padding: 20px;
+      background: var(--warm-white);
+    }
+    .wf-step-media {
+      background: var(--warm-gray);
+      border-radius: 12px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .wf-step-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Comparison table ── */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+    .comparison-header {
+      padding: 14px 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .comparison-header.current { background: rgba(198,40,40,0.12); color: #EF9A9A; }
+    .comparison-header.proposed { background: rgba(46,125,50,0.12); color: #81C784; }
+    .comparison-cell {
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.02);
+    }
+    .comparison-cell.current { border-right: 1px solid rgba(255,255,255,0.05); }
+
+    /* ── Footer ── */
+    .doc-footer {
+      text-align: center;
+      padding: 60px 40px;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .doc-footer a { color: var(--orange); text-decoration: none; }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     DOCUMENT HEADER
+     ════════════════════════════════════════════════ -->
+<header class="doc-header">
+  <div class="logo-row">
+    <img src="../images/sga-logo.png" alt="Saving Great Animals" style="height:56px;">
+  </div>
+  <h1>Community <span>App</span> Redesign</h1>
+  <p class="subtitle">Mobile-first wireframes and UX rationale for transforming the Wix community site into an engaging, phone-optimized progressive web app.</p>
+  <div class="meta">
+    <div class="meta-item"><span>Platform</span><strong>Responsive PWA</strong></div>
+    <div class="meta-item"><span>Priority</span><strong>Mobile-First</strong></div>
+    <div class="meta-item"><span>Screens</span><strong>6 Core Views</strong></div>
+    <div class="meta-item"><span>Date</span><strong>Feb 2026</strong></div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN NAVIGATION
+     ════════════════════════════════════════════════ -->
+<nav class="screen-nav">
+  <div class="screen-nav-inner">
+    <a href="#login">Login</a>
+    <a href="#home">Home</a>
+    <a href="#forums">Forums</a>
+    <a href="#training">Training</a>
+    <a href="#training-step">Step Viewer</a>
+    <a href="#library">Library</a>
+    <a href="#comparison">Comparison</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 1 — LOGIN
+     ════════════════════════════════════════════════ -->
+<section id="login" class="screen-section fade-in">
+  <div class="section-label">Screen 01</div>
+  <h2 class="section-title">Login</h2>
+  <p class="section-desc">A warm, branded entry point. Replaces the generic Wix login modal with a purposeful screen that reinforces the community mission.</p>
+
+  <div class="wireframe-row">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen" style="position:relative;">
+        <div class="marker" style="top:60px; left:50%; transform:translateX(-50%);">1</div>
+        <div class="marker" style="top:200px; left:50%; transform:translateX(-50%);">2</div>
+        <div class="marker" style="top:430px; left:16px;">3</div>
+
+        <div class="app-status-bar"></div>
+
+        <div style="background:linear-gradient(180deg, rgba(43,57,144,0.85) 0%, rgba(43,57,144,0.92) 100%), url('../images/hero-dog.jpg') center/cover no-repeat; padding:48px 32px 40px; text-align:center; color:#fff;">
+          <img src="../images/sga-logo.png" alt="SGA" style="height:52px;margin:0 auto 12px;display:block;filter:brightness(10);">
+          <div style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;margin-bottom:6px;">SGA Community</div>
+          <div style="font-size:0.8rem;opacity:0.7;">The right dog for the right home</div>
+        </div>
+
+        <div style="background:var(--warm-white);padding:32px 24px;border-radius:20px 20px 0 0;margin-top:-16px;position:relative;z-index:2;flex:1;">
+          <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Welcome back</div>
+          <div class="wf-text-sm" style="margin-bottom:24px;">Sign in to access the community</div>
+
+          <div style="margin-bottom:16px;">
+            <div style="font-size:0.75rem;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">Email</div>
+            <div style="background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:0.85rem;color:var(--text-muted);">you@example.com</div>
+          </div>
+
+          <div style="margin-bottom:24px;">
+            <div style="font-size:0.75rem;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">Password</div>
+            <div style="background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:0.85rem;color:var(--text-muted);">&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;</div>
+          </div>
+
+          <div class="wf-btn wf-btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:0.9rem;">Sign In</div>
+
+          <div style="text-align:center;margin-top:16px;">
+            <span class="wf-text-sm">or continue with</span>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:12px;">
+            <div style="flex:1;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:10px;text-align:center;font-size:0.8rem;font-weight:600;color:var(--text-secondary);">&#x1F310; Google</div>
+            <div style="flex:1;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:10px;text-align:center;font-size:0.8rem;font-weight:600;color:var(--text-secondary);">&#x1F4D8; Facebook</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annotations">
+      <div class="current-issues">
+        <h4>Current site issues</h4>
+        <ul>
+          <li>Login is a generic Wix modal — no SGA branding, white background, "Log In" heading</li>
+          <li>Only shows Google/Facebook/Email options — no visual connection to the community</li>
+          <li>Modal can be accidentally dismissed, sending user back to the homepage</li>
+          <li>No tagline or mission statement — missed opportunity to reinforce volunteer identity</li>
+        </ul>
+      </div>
+
+      <div class="annotation" data-num="1">
+        <h4>Branded header with mission</h4>
+        <p>The blue gradient header with paw icon and tagline creates an emotional connection before the user even types their password. It reminds fosters why they're here: "The right dog for the right home."</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+
+      <div class="annotation" data-num="2">
+        <h4>Full-screen login (not a modal)</h4>
+        <p>A dedicated login screen instead of a dismissible modal. Can't be accidentally closed. The warm-white form card with rounded top corners creates a native app feel. The "Welcome back" text is personal, not transactional.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="3">
+        <h4>Social login as secondary option</h4>
+        <p>Email/password is primary (most fosters signed up with email). Google and Facebook are secondary "or continue with" options below. The current site shows Google and Facebook as the primary options with email as an afterthought.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 2 — HOME / DASHBOARD
+     ════════════════════════════════════════════════ -->
+<section id="home" class="screen-section fade-in">
+  <div class="section-label">Screen 02</div>
+  <h2 class="section-title">Home Dashboard</h2>
+  <p class="section-desc">The entry point after login. Replaces the current hero-heavy homepage with a personalized, action-oriented dashboard that puts urgent needs front and center.</p>
+
+  <div class="wireframe-row">
+    <!-- Phone -->
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen" style="position:relative;">
+        <!-- Markers -->
+        <div class="marker" style="top:36px; right:24px;">1</div>
+        <div class="marker" style="top:78px; left:16px;">2</div>
+        <div class="marker" style="top:143px; left:16px;">3</div>
+        <div class="marker" style="top:230px; left:16px;">4</div>
+        <div class="marker" style="top:340px; left:16px;">5</div>
+        <div class="marker" style="top:488px; left:16px;">6</div>
+
+        <div class="app-status-bar"></div>
+        <!-- Top bar -->
+        <div class="app-top-bar">
+          <div class="logo-sm" style="display:flex;align-items:center;gap:8px;"><img src="../images/sga-logo.png" alt="SGA" style="height:24px;filter:brightness(10);"> <em>Community</em></div>
+          <div class="app-top-bar-icons">
+            <div class="icon-circle notif-dot">&#x1F514;</div>
+            <div class="icon-circle">&#x1F464;</div>
+          </div>
+        </div>
+
+        <div class="app-content">
+          <!-- Welcome -->
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="wf-avatar staff" style="width:42px;height:42px;font-size:0.8rem;">DS</div>
+            <div>
+              <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);">Hey, David!</div>
+              <div class="wf-text-xs">Welcome back to the community</div>
+            </div>
+          </div>
+
+          <!-- Urgent banner -->
+          <div class="wf-urgent-banner">
+            <div class="wf-urgent-icon">&#x1F6A8;</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <span class="wf-badge wf-badge-urgent">Urgent</span>
+                <span class="wf-text-xs">2 hours ago</span>
+              </div>
+              <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);margin-bottom:2px;">Many dogs in need of fosters</div>
+              <div class="wf-text-sm" style="line-height:1.4;">A new foster list is going out tomorrow. We really need fosters to step up...</div>
+            </div>
+          </div>
+
+          <!-- Quick actions -->
+          <div>
+            <div class="wf-section-heading" style="margin-bottom:10px;">Quick Actions</div>
+            <div class="wf-quick-grid">
+              <div class="wf-quick-card">
+                <div class="wf-quick-icon" style="background:var(--blue-pale);">&#x1F393;</div>
+                <span class="label">Training</span>
+                <span class="wf-text-xs">3/5 done</span>
+              </div>
+              <div class="wf-quick-card">
+                <div class="wf-quick-icon" style="background:rgba(232,119,43,0.1);">&#x1F4DA;</div>
+                <span class="label">Library</span>
+                <span class="wf-text-xs">15 topics</span>
+              </div>
+              <div class="wf-quick-card">
+                <div class="wf-quick-icon" style="background:var(--success-light);">&#x1F4AC;</div>
+                <span class="label">Forums</span>
+                <span class="wf-text-xs">3 new</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent activity -->
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <div class="wf-section-heading">Recent Activity</div>
+              <span class="wf-text-xs" style="color:var(--orange);font-weight:600;">See all</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div class="wf-card-sm" style="display:flex;gap:10px;align-items:flex-start;">
+                <div class="wf-avatar staff">LP</div>
+                <div style="flex:1;">
+                  <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div>
+                      <span style="font-size:0.78rem;font-weight:600;">LilyPiecora</span>
+                      <span class="wf-badge wf-badge-staff" style="margin-left:4px;">Admin</span>
+                    </div>
+                    <span class="wf-text-xs">Jun 22</span>
+                  </div>
+                  <div style="font-size:0.78rem;font-weight:500;color:var(--text-primary);margin-top:2px;">Help assemble a new dog kennel at Doug's Place!</div>
+                  <div class="wf-post-actions" style="margin-top:8px;padding-top:8px;">
+                    <span class="wf-post-action">&#x2764;&#xFE0F; 1</span>
+                    <span class="wf-post-action">&#x1F4AC; 2</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wf-card-sm" style="display:flex;gap:10px;align-items:flex-start;">
+                <div class="wf-avatar">JS</div>
+                <div style="flex:1;">
+                  <div style="display:flex;justify-content:space-between;">
+                    <span style="font-size:0.78rem;font-weight:600;">Jacintha Sayed</span>
+                    <span class="wf-text-xs">Aug 5</span>
+                  </div>
+                  <div style="font-size:0.78rem;font-weight:500;color:var(--text-primary);margin-top:2px;">Doug's Place Wednesday 2-8 pm</div>
+                  <div class="wf-post-actions" style="margin-top:8px;padding-top:8px;">
+                    <span class="wf-post-action">&#x2764;&#xFE0F; 0</span>
+                    <span class="wf-post-action">&#x1F4AC; 0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab bar -->
+        <div class="app-tab-bar">
+          <div class="tab-item active">
+            <div class="tab-icon">&#x1F3E0;</div>
+            <span>Home</span>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">&#x1F4AC;</div>
+            <span>Forums</span>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">&#x1F393;</div>
+            <span>Training</span>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">&#x1F4DA;</div>
+            <span>Library</span>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">&#x1F465;</div>
+            <span>More</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Annotations -->
+    <div class="annotations">
+      <div class="current-issues">
+        <h4>Current site issues</h4>
+        <ul>
+          <li>Full-viewport hero image wastes screen space — users must scroll past it every visit</li>
+          <li>No personalization — generic "COMMUNITY" heading, no user context</li>
+          <li>Forum posts shown in tiny 3-column grid — unreadable on mobile</li>
+          <li>Resources section uses identical calendar icons for all 6 links — no visual differentiation</li>
+          <li>No urgency hierarchy — critical foster needs buried alongside blog posts</li>
+        </ul>
+      </div>
+
+      <div class="annotation" data-num="1">
+        <h4>Compact top bar with notifications</h4>
+        <p>Replaces the desktop nav + huge hero banner. The blue bar stays brand-consistent but only uses ~48px of vertical space. Bell icon with orange dot surfaces new forum activity immediately.</p>
+        <span class="tag tag-mobile">Mobile UX</span>
+      </div>
+
+      <div class="annotation" data-num="2">
+        <h4>Personalized welcome</h4>
+        <p>Greets the user by first name with their avatar. Creates an immediate sense of belonging — critical for volunteer retention. The current site shows a generic "COMMUNITY" heading with no personalization.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+
+      <div class="annotation" data-num="3">
+        <h4>Urgent needs banner</h4>
+        <p>The single most important element for SGA's operations. Foster and volunteer needs get a visually distinct red-tinted card that can't be missed. Currently these are orange alert bars that look like cookie notices.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="4">
+        <h4>Quick action cards with live status</h4>
+        <p>Three thumb-friendly tap targets replace the 6 identical-icon link list. Each shows contextual info: training progress (3/5 done), resource count, and new forum post count. This gives users a reason to tap.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+
+      <div class="annotation" data-num="5">
+        <h4>Feed-style recent activity</h4>
+        <p>Forum posts are shown as a vertical feed with author avatars, role badges, and engagement counts — matching the mental model of social apps fosters already use. The current 3-column card grid is replaced with a scannable list.</p>
+        <span class="tag tag-mobile">Mobile UX</span>
+      </div>
+
+      <div class="annotation" data-num="6">
+        <h4>Bottom tab navigation</h4>
+        <p>Five persistent tabs reachable by thumb. Replaces the desktop top-nav that requires a "More" dropdown on mobile. The current Wix hamburger menu hides key sections — the tab bar keeps them one tap away at all times.</p>
+        <span class="tag tag-mobile">Mobile UX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 3 — FORUMS
+     ════════════════════════════════════════════════ -->
+<section id="forums" class="screen-section fade-in">
+  <div class="section-label">Screen 03</div>
+  <h2 class="section-title">Forums</h2>
+  <p class="section-desc">The community conversation hub. Transforms the current image-heavy category grid into a fast, scrollable social feed with easy category filtering.</p>
+
+  <div class="wireframe-row">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen" style="position:relative;">
+        <div class="marker" style="top:36px; left:16px;">1</div>
+        <div class="marker" style="top:72px; left:16px;">2</div>
+        <div class="marker" style="top:110px; right:24px;">3</div>
+        <div class="marker" style="top:160px; left:16px;">4</div>
+        <div class="marker" style="top:430px; left:16px;">5</div>
+
+        <div class="app-status-bar"></div>
+        <div class="app-top-bar">
+          <div class="logo-sm">Forums</div>
+          <div class="app-top-bar-icons">
+            <div class="icon-circle">&#x1F50D;</div>
+          </div>
+        </div>
+
+        <div class="app-content">
+          <!-- Category pills -->
+          <div class="wf-pills">
+            <div class="wf-pill active">All</div>
+            <div class="wf-pill" style="position:relative;">
+              Urgent
+              <span style="position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:var(--danger);border-radius:50%;font-size:0.55rem;color:#fff;display:flex;align-items:center;justify-content:center;">3</span>
+            </div>
+            <div class="wf-pill">Community</div>
+            <div class="wf-pill">Events</div>
+            <div class="wf-pill">Ask Expert</div>
+          </div>
+
+          <!-- New post button -->
+          <div class="wf-btn wf-btn-primary" style="align-self:stretch;justify-content:center;">&#x270F;&#xFE0F; New Post</div>
+
+          <!-- Posts -->
+          <div class="wf-post-card">
+            <div class="wf-post-header">
+              <div class="wf-avatar staff">JS</div>
+              <div class="wf-post-meta">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span style="font-size:0.8rem;font-weight:600;">Jacintha Sayed</span>
+                  <span class="wf-badge wf-badge-staff">Staff</span>
+                </div>
+                <div class="wf-text-xs">Sep 11 &middot; Foster &amp; Volunteer Needs</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Many dogs in need of fosters</div>
+              <div class="wf-text-body">Hi friends, A new foster list is going out tomorrow. Sooo many dogs in need. We really need fosters to step up...</div>
+            </div>
+            <div class="wf-post-actions">
+              <span class="wf-post-action">&#x2764;&#xFE0F; Like</span>
+              <span class="wf-post-action">&#x1F4AC; 0 comments</span>
+              <span class="wf-post-action" style="margin-left:auto;">&#x1F441; 45</span>
+            </div>
+          </div>
+
+          <div class="wf-post-card">
+            <div class="wf-post-header">
+              <div class="wf-avatar staff">LP</div>
+              <div class="wf-post-meta">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span style="font-size:0.8rem;font-weight:600;">LilyPiecora</span>
+                  <span class="wf-badge wf-badge-staff">Admin</span>
+                </div>
+                <div class="wf-text-xs">Jun 22 &middot; Foster &amp; Volunteer Needs</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Help assemble a new dog kennel at Doug's Place!</div>
+              <div class="wf-text-body">We still need 2 volunteers to help assemble a new kennel at Doug's Place in Renton tomorrow at 9:30am...</div>
+            </div>
+            <div style="border-radius:8px;height:120px;background:url('../images/foster-dogs.jpg') center/cover no-repeat;position:relative;"><div style="position:absolute;bottom:6px;left:8px;background:rgba(0,0,0,0.5);color:#fff;font-size:0.6rem;padding:2px 6px;border-radius:4px;">Kingsley at Doug's Place</div></div>
+            <div class="wf-post-actions">
+              <span class="wf-post-action">&#x2764;&#xFE0F; 1</span>
+              <span class="wf-post-action">&#x1F4AC; 2</span>
+              <span class="wf-post-action" style="margin-left:auto;">&#x1F441; 13</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-tab-bar">
+          <div class="tab-item"><div class="tab-icon">&#x1F3E0;</div><span>Home</span></div>
+          <div class="tab-item active"><div class="tab-icon">&#x1F4AC;</div><span>Forums</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F393;</div><span>Training</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F4DA;</div><span>Library</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F465;</div><span>More</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annotations">
+      <div class="current-issues">
+        <h4>Current site issues</h4>
+        <ul>
+          <li>5 forum categories each shown as a large image card — requires scrolling through ~800px of images before seeing any posts</li>
+          <li>Category descriptions only visible after scrolling past the images</li>
+          <li>"New Posts" section shows only 3 posts in a tiny horizontal card row</li>
+          <li>Post previews are truncated to title only — no content preview</li>
+          <li>No unread/new indicators — can't tell what's changed since last visit</li>
+        </ul>
+      </div>
+
+      <div class="annotation" data-num="1">
+        <h4>Page title in top bar</h4>
+        <p>Clear context of where you are. The current site repeats the full "SAVING GREAT ANIMALS" branding on every page — space better used for content on mobile.</p>
+        <span class="tag tag-mobile">Mobile UX</span>
+      </div>
+
+      <div class="annotation" data-num="2">
+        <h4>Horizontal category pills with badge counts</h4>
+        <p>All 5 forum categories accessible in a single horizontal scroll row using only ~40px of height. The "Urgent" pill shows a red badge count for unread needs. This replaces the 800px of category image cards.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="3">
+        <h4>Prominent new post button</h4>
+        <p>Full-width orange button is immediately visible and reachable. Currently, "Create New Post" is a small outlined button above the category grid — easy to miss on mobile.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+
+      <div class="annotation" data-num="4">
+        <h4>Social-feed post cards</h4>
+        <p>Each post shows: author avatar with role badge, category label, title, content preview (2 lines), optional photo, and engagement counts. This mirrors the familiar social feed pattern (Facebook/Instagram) that fosters already use daily.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+
+      <div class="annotation" data-num="5">
+        <h4>Inline images and engagement</h4>
+        <p>Post images display inline in the feed rather than requiring a click-through. Like/comment/view counts are visible at a glance. The current site hides image previews and shows reactions as tiny icons with no labels.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 4 — TRAINING
+     ════════════════════════════════════════════════ -->
+<section id="training" class="screen-section fade-in">
+  <div class="section-label">Screen 04</div>
+  <h2 class="section-title">Training Modules</h2>
+  <p class="section-desc">Foster training curriculum with progress tracking. Replaces the current static page of bullet points with an interactive, trackable learning experience.</p>
+
+  <div class="wireframe-row">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen" style="position:relative;">
+        <div class="marker" style="top:55px; left:16px;">1</div>
+        <div class="marker" style="top:110px; left:16px;">2</div>
+        <div class="marker" style="top:158px; left:16px;">3</div>
+        <div class="marker" style="top:380px; right:16px;">4</div>
+        <div class="marker" style="top:490px; left:16px;">5</div>
+
+        <div class="app-status-bar"></div>
+        <div class="app-top-bar">
+          <div class="logo-sm">Training</div>
+          <div class="app-top-bar-icons">
+            <div class="icon-circle">&#x1F464;</div>
+          </div>
+        </div>
+
+        <div class="app-content">
+          <!-- Progress -->
+          <div class="wf-card" style="text-align:center;">
+            <div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:4px;">Foster Training Basics</div>
+            <div style="font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--text-primary);margin-bottom:2px;">3 of 5 complete</div>
+            <div class="wf-progress" style="margin-top:10px;">
+              <div class="wf-progress-fill" style="width:60%;"></div>
+            </div>
+            <div class="wf-text-xs" style="margin-top:6px;">60% — Keep going!</div>
+          </div>
+
+          <!-- Module list -->
+          <div class="wf-module-card">
+            <div class="wf-module-thumb" style="background:var(--success);">
+              <div class="num">1</div>
+            </div>
+            <div class="wf-module-body">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.82rem;font-weight:600;">Dog Body Language</span>
+                <span class="wf-badge wf-badge-done">&#x2713; Done</span>
+              </div>
+              <div class="wf-text-sm">Learn to read your foster dog's signals</div>
+              <div class="wf-text-xs">5 steps &middot; Completed Sep 2</div>
+            </div>
+          </div>
+
+          <div class="wf-module-card">
+            <div class="wf-module-thumb" style="background:var(--success);">
+              <div class="num">2</div>
+            </div>
+            <div class="wf-module-body">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.82rem;font-weight:600;">Safe Handling</span>
+                <span class="wf-badge wf-badge-done">&#x2713; Done</span>
+              </div>
+              <div class="wf-text-sm">Proper techniques for handling rescue dogs</div>
+              <div class="wf-text-xs">4 steps &middot; Completed Sep 5</div>
+            </div>
+          </div>
+
+          <div class="wf-module-card">
+            <div class="wf-module-thumb" style="background:var(--success);">
+              <div class="num">3</div>
+            </div>
+            <div class="wf-module-body">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.82rem;font-weight:600;">Meeting Needs</span>
+                <span class="wf-badge wf-badge-done">&#x2713; Done</span>
+              </div>
+              <div class="wf-text-sm">Understanding and meeting your dog's needs</div>
+              <div class="wf-text-xs">6 steps &middot; Completed Sep 8</div>
+            </div>
+          </div>
+
+          <div class="wf-module-card" style="border-color:var(--orange);border-width:2px;">
+            <div class="wf-module-thumb" style="background:var(--orange);">
+              <div class="num">4</div>
+            </div>
+            <div class="wf-module-body">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.82rem;font-weight:600;">Decompression</span>
+                <span class="wf-badge wf-badge-new">In Progress</span>
+              </div>
+              <div class="wf-text-sm">Helping a new foster decompress safely</div>
+              <div class="wf-text-xs">7 steps &middot; On step 3</div>
+            </div>
+          </div>
+
+          <div class="wf-module-card" style="opacity:0.6;">
+            <div class="wf-module-thumb">
+              <div class="num">5</div>
+            </div>
+            <div class="wf-module-body">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:0.82rem;font-weight:600;">Positive Reinforcement</span>
+                <span class="wf-badge wf-badge-category">Not Started</span>
+              </div>
+              <div class="wf-text-sm">Reward-based training fundamentals</div>
+              <div class="wf-text-xs">5 steps</div>
+            </div>
+          </div>
+
+          <!-- Training support -->
+          <div class="wf-card" style="display:flex;gap:12px;align-items:center;background:var(--blue-pale);border-color:transparent;">
+            <div style="font-size:1.4rem;">&#x1F9D1;&#x200D;&#x1F3EB;</div>
+            <div style="flex:1;">
+              <div style="font-size:0.82rem;font-weight:600;color:var(--blue);">Need help with behavior?</div>
+              <div class="wf-text-sm">Request 1-on-1 support from our trainer</div>
+            </div>
+            <div style="color:var(--blue);font-size:1.2rem;">&#x2192;</div>
+          </div>
+        </div>
+
+        <div class="app-tab-bar">
+          <div class="tab-item"><div class="tab-icon">&#x1F3E0;</div><span>Home</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F4AC;</div><span>Forums</span></div>
+          <div class="tab-item active"><div class="tab-icon">&#x1F393;</div><span>Training</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F4DA;</div><span>Library</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F465;</div><span>More</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annotations">
+      <div class="current-issues">
+        <h4>Current site issues</h4>
+        <ul>
+          <li>Training courses listed as 5 bullet points — no interactivity, no progress tracking</li>
+          <li>Single "Access Foster Training Basics" button links to external Wix course tool</li>
+          <li>No visual indication of which modules are complete or where user left off</li>
+          <li>Training page is 70% decorative content (hero, stock photo, pictured pup story)</li>
+          <li>Pack Walk events listed as plain text boxes with dates — no calendar integration</li>
+        </ul>
+      </div>
+
+      <div class="annotation" data-num="1">
+        <h4>Overall progress card</h4>
+        <p>Immediately shows "3 of 5 complete" with a visual progress bar. This creates a completion incentive — fosters can see exactly where they stand. The current site has zero progress visibility.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+
+      <div class="annotation" data-num="2">
+        <h4>Sequential module cards with status</h4>
+        <p>Each module shows its number, title, description, step count, and status (Done/In Progress/Not Started). Color-coded left thumbnails give instant visual scanning. The numbered sequence creates a clear learning path.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="3">
+        <h4>Completed modules stay visible</h4>
+        <p>Green checkmarks on completed modules provide a sense of accomplishment. The completion date is shown for record-keeping. Fosters can revisit any completed module for reference.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+
+      <div class="annotation" data-num="4">
+        <h4>Current module highlighted</h4>
+        <p>The in-progress module (Decompression) has an orange border to draw the eye. Shows "On step 3" so users can resume exactly where they left off — no hunting through content.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="5">
+        <h4>Behavioral support CTA</h4>
+        <p>The "Request Behavioral Support" link from the current site becomes a prominent, friendly card integrated into the training flow. It's contextually placed where a foster might realize they need help — right after the training content.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 5 — TRAINING STEP VIEWER
+     ════════════════════════════════════════════════ -->
+<section id="training-step" class="screen-section fade-in">
+  <div class="section-label">Screen 05</div>
+  <h2 class="section-title">Training Step Viewer</h2>
+  <p class="section-desc">The immersive step-by-step lesson experience. A focused, distraction-free reading mode optimized for learning on a phone.</p>
+
+  <div class="wireframe-row">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen" style="position:relative;">
+        <div class="marker" style="top:36px; left:16px;">1</div>
+        <div class="marker" style="top:80px; right:16px;">2</div>
+        <div class="marker" style="top:120px; left:16px;">3</div>
+        <div class="marker" style="top:365px; left:16px;">4</div>
+
+        <div class="app-status-bar"></div>
+        <div class="wf-step-header">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:1rem;">&#x2190;</span>
+            <span style="font-size:0.85rem;font-weight:600;">Decompression</span>
+          </div>
+          <span style="font-size:0.75rem;opacity:0.7;">Step 3 of 7</span>
+        </div>
+
+        <!-- Step progress dots -->
+        <div style="display:flex;gap:4px;padding:10px 20px;background:#fff;">
+          <div style="flex:1;height:3px;background:var(--success);border-radius:2px;"></div>
+          <div style="flex:1;height:3px;background:var(--success);border-radius:2px;"></div>
+          <div style="flex:1;height:3px;background:var(--orange);border-radius:2px;"></div>
+          <div style="flex:1;height:3px;background:var(--warm-gray);border-radius:2px;"></div>
+          <div style="flex:1;height:3px;background:var(--warm-gray);border-radius:2px;"></div>
+          <div style="flex:1;height:3px;background:var(--warm-gray);border-radius:2px;"></div>
+          <div style="flex:1;height:3px;background:var(--warm-gray);border-radius:2px;"></div>
+        </div>
+
+        <div class="wf-step-content">
+          <div class="wf-step-media" style="background:url('../images/adoption.jpg') center/cover no-repeat;position:relative;">
+            <div style="width:48px;height:48px;background:rgba(0,0,0,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;">&#x25B6;</div>
+            <div style="position:absolute;bottom:8px;left:10px;background:rgba(0,0,0,0.5);color:#fff;font-size:0.6rem;padding:2px 8px;border-radius:4px;">2:45 &middot; The 3-3-3 Rule</div>
+          </div>
+          <div style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:var(--blue);margin-bottom:12px;">The 3-3-3 Rule of Rescue Dogs</div>
+          <div class="wf-text-body" style="line-height:1.7;">
+            When a new foster dog arrives, they go through a predictable adjustment period. The "3-3-3 Rule" helps you set realistic expectations:<br><br>
+            <strong>First 3 Days:</strong> Your foster may feel overwhelmed. They might not eat, drink, or want to explore. This is normal.<br><br>
+            <strong>First 3 Weeks:</strong> Your foster starts settling in. They'll begin to show their personality and test boundaries...<br><br>
+          </div>
+        </div>
+
+        <div class="wf-step-nav">
+          <div class="wf-btn wf-btn-outline">&#x2190; Back</div>
+          <div class="wf-btn wf-btn-primary">Next &#x2192;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annotations">
+      <div class="current-issues">
+        <h4>Current site issues</h4>
+        <ul>
+          <li>Training content lives inside Wix's built-in "Online Programs" — separate UI that feels disconnected</li>
+          <li>No step-by-step progress indicator within a module</li>
+          <li>Video content and text content presented identically — no visual distinction</li>
+          <li>No "pick up where you left off" — users must manually find their last step</li>
+        </ul>
+      </div>
+
+      <div class="annotation" data-num="1">
+        <h4>Contextual back navigation</h4>
+        <p>Back arrow + module title provides clear wayfinding. The "Step 3 of 7" label gives positioning context. Users always know exactly where they are in the curriculum.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="2">
+        <h4>Visual step progress bar</h4>
+        <p>Segmented progress dots show completed (green), current (orange), and remaining (gray) steps at a glance. This tiny element adds strong completion motivation — the visual "filling in" triggers reward psychology.</p>
+        <span class="tag tag-engagement">Engagement</span>
+      </div>
+
+      <div class="annotation" data-num="3">
+        <h4>Media-first content layout</h4>
+        <p>Video content gets a dedicated player area at the top, followed by the written lesson. The current site presents video and text identically as plain content blocks. The visual hierarchy here signals "watch first, then read."</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="4">
+        <h4>Fixed bottom navigation</h4>
+        <p>Back/Next buttons are always visible at the bottom of the screen — no scrolling to find navigation. The primary action (Next) uses the orange brand color to draw the eye. On the final step, this becomes "Mark as Complete."</p>
+        <span class="tag tag-mobile">Mobile UX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 6 — LIBRARY
+     ════════════════════════════════════════════════ -->
+<section id="library" class="screen-section fade-in">
+  <div class="section-label">Screen 06</div>
+  <h2 class="section-title">Resource Library</h2>
+  <p class="section-desc">A searchable, filterable knowledge base. Transforms the current grid of text-only topic cards into a rich, browsable resource collection with type indicators.</p>
+
+  <div class="wireframe-row">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen" style="position:relative;">
+        <div class="marker" style="top:55px; left:16px;">1</div>
+        <div class="marker" style="top:100px; left:16px;">2</div>
+        <div class="marker" style="top:175px; left:16px;">3</div>
+        <div class="marker" style="top:320px; left:16px;">4</div>
+
+        <div class="app-status-bar"></div>
+        <div class="app-top-bar">
+          <div class="logo-sm">Library</div>
+          <div class="app-top-bar-icons"></div>
+        </div>
+
+        <div class="app-content">
+          <!-- Search -->
+          <div class="wf-search">
+            <span>&#x1F50D;</span>
+            <span>Search articles, videos, links...</span>
+          </div>
+
+          <!-- Filter pills -->
+          <div class="wf-pills">
+            <div class="wf-pill active">All Topics</div>
+            <div class="wf-pill">Dog Training</div>
+            <div class="wf-pill">Health</div>
+            <div class="wf-pill">Foster</div>
+            <div class="wf-pill">Volunteer</div>
+          </div>
+
+          <!-- Category group -->
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+              <div class="wf-section-heading">Dog Training</div>
+              <span class="wf-badge wf-badge-category">12 topics</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div class="wf-resource-card">
+                <div class="wf-resource-icon video">&#x1F4F9;</div>
+                <div style="flex:1;">
+                  <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">Barking</div>
+                  <div class="wf-text-xs">3 videos, 2 articles</div>
+                </div>
+                <span style="color:var(--text-muted);font-size:1rem;">&#x203A;</span>
+              </div>
+
+              <div class="wf-resource-card">
+                <div class="wf-resource-icon article">&#x1F4C4;</div>
+                <div style="flex:1;">
+                  <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">Crate Training</div>
+                  <div class="wf-text-xs">4 articles, 1 video</div>
+                </div>
+                <span style="color:var(--text-muted);font-size:1rem;">&#x203A;</span>
+              </div>
+
+              <div class="wf-resource-card">
+                <div class="wf-resource-icon video">&#x1F4F9;</div>
+                <div style="flex:1;">
+                  <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">Fear and Anxiety</div>
+                  <div class="wf-text-xs">5 videos, 3 articles</div>
+                </div>
+                <span style="color:var(--text-muted);font-size:1rem;">&#x203A;</span>
+              </div>
+
+              <div class="wf-resource-card">
+                <div class="wf-resource-icon article">&#x1F4C4;</div>
+                <div style="flex:1;">
+                  <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">Leash Training</div>
+                  <div class="wf-text-xs">2 articles, 1 link</div>
+                </div>
+                <span style="color:var(--text-muted);font-size:1rem;">&#x203A;</span>
+              </div>
+
+              <div class="wf-resource-card">
+                <div class="wf-resource-icon link">&#x1F517;</div>
+                <div style="flex:1;">
+                  <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">Separation Anxiety</div>
+                  <div class="wf-text-xs">2 articles, 2 videos</div>
+                </div>
+                <span style="color:var(--text-muted);font-size:1rem;">&#x203A;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second category -->
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+              <div class="wf-section-heading">Dog Health</div>
+              <span class="wf-badge wf-badge-category">1 topic</span>
+            </div>
+            <div class="wf-resource-card">
+              <div class="wf-resource-icon article">&#x1F4C4;</div>
+              <div style="flex:1;">
+                <div style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">All About Dog Health</div>
+                <div class="wf-text-xs">6 articles</div>
+              </div>
+              <span style="color:var(--text-muted);font-size:1rem;">&#x203A;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-tab-bar">
+          <div class="tab-item"><div class="tab-icon">&#x1F3E0;</div><span>Home</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F4AC;</div><span>Forums</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F393;</div><span>Training</span></div>
+          <div class="tab-item active"><div class="tab-icon">&#x1F4DA;</div><span>Library</span></div>
+          <div class="tab-item"><div class="tab-icon">&#x1F465;</div><span>More</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="annotations">
+      <div class="current-issues">
+        <h4>Current site issues</h4>
+        <ul>
+          <li>No search — fosters must visually scan a 3-column grid of 12+ topic cards to find what they need</li>
+          <li>Topic cards show only the title and "See resources" link — no content count or type info</li>
+          <li>All cards use identical styling regardless of whether they contain videos, articles, or links</li>
+          <li>Categories (Training, Health, Foster, Volunteer, Other) are separated by section headings but the sections look identical</li>
+          <li>Library page is one of the longest pages — requires extensive scrolling on mobile</li>
+        </ul>
+      </div>
+
+      <div class="annotation" data-num="1">
+        <h4>Full-text search</h4>
+        <p>Top-of-page search bar lets fosters type a question like "crate training puppy" and immediately find relevant resources. The current library has no search at all — a major gap when fosters need quick answers during a crisis.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="2">
+        <h4>Category filter chips</h4>
+        <p>Horizontal scroll chips filter the library by top-level category. "All Topics" shows everything; selecting "Dog Training" shows only training resources. This replaces scrolling past multiple headed sections.</p>
+        <span class="tag tag-mobile">Mobile UX</span>
+      </div>
+
+      <div class="annotation" data-num="3">
+        <h4>Resource type indicators</h4>
+        <p>Each topic card now shows a colored icon indicating the primary content type: green for video, blue for articles, gray for external links. The count ("3 videos, 2 articles") tells fosters what's inside before tapping.</p>
+        <span class="tag tag-ux">UX Priority</span>
+      </div>
+
+      <div class="annotation" data-num="4">
+        <h4>Compact list layout</h4>
+        <p>Horizontal resource cards use much less vertical space than the current 3-column bordered grid (which collapses to 1 column on mobile). A foster can see 5+ topics per screen instead of 2-3.</p>
+        <span class="tag tag-mobile">Mobile UX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     COMPARISON TABLE
+     ════════════════════════════════════════════════ -->
+<section id="comparison" class="screen-section fade-in">
+  <div class="section-label">Summary</div>
+  <h2 class="section-title">Current Site vs. Proposed App</h2>
+  <p class="section-desc">A side-by-side comparison of key UX differences between the existing Wix community site and the proposed mobile-first PWA.</p>
+
+  <div class="comparison">
+    <div class="comparison-header current">Current Wix Site</div>
+    <div class="comparison-header proposed">Proposed PWA</div>
+
+    <div class="comparison-cell current">Desktop-first layout squeezed onto mobile via Wix responsive mode</div>
+    <div class="comparison-cell">Mobile-first design with bottom tab navigation, thumb-friendly targets</div>
+
+    <div class="comparison-cell current">Full-viewport hero images on every page (400-600px wasted space)</div>
+    <div class="comparison-cell">Compact 48px top bar — content starts immediately</div>
+
+    <div class="comparison-cell current">No personalization — generic headings</div>
+    <div class="comparison-cell">Personalized greeting, avatar, notification badge</div>
+
+    <div class="comparison-cell current">Urgent needs shown as orange alert bars (look like cookie notices)</div>
+    <div class="comparison-cell">Prominent urgent banner with red styling and real-time content</div>
+
+    <div class="comparison-cell current">Forum categories as 5 large image cards (~800px scroll)</div>
+    <div class="comparison-cell">Horizontal pill tabs with badge counts (~40px)</div>
+
+    <div class="comparison-cell current">Forum posts as tiny 3-column card grid</div>
+    <div class="comparison-cell">Social-feed style with avatars, previews, inline images</div>
+
+    <div class="comparison-cell current">Training: 5 bullet points, no tracking</div>
+    <div class="comparison-cell">Interactive modules with progress bar, step tracking, resume</div>
+
+    <div class="comparison-cell current">Library: 12 identical bordered cards in a 3-column grid, no search</div>
+    <div class="comparison-cell">Searchable list with type icons, content counts, category filters</div>
+
+    <div class="comparison-cell current">Login: generic Wix modal with no branding</div>
+    <div class="comparison-cell">Branded full-screen with mission tagline, email-first</div>
+
+    <div class="comparison-cell current">Navigation: 6-item top nav + "More" dropdown</div>
+    <div class="comparison-cell">5-tab bottom bar — all key sections one tap away</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════ -->
+<footer class="doc-footer">
+  <p>SGA Community App Wireframes &middot; Feb 2026 &middot; <a href="https://savinggreatanimals.org">savinggreatanimals.org</a></p>
+  <p style="margin-top:8px;font-size:0.75rem;">Designed for fosters, volunteers, and adopters who give dogs a second chance.</p>
+</footer>
+
+<script>
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
