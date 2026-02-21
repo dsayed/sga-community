@@ -1,4 +1,4 @@
-# SGA Website — Personas
+# SGA — Organizational Personas & Development Approach
 
 **Date:** 2026-02-21
 **Companion to:** [Design & Accessibility Assessment](2026-02-17-sga-website-design-assessment.md)
@@ -146,3 +146,83 @@ These goals are not in conflict. Modern web design has moved toward big typograp
 | Mobile is primary | All user personas | Design mobile-first, not "desktop that also works on mobile" |
 | Available Dogs is the #1 page | The Adopter | This page deserves disproportionate design attention |
 | Donate must be frictionless | The Casual Donor | Persistent, prominent, zero-hunting required |
+
+---
+
+## Development Approach
+
+### Two Phases, Two Workflows
+
+The website redesign has two distinct phases with different operators and different needs:
+
+**Phase 1 — Setup & Iteration (David as PM/DevOps)**
+
+David is moving fast: standing up infrastructure, evaluating themes, configuring the environment, iterating on design direction. This phase needs automation, repeatability, and version control. Git is the source of truth for everything David touches.
+
+**Phase 2 — Steady State (Lily & Jacintha as content editors)**
+
+The scaffolding is built. Lily edits pages, updates photos, manages events. Jacintha reviews and approves. They work in WordPress's admin interface and never see Git, Composer, or Azure. The DevOps layer is invisible to them — it just means the site reliably runs and can be reproduced if something breaks. Occasional infrastructure changes (plugin upgrades, theme updates) come through Git but are infrequent.
+
+### Technical Stack
+
+| Layer | Tool | Why |
+|---|---|---|
+| WordPress project structure | [Bedrock](https://roots.io/bedrock/) (Roots) | Treats WordPress as a proper application. Composer-managed dependencies, environment-based config, Git-friendly |
+| Dependency management | Composer | WordPress core, themes, and plugins as versioned dependencies — like `package.json` for WordPress |
+| Environment config | `.env` files | Local DB creds vs Azure DB creds. No hardcoded secrets in the repo |
+| Local development | Docker Compose | One `docker compose up` to spin up WordPress + MySQL matching the Azure environment. Version-controlled in the repo |
+| Hosting | Azure App Service + Azure Database for MySQL | David already has Azure access. Free/cheap tiers available. More reliable and modern than the current GoDaddy shared hosting |
+| Deployment | GitHub Actions | `git push` to main → deploys to Azure staging. Automated, repeatable, auditable |
+| Infrastructure as code | Azure Bicep | App Service + MySQL defined in code. Reproducible, version-controlled |
+| Baseline content | WP-CLI scripts + WP XML export | Scripts in the repo to bootstrap a fresh environment: activate theme, install plugins, import baseline content |
+
+### What lives in Git (David's domain)
+
+- WordPress core version, theme, and plugin versions (via `composer.json`)
+- Environment configuration templates (`.env.example`)
+- Docker Compose setup for local development
+- GitHub Actions deployment pipeline
+- Azure infrastructure definitions (Bicep)
+- WP-CLI setup scripts (activate theme, configure options, import baseline content)
+- Baseline content export (WP XML) for bootstrapping new environments
+
+### What lives in the database (Lily & Jacintha's domain)
+
+- Page and post content
+- Menus and navigation
+- Theme Customizer settings
+- Media library (images, documents)
+- Plugin settings configured via wp-admin
+- Event listings (The Events Calendar)
+
+This split is intentional. Git controls the infrastructure and reproducibility. The database is where non-technical editors work. Neither side interferes with the other.
+
+### Theme Decision
+
+**Target theme:** [Veterna FSE (Gutenverse)](https://themeforest.net/item/veterna-pet-rescue-animal-welfare-fse-wordpress-theme/57221668) — a Full Site Editing theme built on the Gutenverse plugin (~$69). Chosen over the Elementor template kit of the same name because FSE is WordPress-native, has no page builder dependency, and aligns with the low-maintenance requirement.
+
+**Bootstrap approach:** Start with a free FSE theme (Twenty Twenty-Five or similar) + the Gutenverse plugin to validate the entire infrastructure pipeline. Veterna drops in later as a theme folder swap. This lets us build and test without buying anything, and familiarizes us with Gutenverse's block system before the paid theme arrives.
+
+### Repository Structure (Planned)
+
+Separate repo: `sga-wordpress` (not inside the existing `sga` repo — different runtime, different deployment target, different dependency management).
+
+```
+sga-wordpress/
+├── composer.json          # WordPress + plugins + theme as dependencies
+├── .env.example           # Environment config template
+├── docker-compose.yml     # Local dev environment
+├── config/
+│   └── application.php    # wp-config equivalent, reads from .env
+├── web/
+│   └── app/themes/        # Theme (version controlled)
+├── scripts/
+│   └── setup.sh           # WP-CLI: configure fresh install
+├── content/
+│   └── baseline.xml       # WP XML export for bootstrapping
+├── .github/
+│   └── workflows/
+│       └── deploy.yml     # GitHub Actions → Azure
+└── infrastructure/
+    └── main.bicep         # Azure App Service + MySQL
+```
